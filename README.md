@@ -4,3 +4,7 @@
 3. alacritty, guake: terminal emulator 
 4. vim, vscode, emacs: text editor
 5. tmux: terminal multiplexer
+
+# setup
+use ln -s
+
