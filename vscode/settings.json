@@ -18,6 +18,8 @@
         "strings": true
     },
     "editor.dragAndDrop": false,
+    "explorer.openEditors.visible": 0,
+    "editor.formatOnType": true,
     "sync.gist": "4f13a66b6a5e9c2f8fcd4660dd1447eb",
     "sync.forceUpload": true,
     "search.showLineNumbers": true,
@@ -31,6 +33,11 @@
     },
     "workbench.settings.useSplitJSON": true,
     "workbench.settings.editor": "json",
+    "commentTranslate.targetLanguage": "zh-CN",
+    "commentTranslate.multiLineMerge": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.runInTerminal": true,
+    "C_Cpp.clang_format_sortIncludes": true,
     // "python.pythonPath": "/home/liuyan/anaconda3/bin/python",
     "python.linting.pylintEnabled": false,
     // "python.linting.flake8Path": "/home/liuyan/anaconda3/bin/flake8",
@@ -768,50 +775,10 @@
             "before": [
                 "<leader>",
                 "g",
-                "d"
+                "s"
             ],
             "commands": [
-                "git.openChange"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "x"
-            ],
-            "commands": [
-                "git.clean"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "X"
-            ],
-            "commands": [
-                "git.cleanAll"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "b"
-            ],
-            "commands": [
-                "git.checkout"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "c"
-            ],
-            "commands": [
-                "git.commit"
+                "magit.status"
             ]
         },
         {
@@ -821,7 +788,7 @@
                 "d"
             ],
             "commands": [
-                "git.deleteBranch"
+                "magit.dispatch"
             ]
         },
         {
@@ -831,7 +798,27 @@
                 "f"
             ],
             "commands": [
-                "git.fetch"
+                "magit.file-popup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "l"
+            ],
+            "commands": [
+                "git-graph.view"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "L"
+            ],
+            "commands": [
+                "gitlens.showQuickRepoStatus"
             ]
         },
         {
@@ -848,135 +835,174 @@
             "before": [
                 "<leader>",
                 "g",
-                "m"
-            ],
-            "commands": [
-                "git.merge"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "p"
-            ],
-            "commands": [
-                "git.publish"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "s"
-            ],
-            "commands": [
-                "workbench.view.scm"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "S"
-            ],
-            "commands": [
-                "git.stage"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "U"
-            ],
-            "commands": [
-                "git.unstage"
-            ]
-        },
-        // NOTE:  打开后必须要选择，否则会使所有快捷键失效。。
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "b"
-            ],
-            "commands": [
-                "git.checkout"
-            ]
-        },
-        // 打开 gitlens file blame
-        {
-            "before": [
-                "<leader>",
-                "g",
                 "B"
             ],
             "commands": [
                 "gitlens.toggleFileBlame"
             ]
         },
-        // 查看当前 git Stats
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "l"
-            ],
-            "commands": [
-                "gitlens.showQuickRepoStatus"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "s"
-            ],
-            "commands": [
-                "git.stage"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "S"
-            ],
-            "commands": [
-                "git.stageAll"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "c"
-            ],
-            "commands": [
-                "git.commitStaged"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "C"
-            ],
-            "commands": [
-                "git.commitStaged"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "h"
-            ],
-            "commands": [
-                "git-graph.view"
-            ]
-        },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "d"
+        //     ],
+        //     "commands": [
+        //         "git.openChange"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "x"
+        //     ],
+        //     "commands": [
+        //         "git.clean"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "X"
+        //     ],
+        //     "commands": [
+        //         "git.cleanAll"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "b"
+        //     ],
+        //     "commands": [
+        //         "git.checkout"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "c"
+        //     ],
+        //     "commands": [
+        //         "git.commit"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "D"
+        //     ],
+        //     "commands": [
+        //         "git.deleteBranch"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "f"
+        //     ],
+        //     "commands": [
+        //         "git.fetch"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "m"
+        //     ],
+        //     "commands": [
+        //         "git.merge"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "p"
+        //     ],
+        //     "commands": [
+        //         "git.publish"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "s"
+        //     ],
+        //     "commands": [
+        //         "workbench.view.scm"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "S"
+        //     ],
+        //     "commands": [
+        //         "git.stage"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "U"
+        //     ],
+        //     "commands": [
+        //         "git.unstage"
+        //     ]
+        // },
+        // NOTE:  打开后必须要选择，否则会使所有快捷键失效。。
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "b"
+        //     ],
+        //     "commands": [
+        //         "git.checkout"
+        //     ]
+        // },
+        // 打开 gitlens file blame
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "s"
+        //     ],
+        //     "commands": [
+        //         "git.stage"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "S"
+        //     ],
+        //     "commands": [
+        //         "git.stageAll"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "g",
+        //         "C"
+        //     ],
+        //     "commands": [
+        //         "git.commitStaged"
+        //     ]
+        // },
         //toggle
         {
             "before": [
@@ -1371,7 +1397,7 @@
             "commands": [
                 "python.execInTerminal"
             ]
-        }
+        },
         //help
         {
             "before": [
@@ -1627,7 +1653,7 @@
             ]
         },
     ],
-    "cSpell.enabledLanguageIds": [
+    "cSpell.enableFiletypes": [
         "asciidoc",
         "git-commit",
         "latex",
@@ -1639,5 +1665,5 @@
         "yml"
     ],
     "vsicons.dontShowNewVersionMessage": true,
-    "python.pythonPath": "/home/liuyan/.conda/envs/pytorch/bin/python",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
 }

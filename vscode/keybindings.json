@@ -40,4 +40,28 @@
         "command": "list.focusUp",
         "when": "listFocus && !inputFocus"
     },
+    {
+        "key": "x",
+        "command": "magit.discard-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "k",
+        "command": "-magit.discard-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "tab",
+        "command": "magit.toggle-fold",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "q",
+        "command": "-workbench.action.closeActiveEditor",
+        "when": "editorTextFocus && editorLangId == magit"
+    },
 ]

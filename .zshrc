@@ -83,6 +83,7 @@ setopt automenu
 setopt correct
 #NOCLOBBER prevents you from accidentally overwriting an existing file.
 setopt noclobber
+compdef -d mcd
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -116,7 +117,7 @@ alias ar="sudo pacman -Rs"
 alias au="sudo pacman -Syu"
 alias as="sudo pacman -Ss"
 alias ra="ranger"
-alias pc="proxychains"
+alias pc="proxychains -q"
 #alias pa="pacapt"
 alias co="conda"
 alias coa="conda activate"
@@ -145,6 +146,7 @@ alias rscp="rsync -ahP"
 alias rsmv="rsync -ahP --remove-source-files"
 alias s="screenfetch"
 alias lg='lazygit'
+alias sslab="sshfs lab:/data/liuyan /home/liuyan/server"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
