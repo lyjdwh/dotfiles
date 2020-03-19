@@ -33,6 +33,7 @@
     },
     "workbench.settings.useSplitJSON": true,
     "workbench.settings.editor": "json",
+    "workbench.colorTheme": "Dracula",
     "commentTranslate.targetLanguage": "zh-CN",
     "commentTranslate.multiLineMerge": true,
     "code-runner.saveFileBeforeRun": true,
@@ -67,6 +68,7 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
     "[markdown]": {
         "editor.quickSuggestions": true
     },
@@ -77,6 +79,7 @@
         "suppressGitVersionWarning": true
     },
     "git.ignoreLegacyWarning": true,
+    "bookmarks.saveBookmarksInProject": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.clean.fileTypes": [
         "*.aux",
@@ -177,6 +180,10 @@
         "<C-a>": false,
         "<C-f>": false,
     },
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "1",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -237,11 +244,59 @@
                 "extension.codelf"
             ]
         },
+        {
+            "before": [
+                "<leader>",
+                "<space>"
+            ],
+            "commands": [
+                "workbench.action.showCommands",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "s"
+            ],
+            "commands": [
+                "python.execSelectionInTerminal"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "v",
+            ],
+            "commands": [
+                "python.refactorExtractVariable"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "m",
+            ],
+            "commands": [
+                "python.refactorExtractMethod"
+            ]
+        },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
                 ":"
+            ],
+            "commands": [
+                "workbench.action.showCommands",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<space>"
             ],
             "commands": [
                 "workbench.action.showCommands",
@@ -273,7 +328,8 @@
                 "f"
             ],
             "commands": [
-                "workbench.action.files.openFile"
+                // "workbench.action.files.openFile"
+                "fzf-quick-open.runFzfFile",
             ]
         },
         {
@@ -284,6 +340,16 @@
             ],
             "commands": [
                 "workbench.action.openSettingsJson"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.openGlobalKeybindingsFile"
             ]
         },
         {
@@ -384,7 +450,7 @@
                 "y"
             ],
             "commands": [
-                "workbench.action.files.copyPathOfActiveFile"
+                "copyFilePath"
             ]
         },
         {
@@ -1008,7 +1074,7 @@
             "before": [
                 "<leader>",
                 "t",
-                "c"
+                "s"
             ],
             "commands": [
                 "cSpell.toggleEnableSpellChecker"
@@ -1048,7 +1114,7 @@
             "before": [
                 "<leader>",
                 "t",
-                "s"
+                "T"
             ],
             "commands": [
                 "workbench.action.selectTheme"
@@ -1069,6 +1135,16 @@
                 "<leader>",
                 "t",
                 "p"
+            ],
+            "commands": [
+                "workbench.action.closePanel"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "P"
             ],
             "commands": [
                 "workbench.action.togglePanel"
@@ -1092,6 +1168,16 @@
             ],
             "commands": [
                 "workbench.action.toggleZenMode"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "c"
+            ],
+            "commands": [
+                "polacode.activate"
             ]
         },
         //expend
@@ -1274,6 +1360,57 @@
                 "w"
             ]
         },
+        //bookmark
+        {
+            "before": [
+                "<leader>",
+                "j",
+                "t"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "j",
+                "n"
+            ],
+            "commands": [
+                "bookmarks.jumpToNext"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "j",
+                "p"
+            ],
+            "commands": [
+                "bookmarks.jumpToPrevious"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "j",
+                "l"
+            ],
+            "commands": [
+                "bookmarks.listFromAllFiles"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "j",
+                "c"
+            ],
+            "commands": [
+                "bookmarks.clearFromAllFiles"
+            ]
+        },
         //peek
         {
             "before": [
@@ -1388,6 +1525,7 @@
                 "editor.action.marker.prev"
             ]
         },
+        //execute
         {
             "before": [
                 "<leader>",
@@ -1396,6 +1534,16 @@
             ],
             "commands": [
                 "python.execInTerminal"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e",
+                "s"
+            ],
+            "commands": [
+                "python.execSelectionInTerminal"
             ]
         },
         //help
@@ -1665,5 +1813,4 @@
         "yml"
     ],
     "vsicons.dontShowNewVersionMessage": true,
-    "terminal.integrated.shell.linux": "/usr/bin/zsh",
 }

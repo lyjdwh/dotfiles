@@ -52,8 +52,13 @@
     },
     {
         "key": "tab",
-        "command": "magit.toggle-fold",
-        "when": "editorTextFocus && editorLangId == 'magit'"
+        "command": "extension.vim_tab",
+        "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && !editorLangId == 'magit'"
+    },
+    {
+        "key": "tab",
+        "command": "-extension.vim_tab",
+        "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
         "key": "ctrl+w",
@@ -61,7 +66,7 @@
     },
     {
         "key": "q",
-        "command": "-workbench.action.closeActiveEditor",
-        "when": "editorTextFocus && editorLangId == magit"
+        "command": "-magit.quit",
+        "when": "editorTextFocus && editorLangId == 'magit'"
     },
 ]

@@ -155,7 +155,8 @@ export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
 export EDITOR="emacsclient -t"
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
-setxkbmap -layout us -option caps:escape
+#使用caps2esc
+#setxkbmap -layout us -option caps:escape
 #spare_modifier="Hyper_L"
 #xmodmap -e "keycode 65 = $spare_modifier"
 #xmodmap -e "remove mod4 = $spare_modifier" # hyper_l is mod4 by default
