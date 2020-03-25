@@ -25,7 +25,6 @@
     "search.showLineNumbers": true,
     "search.followSymlinks": false,
     "todo.embedded.provider": "ag",
-    "workbench.activityBar.visible": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorCustomizations": {
         "titleBar.activeForeground": "#ffffff",
@@ -80,6 +79,7 @@
     },
     "git.ignoreLegacyWarning": true,
     "bookmarks.saveBookmarksInProject": true,
+    "latex-utilities.liveReformat.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.clean.fileTypes": [
         "*.aux",
@@ -179,6 +179,7 @@
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-f>": false,
+        "<C-j>": false,
     },
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.defaultIM": "1",
@@ -285,14 +286,6 @@
         },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                ":"
-            ],
-            "commands": [
-                "workbench.action.showCommands",
-            ]
-        },
         {
             "before": [
                 "<leader>",
@@ -1800,6 +1793,7 @@
                 "python.sortImports"
             ]
         },
+        //misc
     ],
     "cSpell.enableFiletypes": [
         "asciidoc",

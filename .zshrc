@@ -65,8 +65,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras alias-tips zsh-completions vi-mode  thefuck sudo history-substring-search extract z.lua
-copydir zsh-autosuggestions zsh-syntax-highlighting command-not-found web-search ranger-autojump common-aliases debian forgit)
+plugins=(git git-extras alias-tips zsh-completions vi-mode  thefuck sudo history-substring-search extract z.lua copydir zsh-autosuggestions zsh-syntax-highlighting command-not-found web-search ranger-autojump common-aliases debian forgit colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 # source /home/liuyan/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
@@ -152,6 +151,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
 export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export EDITOR="emacsclient -t"
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
