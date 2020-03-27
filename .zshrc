@@ -141,15 +141,24 @@ alias zf='z -I' # 使用 fzf 对多个结果进行选择
 alias zb='z -b' # 快速回到父目录
 alias rm="rm -f"
 #cp, mv 时显示进度条
-alias rscp="rsync -ahP" 
+alias rscp="rsync -ahP"
 alias rsmv="rsync -ahP --remove-source-files"
 alias s="screenfetch"
 alias lg='lazygit'
 alias sslab="sshfs lab:/data/liuyan /home/liuyan/server"
+alias record="asciinema rec"  #ctrl+d to quit
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+#fzf
+#usage: command + ** +tab ...
+# export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+export FZF_DEFAULT_OPTS='--bind ctrl-n:down,ctrl-p:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_COMPLETION_TRIGGER='**'
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT='80%'
+export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export EDITOR="emacsclient -t"
