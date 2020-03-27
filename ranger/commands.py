@@ -157,7 +157,7 @@ class extracthere(Command):
         self.fm.loader.add(obj)
 
 
-class ag(Command):
+class ranger_ag(Command):
     """:ag 'regex'
     Looks for a string in all marked paths or current dir
     """
@@ -180,14 +180,14 @@ class ag(Command):
 
     def _arg(self, i=1):
         if self.rest(i):
-            ag.patterns.append(self.rest(i))
-        return ag.patterns[-1] if ag.patterns else ""
+            ranger_ag.patterns.append(self.rest(i))
+        return ranger_ag.patterns[-1] if ranger_ag.patterns else ""
 
     def _quot(self, patt):
-        return patt if ag.qarg.match(patt) else shell_quote(patt)
+        return patt if ranger_ag.qarg.match(patt) else shell_quote(patt)
 
     def _bare(self, patt):
-        return patt[1:-1] if ag.qarg.match(patt) else patt
+        return patt[1:-1] if ranger_ag.qarg.match(patt) else patt
 
     def _aug_vim(self, iarg, comm="Ag"):
         if self.arg(iarg) == "-Q":
@@ -197,11 +197,11 @@ class ag(Command):
         patt = self._arg(iarg)  # No need to quote in new ag.vim
         # FIXME:(add support)  'AgPaths' + self._sel()
         cmd = " ".join([comm, patt])
-        cmdl = [ag.editor, "-c", cmd, "-c", "only"]
+        cmdl = [ranger_ag.editor, "-c", cmd, "-c", "only"]
         return (cmdl, "")
 
     def _aug_sh(self, iarg, flags=[]):
-        cmdl = ag.acmd.split() + flags
+        cmdl = ranger_ag.acmd.split() + flags
         if iarg == 1:
             import shlex
 
@@ -277,7 +277,7 @@ class ag(Command):
         flg = self.arg(1)
         if flg[0] == "-" and flg[1] in "flvgprw":
             cmd += " " + flg
-        return ["{} {}".format(cmd, p) for p in reversed(ag.patterns)]
+        return ["{} {}".format(cmd, p) for p in reversed(ranger_ag.patterns)]
 
 
 class rg_fzf(Command):
