@@ -176,6 +176,8 @@ zle -N history-substring-search-up
 zle -N history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'K' up-line-or-history
+bindkey -M vicmd 'J' down-line-or-history
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -183,6 +185,19 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^o' autosuggest-accept
+
+function zle-keymap-select {
+	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+    fi
+}
+zle -N zle-keymap-select
+
+# Use beam shape cursor on startup.
+echo -ne '\e[5 q'
+
 mcd(){
   mkdir -p $1
   cd $1
