@@ -162,6 +162,8 @@ export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary
 export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export EDITOR="emacsclient -t"
+export _FASD_DATA="$HOME/.zlua"
+export RANGER_ZLUA="/home/liuyan/.oh-my-zsh/custom/plugins/z.lua/z.lua"
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
