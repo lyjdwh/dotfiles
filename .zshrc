@@ -77,8 +77,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle lincheney/fzf-tab-completion
-source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+antigen bundle kutsan/zsh-system-clipboard
 
 # Tell Antigen that you're done.
 antigen apply
@@ -160,6 +159,8 @@ alias s="screenfetch"
 alias lg='lazygit'
 alias sslab="sshfs lab:/data/liuyan /home/liuyan/server"
 alias record="asciinema rec"  #ctrl+d to quit
+alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
+alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -177,6 +178,7 @@ export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export EDITOR="emacsclient -t"
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
+export GTAGSLABEL=pygments
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
@@ -249,3 +251,5 @@ cd_sibling() {
 }
 zle -N cd_sibling
 bindkey '^S' cd_sibling
+
+# fortune

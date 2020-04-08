@@ -48,7 +48,7 @@ class mkcd(Command):
             self.fm.notify("file/directory exists!", bad=True)
 
 
-class fzf_select(Command):
+class fzf_select_file(Command):
     """
     :fzf_select
 
@@ -280,7 +280,7 @@ class ranger_ag(Command):
         return ["{} {}".format(cmd, p) for p in reversed(ranger_ag.patterns)]
 
 
-class rg_fzf(Command):
+class fzf_rga(Command):
     """
     :fzf_rga_search_documents
     Search in PDFs, E-Books and Office documents in current directory.
