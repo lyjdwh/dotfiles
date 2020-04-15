@@ -78,6 +78,8 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle kutsan/zsh-system-clipboard
+antigen bundle Aloxaf/fzf-tab
+antigen bundle hlissner/zsh-autopair
 
 # Tell Antigen that you're done.
 antigen apply
@@ -161,6 +163,7 @@ alias sslab="sshfs lab:/data/liuyan /home/liuyan/server"
 alias record="asciinema rec"  #ctrl+d to quit
 alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
 alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
+alias curl="curl -x socks5://127.0.0.1:1080"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
