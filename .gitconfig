@@ -3,6 +3,7 @@
 	email = 1412511544@qq.com
 [core]
 	editor = emacsclient -t
+    pager = delta
 [http]
 	proxy = socks5://127.0.0.1:1080
 [https]
@@ -11,3 +12,11 @@
 	helper = store
 [pull]
 	rebase = true
+[github]
+	user = lyjdwh
+#[delta]
+    #side-by-side = true
+    #line-numbers-left-format = ""
+    #line-numbers-right-format = "│ "
+[interactive]
+    diffFilter = delta --color-only
