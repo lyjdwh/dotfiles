@@ -1,0 +1,11 @@
+alias bluec="bluetoothctl connect 38:18:4C:3D:3B:D4"
+alias blued="bluetoothctl disconnect"
+alias wechat="/opt/deepinwine/apps/Deepin-WeChat/run.sh"
+alias tim="/opt/deepinwine/apps/Deepin-TIM/run.sh"
+alias sk="screenkey"
+alias lk="systemctl suspend && slock"
+alias sd="shutdown now"
+alias shot="flameshot gui"
+alias xd="xrandr --output eDP-1-1 --auto --left-of HDMI-0 "
+alias xo="xrandr --output eDP-1-1 --off"
+

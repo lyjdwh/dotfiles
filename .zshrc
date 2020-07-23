@@ -80,6 +80,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle kutsan/zsh-system-clipboard
 antigen bundle Aloxaf/fzf-tab
 antigen bundle hlissner/zsh-autopair
+antigen bundle sobolevn/wakatime-zsh-plugin
 
 # Tell Antigen that you're done.
 antigen apply
@@ -126,10 +127,11 @@ alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="et ~/.zshrc"
 alias ai="sudo pacman -S"
-alias ar="sudo pacman -Rs"
+alias ar="sudo pacman -Rns"
 alias au="sudo pacman -Syu"
 alias as="sudo pacman -Ss"
 alias ra="ranger"
+alias sra='sudo -E ranger'
 alias pc="proxychains -q"
 #alias pa="pacapt"
 alias co="conda"
@@ -159,11 +161,19 @@ alias rscp="rsync -ahP"
 alias rsmv="rsync -ahP --remove-source-files"
 alias s="screenfetch"
 alias lg='lazygit'
-alias sslab="sshfs lab:/data/liuyan /home/liuyan/server"
+alias sslab1="sshfs lab1:/data/liuyan /home/liuyan/lab1"
+alias sslab2="sshfs lab2:/data1/liuyan /home/liuyan/lab2"
 alias record="asciinema rec"  #ctrl+d to quit
 alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
 alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
-alias curl="curl -x socks5://127.0.0.1:1080"
+#alias curl="curl -x socks5://127.0.0.1:1080"
+# Download videos from YouTube, youku ....
+
+alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
+alias wn="watch -n 5 -d nvidia-smi"
+alias sudo='sudo -E'
+alias c='clear'
+source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -182,6 +192,7 @@ export EDITOR="emacsclient -t"
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
 export GTAGSLABEL=pygments
+export TERM=xterm-256color
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
@@ -244,15 +255,20 @@ brew() {
     PATH="/home/liuyan/.linuxbrew/bin:$PATH" /home/liuyan/.linuxbrew/bin/brew "$@"
 }
 
-xo() {
-  nohup xdg-open $1
-  rm nohup.out
-}
+# xo() {
+#   nohup xdg-open $1
+#   rm nohup.out
+# }
 
 cd_sibling() {
   cd $(ls --dired |fzf)
 }
 zle -N cd_sibling
 bindkey '^S' cd_sibling
+
+fif() {
+    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+    rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
 
 # fortune
