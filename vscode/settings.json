@@ -54,7 +54,7 @@
     "python.testing.pytestEnabled": true,
     //"python.testing.pytestPath": "/home/liuyan/anaconda3/bin/pytest",
     "python.jediEnabled": false,
-    "window.menuBarVisibility": "default",
+    "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 1,
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}", //${separator}${appName}
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -67,7 +67,7 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.rendererType": "dom",
-    "terminal.integrated.shell.linux": "/usr/bin/zsh",
+    //    "terminal.integrated.shell.linux": "/usr/bin/zsh",
     "[markdown]": {
         "editor.quickSuggestions": true
     },
@@ -79,6 +79,7 @@
     },
     "git.ignoreLegacyWarning": true,
     "bookmarks.saveBookmarksInProject": true,
+    "remote-github.mountPoint": "/home/liuyan/"
     "latex-utilities.liveReformat.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.clean.fileTypes": [
@@ -183,8 +184,8 @@
     },
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.defaultIM": "1",
-    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
-    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx5-remote",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx5-remote -t {im}",
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -1808,4 +1809,7 @@
     ],
     "vsicons.dontShowNewVersionMessage": true,
     "workbench.activityBar.visible": true,
+    "tabnine.experimentalAutoImports": true,
+    "python.languageServer": "Microsoft",
+    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjpcIjI0MFwiLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODI3LFwiaGVpZ2h0XCI6MTE2OX0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2V9In0=",
 }
