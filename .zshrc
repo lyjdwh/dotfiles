@@ -173,6 +173,7 @@ alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-
 alias wn="watch -n 5 -d nvidia-smi"
 alias sudo='sudo -E'
 alias c='clear'
+alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
 source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false
@@ -182,7 +183,8 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
 # export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
 export FZF_DEFAULT_OPTS='--bind ctrl-n:down,ctrl-p:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_COMPLETION_TRIGGER='**'
+export FZF_COMPLETION_TRIGGER='**' # tab/** + tab
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
@@ -193,6 +195,8 @@ export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
 export GTAGSLABEL=pygments
 export TERM=xterm-256color
+export MARKER_KEY_GET='^[ '
+export MARKER_KEY_NEXT_PLACEHOLDER='^[n'
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
@@ -210,6 +214,11 @@ export TERM=xterm-256color
 #export LC_CTYPE=zh_CN.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /opt/anaconda/etc/profile.d/conda.sh
+# Alt-space: search for commands that match the current written string in the command-line.
+# Ctrl-k (or marker mark): Bookmark a command.
+# Alt-n: place the cursor at the next placeholder, identified by '{{anything}}'
+# marker remove: remove a bookmark
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 
 #keybindings
 zle -N history-substring-search-up
@@ -271,4 +280,17 @@ fif() {
     rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	    echo "opening $file" &&
+	    xdg-open "$file"
+}
 # fortune
