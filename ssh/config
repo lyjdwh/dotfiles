@@ -1,0 +1,24 @@
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+#Host alias
+#    HostName hostname
+#    User user
+Host *
+  # Enable connection sharing.
+  TCPKeepAlive yes
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+  # Make persistent connections that can be reused.
+  ControlPersist yes
+  # Keep connections alive (helps TRAMP to detect disconnects.)
+  ServerAliveInterval 15
+  ServerAliveCountMax 6
+  Compression yes
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
+Host xxx       # name
+  HostName xxx # ip
+  User xxx
+  Port xxx
+  # ProxyCommand ssh -W %h:%p xxx
