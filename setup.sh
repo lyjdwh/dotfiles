@@ -1,4 +1,8 @@
 #!/bin/bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# marker
+git clone --depth=1 https://github.com/pindexis/marker ~/.marker && ~/.marker/install.py
+
 ln -s ~/dotfiles/.alacritty.yml          ~/.alacritty.yml
 ln -s ~/dotfiles/.condarc                ~/.condarc
 ln -s ~/dotfiles/.tmux.conf              ~/.tmux.conf

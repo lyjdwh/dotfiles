@@ -3,6 +3,9 @@
 	email = 1412511544@qq.com
 [core]
 	editor = emacsclient -t
+	autocrlf = input
+	filemode = false
+	safecrlf = warn
     pager = delta
 [http]
 	proxy = socks5://127.0.0.1:1080

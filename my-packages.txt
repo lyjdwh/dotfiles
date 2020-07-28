@@ -1,6 +1,7 @@
 acpi
 acpi_call-dkms
 acpid
+acpilight
 adapta-gtk-theme
 adapta-kde
 adobe-source-han-sans-cn-fonts
@@ -90,6 +91,7 @@ fcitx5-chinese-addons
 fcitx5-git
 fcitx5-gtk
 fcitx5-material-color
+fcitx5-pinyin-moegirl
 fcitx5-pinyin-zhwiki
 fcitx5-qt
 fcitx5-rime
@@ -110,6 +112,7 @@ flex
 fortune-mod
 foxitreader
 fwupd
+fzf
 gawk
 gcc
 gcc-libs

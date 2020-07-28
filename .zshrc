@@ -76,7 +76,8 @@ antigen bundle skywind3000/z.lua
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle kutsan/zsh-system-clipboard
 antigen bundle Aloxaf/fzf-tab
 antigen bundle hlissner/zsh-autopair
@@ -155,7 +156,7 @@ alias zz='z -c' # 严格匹配当前路径的子路径
 alias zi='z -i' # 使用交互式选择模式
 alias zf='z -I' # 使用 fzf 对多个结果进行选择
 alias zb='z -b' # 快速回到父目录
-alias rm="rm -f"
+alias rm="rm -f" # rm -iv 删除时提醒
 #cp, mv 时显示进度条
 alias rscp="rsync -ahP"
 alias rsmv="rsync -ahP --remove-source-files"
@@ -174,6 +175,7 @@ alias wn="watch -n 5 -d nvidia-smi"
 alias sudo='sudo -E'
 alias c='clear'
 alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
+alias ta="tmux attach"
 source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false
