@@ -176,6 +176,7 @@ alias sudo='sudo -E'
 alias c='clear'
 alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
 alias ta="tmux attach"
+alias ut="~/.tmux/plugins/tpm/bin/update_plugins all"
 source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false

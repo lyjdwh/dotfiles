@@ -1,5 +1,4 @@
 #!/bin/bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # marker
 git clone --depth=1 https://github.com/pindexis/marker ~/.marker && ~/.marker/install.py
 
