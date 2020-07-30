@@ -238,9 +238,18 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^o' autosuggest-accept
 
+export zsh_input_method=1
 function zle-keymap-select {
-	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]] && [[ $(/usr/bin/fcitx5-remote) == 2 ]] ; then
+        echo -ne '\e[1 q'
+        /usr/bin/fcitx5-remote -c
+        zsh_input_method=2
+	elif [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
 		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]] &&[[ $zsh_input_method == 2 ]]; then
+		echo -ne '\e[5 q'
+        /usr/bin/fcitx5-remote -o
+        zsh_input_method=1
 	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
 		echo -ne '\e[5 q'
     fi
