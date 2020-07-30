@@ -45,7 +45,7 @@ mapkey('p', "Open the clipboard's URL in the current tab", function() {
 });
 
 mapkey('yc', '#7Copy code text', function() {
-    Hints.create("code", function(element) {
+    Hints.create("code, pre", function(element) {
         Clipboard.write(element.innerText);
     });
 });
