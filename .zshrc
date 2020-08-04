@@ -70,7 +70,6 @@ plugins=(git git-extras vi-mode  thefuck sudo extract copydir command-not-found 
 source $ZSH/oh-my-zsh.sh
 source $ZSH/plugins/antigen.zsh
 
-antigen bundle djui/alias-tips
 antigen bundle wfxr/forgit
 antigen bundle skywind3000/z.lua
 antigen bundle zsh-users/zsh-autosuggestions
@@ -82,6 +81,9 @@ antigen bundle kutsan/zsh-system-clipboard
 antigen bundle Aloxaf/fzf-tab
 antigen bundle hlissner/zsh-autopair
 antigen bundle sobolevn/wakatime-zsh-plugin
+antigen bundle MichaelAquilina/zsh-you-should-use
+antigen bundle MichaelAquilina/zsh-auto-notify
+antigen bundle laurenkt/zsh-vimto
 
 # Tell Antigen that you're done.
 antigen apply
@@ -177,10 +179,13 @@ alias c='clear'
 alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
 alias ta="tmux attach"
 alias ut="~/.tmux/plugins/tpm/bin/update_plugins all"
+alias q="exit"
 source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
 #fzf
 #usage: command + ** +tab ...
 # export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
@@ -200,6 +205,7 @@ export GTAGSLABEL=pygments
 export TERM=xterm-256color
 export MARKER_KEY_GET='^[ '
 export MARKER_KEY_NEXT_PLACEHOLDER='^[n'
+export YSU_MESSAGE_POSITION="after"
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
@@ -238,7 +244,10 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^o' autosuggest-accept
 
+# Don't take 0.4s to change modes
+export KEYTIMEOUT=1
 export zsh_input_method=1
+
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]] && [[ $(/usr/bin/fcitx5-remote) == 2 ]] ; then
         echo -ne '\e[1 q'
@@ -254,6 +263,7 @@ function zle-keymap-select {
 		echo -ne '\e[5 q'
     fi
 }
+
 zle -N zle-keymap-select
 
 # Use beam shape cursor on startup.
@@ -275,11 +285,6 @@ bindkey '^Q' cdlast
 brew() {
     PATH="/home/liuyan/.linuxbrew/bin:$PATH" /home/liuyan/.linuxbrew/bin/brew "$@"
 }
-
-# xo() {
-#   nohup xdg-open $1
-#   rm nohup.out
-# }
 
 cd_sibling() {
   cd $(ls --dired |fzf)
@@ -304,5 +309,15 @@ rga-fzf() {
 	)" &&
 	    echo "opening $file" &&
 	    xdg-open "$file"
+}
+
+k(){
+    if [[ $1 == "wechat" ]]; then
+        pgrep "WeChat" | xargs kill
+    elif [[ $1 == "tim" ]];then
+        pgrep "TIM" | xargs kill
+    else
+        pgrep $1 | xargs kill
+    fi
 }
 # fortune
