@@ -83,7 +83,6 @@ antigen bundle hlissner/zsh-autopair
 antigen bundle sobolevn/wakatime-zsh-plugin
 antigen bundle MichaelAquilina/zsh-you-should-use
 antigen bundle MichaelAquilina/zsh-auto-notify
-antigen bundle laurenkt/zsh-vimto
 
 # Tell Antigen that you're done.
 antigen apply
@@ -126,6 +125,7 @@ compdef -d mcd
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+unalias fd
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="et ~/.zshrc"
@@ -203,8 +203,9 @@ export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
 export GTAGSLABEL=pygments
 export TERM=xterm-256color
-export MARKER_KEY_GET='^[ '
-export MARKER_KEY_NEXT_PLACEHOLDER='^[n'
+# Meta: ^[, Ctrl: ^
+export MARKER_KEY_GET='^b'
+export MARKER_KEY_NEXT_PLACEHOLDER='^n'
 export YSU_MESSAGE_POSITION="after"
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
@@ -245,7 +246,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey '^o' autosuggest-accept
 
 # Don't take 0.4s to change modes
-export KEYTIMEOUT=1
+export KEYTIMEOUT=20
 export zsh_input_method=1
 
 function zle-keymap-select {
