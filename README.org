@@ -11,6 +11,13 @@
 * setup
   use [[https://github.com/anishathalye/dotbot][dotbot]] to bootstrap dotfiles
 
+** install
   #+BEGIN_SRC sh
     dotbot -c install.conf.yaml
   #+END_SRC
+
+** uninstall
+
+   #+BEGIN_SRC sh
+     python uninstall.py
+   #+END_SRC
