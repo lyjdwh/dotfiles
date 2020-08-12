@@ -1,0 +1,32 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- shell:
+    - [./install_requirements.sh, install requirements]
+
+- clean:
+    ~/:
+      force: true
+
+- link:
+    ~/.alacritty.yml                                    :  .alacritty.yml
+    ~/.condarc                                          :  .condarc
+    ~/.tmux.conf                                        :  .tmux.conf
+    ~/.vimrc                                            :  .vimrc
+    ~/.zshrc                                            :  .zshrc
+    ~/.zsh_aliases                                      :  .zsh_aliases
+    ~/.pam_environment                                  :  .pam_environment
+    ~/.Xmodmap                                          :  .Xmodmap
+    ~/.gitconfig                                        :  .gitconfig
+    ~/.config/surfingkeys.js                            :  surfingkeys.js
+    ~/.config/ranger/commands.py                        :  ranger/commands.py
+    ~/.config/ranger/rc.conf                            :  ranger/rc.conf
+    ~/.config/ranger/rifle.conf                         :  ranger/rifle.conf
+    ~/.config/ranger/scope.sh                           :  ranger/scope.sh
+    ~/.config/ranger/plugins                            :  ranger/plugins
+    ~/.config/Code/User/settings.json                   :  vscode/settings.json
+    ~/.config/Code/User/keybindings.json                :  vscode/keybindings.json
+    ~/.oh-my-zsh/themes/robbyrussell-modified.zsh-theme :  robbyrussell-modified.zsh-theme

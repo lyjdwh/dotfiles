@@ -1,0 +1,16 @@
+* tools
+  1. *ranger*: vim-inspired filemanager for the console
+  2. *zsh*: shell
+  3. *alacritty, st*: terminal emulator
+  4. *vim, vscode, emacs*: text editor
+  5. *tmux*: terminal multiplexer
+  6. *xmodmap*: modify keymaps and pointer button mappings in Xorg
+  7. *surfingkeys*: map your keys for web surfing
+  8. ......
+
+* setup
+  use [[https://github.com/anishathalye/dotbot][dotbot]] to bootstrap dotfiles
+
+  #+BEGIN_SRC sh
+    dotbot -c install.conf.yaml
+  #+END_SRC
