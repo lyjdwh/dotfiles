@@ -46,6 +46,7 @@ ccls-git
 cmake
 coreutils
 cppcheck
+cppman-git
 cpupower
 crda
 cronie
@@ -57,7 +58,6 @@ cups
 cups-pdf
 cups-pk-helper
 debtap
-deepin-wine-baidupan
 deepin-wine-tim
 deepin-wine-wechat
 deepin.com.qq.im
@@ -87,8 +87,8 @@ exfat-utils
 f2fs-tools
 fakeroot
 fasd
+fcitx5
 fcitx5-chinese-addons
-fcitx5-git
 fcitx5-gtk
 fcitx5-material-color
 fcitx5-pinyin-moegirl
@@ -109,6 +109,7 @@ findutils
 flameshot-git
 flatpak
 flex
+foliate
 fortune-mod
 foxitreader
 fwupd
@@ -157,6 +158,7 @@ gwenview
 gzip
 haveged
 highlight
+horcrux-bin
 hplip
 htop
 hunspell-en_US
@@ -183,6 +185,7 @@ jfsutils
 kaccounts-providers
 kamera
 kate
+kcachegrind
 kcalc
 kcm-fcitx5
 kde-gtk-config
@@ -347,6 +350,7 @@ pulseaudio-bluetooth
 pulseaudio-bluetooth-a2dp-gdm-fix
 pulseaudio-ctl
 pulseaudio-zeroconf
+pypy
 python-babel
 python-feedparser
 python-markdown
@@ -407,6 +411,7 @@ systemd-kcm
 systemd-sysvcompat
 systemsettings
 tar
+tclap
 teamviewer
 telegram-desktop
 terminus-font
