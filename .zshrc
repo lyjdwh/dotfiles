@@ -180,6 +180,7 @@ alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
 alias ta="tmux attach"
 alias ut="~/.tmux/plugins/tpm/bin/update_plugins all"
 alias q="exit"
+alias m="tldr"
 source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false

@@ -8,4 +8,5 @@ alias sd="shutdown now"
 alias shot="flameshot gui"
 alias xd="xrandr --output eDP-1-1 --auto --left-of HDMI-0 "
 alias xo="xrandr --output eDP-1-1 --off"
-
+alias e="emacs"
+alias ec='emacsclient -c -n'
