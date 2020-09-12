@@ -58,4 +58,6 @@ map('ot', 'T');
 map('ob', 'b');
 map('t', 'on');
 map('og', 'ago');
+map('oH', 'oh')
+map('oh', 'agh')
 unmap('od');
