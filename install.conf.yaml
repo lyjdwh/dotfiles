@@ -30,4 +30,5 @@
     ~/.config/ranger/plugins                            :  ranger/plugins
     ~/.config/Code/User/settings.json                   :  vscode/settings.json
     ~/.config/Code/User/keybindings.json                :  vscode/keybindings.json
+    ~/.config/ptpython/config.py                        :  ptpython_config.py
     ~/.oh-my-zsh/themes/robbyrussell-modified.zsh-theme :  robbyrussell-modified.zsh-theme
