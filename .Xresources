@@ -5,6 +5,13 @@ Xft.rgba:          rgb
 Xft.hinting:       true
 Xft.hintstyle:     hintslight
 
+! rofi vim-like keybindings
+rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab
+rofi.kb-row-down:                    Down,Control+j
+rofi.kb-accept-entry:                Control+m,Return,KP_Enter
+rofi.kb-remove-to-eol:               Control+Shift+e
+rofi.kb-remove-char-back:            BackSpace
+
 !! urxvt
 URxvt*externalBorder: 0
 URxvt*internalBorder: 1

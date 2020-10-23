@@ -22,6 +22,8 @@
     ~/.Xmodmap                                          :  .Xmodmap
     ~/.gitconfig                                        :  .gitconfig
 
+    ~/.Xresources                                       :  .Xresources
+
     ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
     ~/.config/ncmpcpp/config                            :  ncmpcpp/config
 
