@@ -126,13 +126,19 @@ compdef -d mcd
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 unalias fd
+alias vim="nvim"
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
-alias vz="et ~/.zshrc"
+alias vz="$EDITOR ~/.zshrc"
+alias vv="$EDITOR ~/.vimrc"
 alias ai="sudo pacman -S"
 alias ar="sudo pacman -Rns"
 alias au="sudo pacman -Syu"
 alias as="sudo pacman -Ss"
+alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
+alias yay="yay --aur"
+alias yi="yay -S"
+alias yu="yay -Syu"
 alias ra="ranger"
 alias sra='sudo -E ranger'
 alias pc="proxychains -q"
@@ -142,9 +148,9 @@ alias coa="conda activate"
 alias cod="conda deactivate"
 alias coi="conda install"
 alias coui="conda uninstall"
-alias proxy="export http_proxy=http://127.0.0.1:12333"
-alias unproxy="unset http_proxy"
-alias pi="ptipython"
+alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=https://127.0.0.1:12333"
+alias unproxy="unset http_proxy; unset https_proxy"
+alias pp="ptipython"
 alias dstat='dstat -cdlmnpsy'
 alias clean='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias ed='emacs --daemon'
@@ -162,13 +168,13 @@ alias rm="rm -f" # rm -iv 删除时提醒
 #cp, mv 时显示进度条
 alias rscp="rsync -ahP"
 alias rsmv="rsync -ahP --remove-source-files"
-alias s="screenfetch"
+alias s="neofetch"
 alias lg='lazygit'
 alias sslab1="sshfs lab1:/data/liuyan /home/liuyan/lab1"
 alias sslab2="sshfs lab2:/data1/liuyan /home/liuyan/lab2"
 alias record="asciinema rec"  #ctrl+d to quit
-alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
-alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n "
+alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n -pager bat"
+alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n -pager bat"
 #alias curl="curl -x socks5://127.0.0.1:1080"
 # Download videos from YouTube, youku ....
 
@@ -181,6 +187,9 @@ alias ta="tmux attach"
 alias ut="~/.tmux/plugins/tpm/bin/update_plugins all"
 alias q="exit"
 alias m="tldr"
+alias osi="optimus-manager --switch intel"
+alias osn="optimus-manager --switch nvidia"
+alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
 source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false
@@ -199,7 +208,8 @@ export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-export EDITOR="emacsclient -t"
+# export EDITOR="emacsclient -t"
+export EDITOR="nvim"
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
 export GTAGSLABEL=pygments
@@ -313,7 +323,7 @@ rga-fzf() {
 	    xdg-open "$file"
 }
 
-k(){
+kp(){
     if [[ $1 == "wechat" ]]; then
         pgrep "WeChat" | xargs kill
     elif [[ $1 == "tim" ]];then
@@ -322,4 +332,24 @@ k(){
         pgrep $1 | xargs kill
     fi
 }
-# fortune
+
+topp(){
+    top -p $(pgrep -d ',' $1) #process name
+}
+
+fp() {
+    ps aux | head -n 1
+    ps aux | grep -E $1 | grep -v grep
+}
+
+pcpu(){
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$3} END {mem=s*160 ;print "cpu: " s " % ;" mem " M"}'
+}
+
+pmem(){
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$4} END {mem=s*160 ;print "mem: " s " % ;" mem " M"}'
+}
+
+todo() {
+    emacsclient --eval '(org-agenda-list)'
+}
