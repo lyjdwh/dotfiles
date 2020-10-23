@@ -25,6 +25,8 @@
     ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
     ~/.config/ncmpcpp/config                            :  ncmpcpp/config
 
+    ~/.config/mpd/mpd.conf                              :  mpd/mpd.conf
+
     ~/.config/llpp.conf                                 :  llpp.conf
     ~/.config/surfingkeys.js                            :  surfingkeys.js
     ~/.config/ranger/commands.py                        :  ranger/commands.py
