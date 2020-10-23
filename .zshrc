@@ -125,6 +125,8 @@ compdef -d mcd
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export EDITOR="nvim"
+
 unalias fd
 alias vim="nvim"
 alias od="xdg-open ."
@@ -209,7 +211,6 @@ export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary
 export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 # export EDITOR="emacsclient -t"
-export EDITOR="nvim"
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
 export GTAGSLABEL=pygments
