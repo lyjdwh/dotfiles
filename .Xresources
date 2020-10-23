@@ -1,0 +1,75 @@
+!!Xft settings
+Xft.dpi:           96
+Xft.antialias:     true
+Xft.rgba:          rgb
+Xft.hinting:       true
+Xft.hintstyle:     hintslight
+
+!! urxvt
+URxvt*externalBorder: 0
+URxvt*internalBorder: 1
+URxvt*borderLess:     false
+URxvt.scrollBar:      false
+urxvt*depth:          32
+URxvt.saveLines:      10000
+URxvt.loginShell:     true
+urxvt.termName: xterm-256color
+
+! 实现ctrl+shift+c/v的复制粘贴
+URxvt.iso14755:       false
+URxvt.iso14755_52:    false
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+! 禁用之前的复制粘贴方案
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+! 字体
+URxvt*letterSpace:      -1
+URxvt*skipBuiltinGlyphs:  true
+URxvt.font:xft:Source Code Pro:style=Regular:size=12,xft:Source Han Sans CN:style=Regular:size=12
+URxvt.boldfont:xft:Source Code Pro:style=Regular:size=12,xft:Source Han Sans CN:style=Regular:size=12
+
+!!perl扩展
+URxvt.perl-ext-common: default, matcher
+
+! !!Matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.colorUL: #8be9fd
+
+!theme
+*.foreground:  #d9e6f2
+URxvt*.background:  [80]#000000
+*.cursorColor: #d9e6f2
+!
+! Black
+*.color0:      #000000
+*.color8:      #555
+!
+! Red
+*.color1:      #b87a7a
+*.color9:      #dbbdbd
+!
+! Green
+*.color2:      #7ab87a
+*.color10:     #bddbbd
+!
+! Yellow
+*.color3:      #b8b87a
+*.color11:     #dbdbbd
+!
+! Blue
+*.color4:      #7a7ab8
+*.color12:     #bdbddb
+!
+*.color5:          #f3c1ff
+*.color13:         #dbbddb
+!
+! Cyan
+*.color6:      #7ab8b8
+*.color14:     #bddbdb
+!
+! White
+*.color7:      #d9d9d9
+*.color15:     #ffffff
