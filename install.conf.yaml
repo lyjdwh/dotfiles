@@ -21,6 +21,10 @@
     ~/.pam_environment                                  :  .pam_environment
     ~/.Xmodmap                                          :  .Xmodmap
     ~/.gitconfig                                        :  .gitconfig
+
+    ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
+    ~/.config/ncmpcpp/config                            :  ncmpcpp/config
+
     ~/.config/llpp.conf                                 :  llpp.conf
     ~/.config/surfingkeys.js                            :  surfingkeys.js
     ~/.config/ranger/commands.py                        :  ranger/commands.py
