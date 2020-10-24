@@ -39,9 +39,27 @@ setTranslateQuery('zh-CN');
 
 //key map
 mapkey('p', "Open the clipboard's URL in the current tab", function() {
-    Front.getContentFromClipboard(function(response) {
-        window.location.href = response.data;
-    });
+  navigator.clipboard.readText().then(
+      text => {
+          if (text.startsWith("http://") || text.startsWith("https://")) {
+              window.location = text;
+          } else {
+              window.location = text = "https://www.google.com/search?q=" + text;
+          }
+      }
+  );
+});
+
+mapkey('P', 'Open link from clipboard', function() {
+  navigator.clipboard.readText().then(
+      text => {
+          if (text.startsWith("http://") || text.startsWith("https://")) {
+              tabOpenLink(text);
+          } else {
+              tabOpenLink("https://www.google.com/search?q=" + text);
+          }
+      }
+  );
 });
 
 mapkey('yc', '#7Copy code text', function() {
