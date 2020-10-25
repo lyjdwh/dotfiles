@@ -9,8 +9,26 @@
 
 (package-initialize)
 
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
+(require 'cl-lib)
+(defvar my/packages '(use-package counsel))
+
+(defun my/packages-installed-p ()
+  (cl-loop for pkg in my/packages
+	    when (not (package-installed-p pkg)) do (cl-return nil)
+	    finally (cl-return t)))
+
+(unless (my/packages-installed-p)
+  (message "%s" "Refreshing package database...")
   (package-refresh-contents)
-  (package-install 'use-package))
+  (dolist (pkg my/packages)
+    (when (not (package-installed-p pkg))
+	  (package-install pkg))))
+
 (require 'use-package)
+
+(use-package counsel
+  :config
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "C-h f") 'counsel-describe-function)
+  (global-set-key (kbd "C-h v") 'counsel-describe-variable))
