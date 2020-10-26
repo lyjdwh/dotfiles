@@ -24,6 +24,8 @@
 
     ~/.Xresources                                       :  .Xresources
 
+    ~/.ssh/config                                       :  ssh/config
+
     ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
     ~/.config/ncmpcpp/config                            :  ncmpcpp/config
 

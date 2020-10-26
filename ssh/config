@@ -17,8 +17,10 @@ Host *
   ForwardX11 yes
   ForwardX11Trusted yes
 
-Host xxx       # name
-  HostName xxx # ip
-  User xxx
-  Port xxx
-  # ProxyCommand ssh -W %h:%p xxx
+Include ~/.private/sshconfig
+
+# Host xxx       # name
+#   HostName xxx # ip
+#   User xxx
+#   Port xxx
+#   # ProxyCommand ssh -W %h:%p xxx
