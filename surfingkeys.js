@@ -68,6 +68,8 @@ mapkey('yc', '#7Copy code text', function() {
     });
 });
 
+addSearchAliasX('os', 'google scholar', 'https://scholar.google.com/scholar?q=');
+
 map('P', 'cc');
 map('F', 'gf');
 map('K', 'R');
