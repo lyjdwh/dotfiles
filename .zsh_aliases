@@ -15,3 +15,7 @@ alias ec='emacsclient -c -n'
 alias pan='/usr/lib/baidunetdisk/baidunetdisk'
 alias kaomoji="/home/liuyan/bin/kaomoji-rofi/kaomoji.sh"
 alias calc="rofi -show calc -modi calc -no-show-match -no-sort"
+alias wins="~/bin/scripts/win10-control.sh 'start'"
+alias winS="~/bin/scripts/win10-control.sh 'shutdown'"
+alias winc="vncviewer 127.0.0.1:5920"
+alias virt="~/bin/scripts/start-virt.sh"
