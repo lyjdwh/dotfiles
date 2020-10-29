@@ -82,6 +82,9 @@
     "git.ignoreLegacyWarning": true,
     "bookmarks.saveBookmarksInProject": true,
     "remote-github.mountPoint": "/home/liuyan/",
+    "alt-editor.name": "emacs",
+    "alt-editor.binary": "emacsclient",
+    "alt-editor.args": "-a emacs --no-wait +{line} {filename}",
     "latex-utilities.liveReformat.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.clean.fileTypes": [
@@ -326,6 +329,16 @@
             "commands": [
                 // "workbench.action.files.openFile"
                 "fzf-quick-open.runFzfFile",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "o"
+            ],
+            "commands": [
+                "alt-editor.openFile",
             ]
         },
         {
@@ -1391,7 +1404,7 @@
             "before": [
                 "<leader>",
                 "j",
-                "l"
+                "L"
             ],
             "commands": [
                 "bookmarks.listFromAllFiles"
