@@ -240,6 +240,8 @@ nmap <silent> <Leader>at <Plug>TranslateW
 vmap <silent> <Leader>at <Plug>TranslateWV
 let g:translator_default_engines = ['google']
 
+Plug 'zxqfl/tabnine-vim'
+
 Plug 'bling/vim-airline'
 Plug 'mhinz/vim-startify'
 nnoremap <LEADER>fr :Startify<CR>
