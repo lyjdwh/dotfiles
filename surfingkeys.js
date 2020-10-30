@@ -68,7 +68,7 @@ mapkey('yc', '#7Copy code text', function() {
     });
 });
 
-addSearchAliasX('os', 'google scholar', 'https://scholar.google.com/scholar?q=');
+addSearchAliasX('s', 'google scholar', 'https://scholar.google.com/scholar?q=', 'o');
 
 map('P', 'cc');
 map('F', 'gf');
@@ -81,3 +81,6 @@ map('og', 'ago');
 map('oH', 'oh')
 map('oh', 'agh')
 unmap('od');
+
+settings.tabsMRUOrder = false;
+settings.tabsThreshold = 20;
