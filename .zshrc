@@ -210,6 +210,7 @@ export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export PATH=/home/liuyan/.yarn/bin:$PATH
 # export EDITOR="emacsclient -t"
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
@@ -241,6 +242,8 @@ export YSU_MESSAGE_POSITION="after"
 # Alt-n: place the cursor at the next placeholder, identified by '{{anything}}'
 # marker remove: remove a bookmark
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+fpath=(~/.zsh.d/ $fpath)
+unproxy
 
 #keybindings
 zle -N history-substring-search-up

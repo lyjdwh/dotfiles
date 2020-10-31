@@ -115,6 +115,7 @@ nmap <leader>z :call Zoom()<CR>
 nnoremap <leader>fer :source $MYVIMRC<CR>
 nnoremap <leader>fed :e $MYVIMRC<CR>
 
+nnoremap <LEADER>fo :!emacsclient -a emacs --no-wait %<CR>q
 " Plug
 call plug#begin('~/.vim/plugged')
 nnoremap <Leader>pp :PlugInstall<CR>
@@ -241,6 +242,8 @@ vmap <silent> <Leader>at <Plug>TranslateWV
 let g:translator_default_engines = ['google']
 
 Plug 'zxqfl/tabnine-vim'
+
+Plug 'dbeniamine/cheat.sh-vim'
 
 Plug 'bling/vim-airline'
 Plug 'mhinz/vim-startify'
