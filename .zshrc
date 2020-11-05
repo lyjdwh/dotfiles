@@ -127,6 +127,8 @@ compdef -d mcd
 
 export EDITOR="nvim"
 
+source ~/.private/zshrc
+source ~/.zsh_aliases
 unalias fd
 alias vim="nvim"
 alias od="xdg-open ."
@@ -154,7 +156,7 @@ alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=https:
 alias unproxy="unset http_proxy; unset https_proxy"
 alias pp="ptipython"
 alias dstat='dstat -cdlmnpsy'
-alias clean='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
+alias clean='sudop sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias ed='emacs --daemon'
 alias ec='emacsclient -c -n'
 alias et='emacsclient -t'
@@ -192,7 +194,6 @@ alias m="tldr"
 alias osi="optimus-manager --switch intel"
 alias osn="optimus-manager --switch nvidia"
 alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
-source ~/.zsh_aliases
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
