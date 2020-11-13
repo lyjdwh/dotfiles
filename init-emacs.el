@@ -10,7 +10,7 @@
 (package-initialize)
 
 (require 'cl-lib)
-(defvar my/packages '(use-package counsel))
+(defvar my/packages '(use-package counsel quelpa-use-package))
 
 (defun my/packages-installed-p ()
   (cl-loop for pkg in my/packages
@@ -25,6 +25,7 @@
 	  (package-install pkg))))
 
 (require 'use-package)
+(require 'quelpa-use-package)
 
 (use-package counsel
   :config
