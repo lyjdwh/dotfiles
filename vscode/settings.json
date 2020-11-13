@@ -44,14 +44,15 @@
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=88",
-        "--extend-ignore=F403 F405 W503 E203"
+        "--extend-ignore=F403 F405 W503 E203",
+        "--maximum-complexity=10",
     ],
     "python.formatting.provider": "black", //yapf
     // "python.formatting.yapfPath": "/home/liuyan/anaconda3/bin/yapf",
     // "python.formatting.yapfArgs": [
     //     "--max-line-length=90"
     // ],
-    "python.testing.pytestEnabled": true,
+    "python.testing.pytestEnabled": false,
     //"python.testing.pytestPath": "/home/liuyan/anaconda3/bin/pytest",
     "tabnine.experimentalAutoImports": true,
     "python.languageServer": "Pylance",
