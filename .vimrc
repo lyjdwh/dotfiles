@@ -206,13 +206,13 @@ Plug 'voldikss/vim-floaterm'
 nnoremap <LEADER>at :FloatermToggle<CR>
 nnoremap <LEADER>gs :FloatermNew lazygit<CR>
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
-" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let g:UltiSnipsEditSplit="vertical"
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+"let g:UltiSnipsExpandTrigger="<tab>"
+"" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+"let g:UltiSnipsEditSplit="vertical"
 
 " za	打开/关闭当前的折叠
 " zc	关闭当前打开的折叠
