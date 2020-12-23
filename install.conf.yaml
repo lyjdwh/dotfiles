@@ -21,6 +21,7 @@
     ~/.pam_environment                                  :  .pam_environment
     ~/.Xmodmap                                          :  .Xmodmap
     ~/.gitconfig                                        :  .gitconfig
+    ~/.wakatime.cfg                                     :  .wakatime.cfg
 
     ~/.Xresources                                       :  .Xresources
 
