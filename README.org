@@ -9,7 +9,9 @@
   8. ......
 
 * setup
-  use [[https://github.com/anishathalye/dotbot][dotbot]] to bootstrap dotfiles
+  use [[https://github.com/anishathalye/dotbot][dotbot ]]to bootstrap dotfiles
+
+  [[./deploy-manjaro.org][detailed manjaro deployment]]
 
 ** install
   #+BEGIN_SRC sh

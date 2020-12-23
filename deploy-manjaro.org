@@ -50,7 +50,7 @@
 ** package cache
 
    #+BEGIN_SRC sh
-     sudo paccache -rk1
+     sudo paccache -r
      sudo systemctl enable paccache.timer
      sudo systemctl start paccache.timer
    #+END_SRC
