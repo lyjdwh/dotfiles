@@ -59,11 +59,27 @@
 ** base
 
    #+BEGIN_SRC sh
-     sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains xclip xsel neovim anaconda emacs
-     sudo pacman -S fzf thesilversearcher pandoc wakatime cmake ranger tldr neofetch adobe-source-code-pro-fonts visual-studio-code-bin
-     sudo pacman -R firefox
+     sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
+          xclip xsel neovim anaconda emacs fzf thesilversearcher pandoc wakatime \
+          cmake ranger tldr neofetch visual-studio-code-bin
+          sudo pacman -R firefox
    #+END_SRC
 
+** 必备字体
+
+   #+BEGIN_SRC sh
+     # 必备字体
+     sudo pacman -S wqy-bitmapfont wqy-microhei \
+          wqy-zenhei adobe-source-code-pro-fonts \
+          adobe-source-han-sans-cn-fonts ttf-monaco noto-fonts-emoji
+
+     # windows 字体
+     sudo mkdir /usr/share/fonts/WindowsFonts
+     sudo cp /Windows/Fonts/* /usr/share/fonts/WindowsFonts
+     sudo chmod 755 /usr/share/fonts/WindowsFonts/*
+     sudo fc-cache -f
+
+   #+END_SRC
 
 ** electron-ssr
 
@@ -74,7 +90,8 @@
 ** fcitx
 
    #+BEGIN_SRC sh
-     sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl kcm-fcitx5
+     sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt \
+          fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl fcitx5-configtool
    #+END_SRC
 
 ** oh-my-zsh
@@ -101,9 +118,10 @@
 
    #+BEGIN_SRC sh
      mkdir -p ~/.config/nvim
-     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
      ln -s ~/.vimrc ~/.config/nvim/init.vim
-     pip3 install neovim-remote
+     pip install neovim-remote pynvim
      ## start nvim, :PlugInstall, :checkhealth
    #+END_SRC
 
@@ -117,7 +135,8 @@
 
    #+BEGIN_SRC sh
      pip install python-bidi
-     sudo pacman -S autojump ueberzug mpv imagemagick ffmpegthumbnailer highlight bat pygmentize atool unrar tar unzip w3m mediainfo
+     sudo pacman -S autojump ueberzug mpv imagemagick ffmpegthumbnailer \
+          highlight bat pygmentize atool unrar tar unzip zip w3m mediainfo
    #+END_SRC
 
 ** tmux
@@ -132,8 +151,9 @@
    #+BEGIN_SRC sh
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
      git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
-     sudo pacman -S zeal aspell aspell-en
+     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf
      ## all-the-icons-install-fonts
+     ## company-tabnine-install-binary
 
      mkdir ~/bin
    #+END_SRC
@@ -143,7 +163,10 @@
     #+BEGIN_SRC sh
       cd ~/bin && git clone https://github.com/manateelazycat/emacs-application-framework.git
 
-      sudo pacman -S python-pyqt5 python-pyqt5-sip python-pyqtwebengine python-qrcode python-feedparser python-dbus python-pyinotify python-markdown nodejs aria2 libreoffice python-qtconsole filebrowser-bin wmctrl
+      sudo pacman -S python-pyqt5 python-pyqt5-sip python-pyqtwebengine \
+           python-qrcode python-feedparser python-dbus python-pyinotify \
+           python-markdown nodejs aria2 libreoffice python-qtconsole \
+           filebrowser-bin wmctrl
 
       ## Grip has dependency of flask and Markdown
       pip install pymupdf grip flask Markdown
@@ -186,7 +209,9 @@
      cd ~/bin && git clone https://github.com/lyjdwh/dwm.git
      cd dwm && sudo make install
 
-     sudo pacman -S rofi xorg-xinput acpilight slock xautolock feh picom network-manager-applet xfce4-volumed-pulse flameshot goldendict redshift trayer dmenu
+     sudo pacman -S rofi xorg-xinput acpilight slock xautolock feh picom \
+          network-manager-applet xfce4-volumed-pulse flameshot goldendict \
+          redshift trayer dmenu
    #+END_SRC
 
 ** st
@@ -252,9 +277,14 @@
 ** others
 
    #+BEGIN_SRC sh
-     sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent okular texlive-most texlive-langchinese noto-fonts-emoji bleachbit
+     sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all \
+          qbittorrent okular texlive-most texlive-langchinese bleachbit
      yay -S deepin-wine-wechat deepin-wine-tim
      yay -S loc lazygit
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      pip3 install NetEase-MusicBox
+
+     # 切换到 deepin-wine
+     /opt/apps/com.qq.weixin.deepin/files/run.sh -d
+     /opt/deepinwine/apps/Deepin-TIM/run.sh -d
    #+END_SRC
