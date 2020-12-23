@@ -1,0 +1,260 @@
+* package management
+** change source
+
+   #+BEGIN_SRC sh
+     sudo pacman -Syy
+     sudo pacman-mirrors -i -c China -m rank
+     sudo pacman -Syyu
+   #+END_SRC
+
+** archlinux cn
+
+   #+BEGIN_SRC sh
+     sudo vim /etc/pacman.conf
+
+     [archlinuxcn]
+     SigLevel = PackageRequired
+     Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch
+   #+END_SRC
+
+** yay
+
+   #+BEGIN_SRC sh
+     sudo vim /etc/makepkg.conf
+
+     DLAGENTS=('file::/usr/bin/curl -gqC - -o %o %u'
+               'rsync::/usr/bin/rsync --no-motd -z %u %o'
+               'scp::/usr/bin/scp -C %u %o'
+
+               # 'ftp::/usr/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
+               # 'http::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+               # 'https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+
+               #'ftp::/usr/bin/axel -o %o %u'
+               #'http::/usr/bin/axel -o %o %u'
+               #'https::/usr/bin/axel -o %o %u'
+
+               #'ftp::/usr/bin/proxychains -q /usr/bin/axel -o %o %u'
+               #'http::/usr/bin/proxychains -q /usr/bin/axel -o %o %u'
+               #'https::/usr/bin/proxychains -q /usr/bin/axel -o %o %u'
+               #
+               'ftp::/usr/bin/wget --passive-ftp -c -O %o %u'
+               'https::/usr/bin/wget --passive-ftp -c -O %o %u'
+               'http::/usr/bin/wget --passive-ftp -c -O %o %u')
+
+     sudo pacman -Syyu
+     sudo pacman -S archlinuxcn-keyring
+     sudo pacman -Syyu
+   #+END_SRC
+
+** package cache
+
+   #+BEGIN_SRC sh
+     sudo paccache -rk1
+     sudo systemctl enable paccache.timer
+     sudo systemctl start paccache.timer
+   #+END_SRC
+
+* software
+** base
+
+   #+BEGIN_SRC sh
+     sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains xclip xsel neovim anaconda emacs
+     sudo pacman -S fzf thesilversearcher pandoc wakatime cmake ranger tldr neofetch adobe-source-code-pro-fonts visual-studio-code-bin
+     sudo pacman -R firefox
+   #+END_SRC
+
+
+** electron-ssr
+
+   #+BEGIN_SRC sh
+     yay -S electron-ssr
+   #+END_SRC
+
+** fcitx
+
+   #+BEGIN_SRC sh
+     sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl kcm-fcitx5
+   #+END_SRC
+
+** oh-my-zsh
+
+   #+BEGIN_SRC sh
+     sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+     curl -L git.io/antigen > ~/.oh-my-zsh/plugins/antigen.zsh
+     git clone https://github.com/pindexis/marker  ~/.marker
+     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+     ~/.fzf/install
+   #+END_SRC
+
+** dotfiles
+
+   #+BEGIN_SRC sh
+     git clone https://github.com/lyjdwh/dotfiles.git ~/dotfiles
+     pip install dotbot, thefuck
+     cd ~/dotfiles
+     dotbot -c install.conf.yaml
+     mkdir ~/.private
+   #+END_SRC
+
+** vim
+
+   #+BEGIN_SRC sh
+     mkdir -p ~/.config/nvim
+     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+     ln -s ~/.vimrc ~/.config/nvim/init.vim
+     pip3 install neovim-remote
+     ## start nvim, :PlugInstall, :checkhealth
+   #+END_SRC
+
+** z, fasd
+
+   #+BEGIN_SRC sh
+     sudo pacman -S fasd
+   #+END_SRC
+
+** ranger
+
+   #+BEGIN_SRC sh
+     pip install python-bidi
+     sudo pacman -S autojump ueberzug mpv imagemagick ffmpegthumbnailer highlight bat pygmentize atool unrar tar unzip w3m mediainfo
+   #+END_SRC
+
+** tmux
+
+   #+BEGIN_SRC sh
+     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+     ## prefix + I install other plugins
+   #+END_SRC
+
+** emacs
+
+   #+BEGIN_SRC sh
+     git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
+     git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
+     sudo pacman -S zeal aspell aspell-en
+     ## all-the-icons-install-fonts
+
+     mkdir ~/bin
+   #+END_SRC
+
+*** eaf
+
+    #+BEGIN_SRC sh
+      cd ~/bin && git clone https://github.com/manateelazycat/emacs-application-framework.git
+
+      sudo pacman -S python-pyqt5 python-pyqt5-sip python-pyqtwebengine python-qrcode python-feedparser python-dbus python-pyinotify python-markdown nodejs aria2 libreoffice python-qtconsole filebrowser-bin wmctrl
+
+      ## Grip has dependency of flask and Markdown
+      pip install pymupdf grip flask Markdown
+    #+END_SRC
+
+*** snails
+
+    #+BEGIN_SRC sh
+      cd ~/bin && git clone https://github.com/manateelazycat/snails.git
+      sudo pacman -S rust clang
+      cd ~/bin && git clone https://github.com/cireu/fuz.el
+      cd fuz.el
+      cargo build --release
+      cp target/release/libfuz_core.so fuz-core.so
+    #+END_SRC
+
+*** notdeft
+
+    #+BEGIN_SRC sh
+      cd ~/bin && git clone https://github.com/hasu/notdeft.git
+      cd notdeft && make
+      cd xapian && make
+    #+END_SRC
+
+*** inherit-org
+
+    #+BEGIN_SRC sh
+      cd ~/bin && git clone https://github.com/chenyanming/inherit-org.git
+    #+END_SRC
+
+*** org-clock-watch
+
+    #+BEGIN_SRC sh
+      cd ~/bin && git clone https://github.com/wztdream/org-clock-watch.git
+    #+END_SRC
+
+** dwm
+
+   #+BEGIN_SRC sh
+     cd ~/bin && git clone https://github.com/lyjdwh/dwm.git
+     cd dwm && sudo make install
+
+     sudo pacman -S rofi xorg-xinput acpilight slock xautolock feh picom network-manager-applet xfce4-volumed-pulse flameshot goldendict redshift trayer dmenu
+   #+END_SRC
+
+** st
+
+   #+BEGIN_SRC sh
+     cd ~/bin && git clone https://github.com/lyjdwh/st.git
+     cd st && sudo make install
+   #+END_SRC
+
+** kvm
+
+   #+BEGIN_SRC sh
+     sudo pacman -Sqemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat freerdp
+     sudo systemctl start libvirtd
+     sudo virsh net-start default
+   #+END_SRC
+
+* misc
+** tlp
+
+   #+BEGIN_SRC sh
+     sudo pacman -S tlp tlp-rdw smartmontools
+     sudo systemctl enable tlp.service
+     sudo systemctl mask systemd-rfkill.service
+     sudo systemctl mask systemd-rfkill.socket
+   #+END_SRC
+
+** hack capslk
+   https://www.zhihu.com/question/28643416/answer/924101830
+
+** ssh
+
+   #+BEGIN_SRC sh
+     ssh-keygen -b 4096 -t rsa
+     ssh-copy-id username@remote-server
+   #+END_SRC
+
+** golden-dict
+
+   #+BEGIN_SRC sh
+     cd ~/bin && git clone https://github.com/soimort/translate-shell
+     cd translate-shell && sudo make install
+
+     trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n “%GDWORD%”
+   #+END_SRC
+
+** npm
+
+   #+BEGIN_SRC sh
+     sudo pacman -S npm
+     npm install -g cnpm --registry=https://registry.npm.taobao.org
+   #+END_SRC
+
+** pip
+
+   #+BEGIN_SRC sh
+     pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+   #+END_SRC
+
+** gtk-key-theme
+   https://wiki.archlinux.org/index.php/GTK#Keyboard_shortcuts
+
+** others
+
+   #+BEGIN_SRC sh
+     sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent okular texlive-most texlive-langchinese noto-fonts-emoji bleachbit
+     yay -S deepin-wine-wechat deepin-wine-tim
+     yay -S loc lazygit
+     yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
+     pip3 install NetEase-MusicBox
+   #+END_SRC
