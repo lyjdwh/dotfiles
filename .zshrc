@@ -184,13 +184,14 @@ alias te="trans -e google -s auto -t en -show-original y -show-original-phonetic
 
 alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
 alias wn="watch -n 5 -d nvidia-smi"
+alias wn2="watch --color -n1 gpustat -cpu"
 alias sudo='sudo -E'
 alias c='clear'
 alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
 alias ta="tmux attach"
 alias ut="~/.tmux/plugins/tpm/bin/update_plugins all"
 alias q="exit"
-alias m="tldr"
+alias m="proxychains -q tldr"
 alias osi="optimus-manager --switch intel"
 alias osn="optimus-manager --switch nvidia"
 alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
@@ -238,13 +239,13 @@ export YSU_MESSAGE_POSITION="after"
 #export LC_CTYPE=zh_CN.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /opt/anaconda/etc/profile.d/conda.sh
+. /usr/share/autojump/autojump.zsh
 # Alt-space: search for commands that match the current written string in the command-line.
 # Ctrl-k (or marker mark): Bookmark a command.
 # Alt-n: place the cursor at the next placeholder, identified by '{{anything}}'
 # marker remove: remove a bookmark
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 fpath=(~/.zsh.d/ $fpath)
-unproxy
 
 #keybindings
 zle -N history-substring-search-up
@@ -298,10 +299,6 @@ cdlast() {
 }
 zle -N cdlast
 bindkey '^Q' cdlast
-
-brew() {
-    PATH="/home/liuyan/.linuxbrew/bin:$PATH" /home/liuyan/.linuxbrew/bin/brew "$@"
-}
 
 cd_sibling() {
   cd $(ls --dired |fzf)

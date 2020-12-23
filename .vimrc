@@ -35,7 +35,6 @@ set ignorecase
 set nobackup
 set noswapfile
 set undofile
-set undodir=~/.vim/.undo//
 set autochdir
 set history=1000
 set autoread
