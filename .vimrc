@@ -250,6 +250,9 @@ nnoremap <LEADER>fr :Startify<CR>
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+" Making background transparent
+" let g:dracula_colorterm = 0
+
 " Plug 'liuchengxu/vim-which-key'
 " set timeoutlen=100
 " nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
