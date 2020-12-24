@@ -238,8 +238,8 @@ export YSU_MESSAGE_POSITION="after"
 
 #export LC_CTYPE=zh_CN.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. /opt/anaconda/etc/profile.d/conda.sh
 . /usr/share/autojump/autojump.zsh
+
 # Alt-space: search for commands that match the current written string in the command-line.
 # Ctrl-k (or marker mark): Bookmark a command.
 # Alt-n: place the cursor at the next placeholder, identified by '{{anything}}'

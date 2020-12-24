@@ -114,6 +114,12 @@
      mkdir ~/.private
    #+END_SRC
 
+** anaconda
+
+   #+BEGIN_SRC sh
+     conda init bash
+   #+END_SRC
+
 ** vim
 
    #+BEGIN_SRC sh
