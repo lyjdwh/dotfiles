@@ -157,7 +157,7 @@
    #+BEGIN_SRC sh
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
      git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
-     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf
+     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls
      ## all-the-icons-install-fonts
      ## company-tabnine-install-binary
 
@@ -232,6 +232,7 @@
    #+BEGIN_SRC sh
      sudo pacman -Sqemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat freerdp
      sudo systemctl start libvirtd
+     sudo virsh net-autostart default
      sudo virsh net-start default
    #+END_SRC
 
@@ -283,8 +284,8 @@
 ** others
 
    #+BEGIN_SRC sh
-     sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all \
-          qbittorrent okular texlive-most texlive-langchinese bleachbit
+     sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
+          okular texlive-most texlive-langchinese bleachbit expac fd
      yay -S deepin-wine-wechat deepin-wine-tim
      yay -S loc lazygit
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
