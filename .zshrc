@@ -129,7 +129,6 @@ export EDITOR="nvim"
 
 source ~/.private/zshrc
 source ~/.zsh_aliases
-unalias fd
 alias vim="nvim"
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
