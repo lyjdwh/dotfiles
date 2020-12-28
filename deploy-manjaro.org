@@ -164,6 +164,9 @@
      mkdir ~/bin
    #+END_SRC
 
+*** org protocol
+    https://www.orgroam.com/manual.html#Installation-_00281_0029
+
 *** eaf
 
     #+BEGIN_SRC sh
@@ -281,11 +284,25 @@
 ** gtk-key-theme
    https://wiki.archlinux.org/index.php/GTK#Keyboard_shortcuts
 
+** 系统时钟
+   启动 NTP 自动对时
+
+   #+BEGIN_SRC sh
+     sudo systemctl enable ntpd.service
+     sudo systemctl start ntpd.service
+
+     #/etc/systemd/timesyncd.conf
+     NTP=time1.aliyun.com time2.aliyun.com time3.aliyun.com time4.aliyun.com time5.aliyun.com time6.aliyun.com time7.aliyun.com
+
+     sudo timedatectl set-ntp true
+     sudo timedatectl timesync-status
+   #+END_SRC
+
 ** others
 
    #+BEGIN_SRC sh
      sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
-          okular texlive-most texlive-langchinese bleachbit expac fd
+          okular texlive-most texlive-langchinese bleachbit expac fd net-tools
      yay -S deepin-wine-wechat deepin-wine-tim
      yay -S loc lazygit
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
