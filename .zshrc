@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/liuyan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -173,8 +173,9 @@ alias rscp="rsync -ahP"
 alias rsmv="rsync -ahP --remove-source-files"
 alias s="neofetch"
 alias lg='lazygit'
-alias sslab1="sshfs lab1:/data/liuyan /home/liuyan/lab1"
-alias sslab2="sshfs lab2:/data1/liuyan /home/liuyan/lab2"
+alias sslab1="sshfs lab1:/data/liuyan $HOME/labs/lab1"
+alias sslab2="sshfs lab2:/data1/liuyan $HOME/labs/lab2"
+alias sslab3="sshfs lab3:/data/liuyan $HOME/labs/lab3"
 alias record="asciinema rec"  #ctrl+d to quit
 alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n -pager bat"
 alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n -pager bat"
@@ -209,12 +210,12 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-export PATH=/home/liuyan/.conda/envs/torch/bin:$PATH
+export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-export PATH=/home/liuyan/.yarn/bin:$PATH
+export PATH=$HOME/.yarn/bin:$PATH
 # export EDITOR="emacsclient -t"
 export _FASD_DATA="$HOME/.zlua"
-export RANGER_ZLUA="/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
+export RANGER_ZLUA="$HOME/.antigen/bundles/skywind3000/z.lua/z.lua"
 export GTAGSLABEL=pygments
 export TERM=xterm-256color
 # Meta: ^[, Ctrl: ^
@@ -238,6 +239,8 @@ export YSU_MESSAGE_POSITION="after"
 #export LC_CTYPE=zh_CN.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /usr/share/autojump/autojump.zsh
+
+. /opt/anaconda/etc/profile.d/conda.sh
 
 # Alt-space: search for commands that match the current written string in the command-line.
 # Ctrl-k (or marker mark): Bookmark a command.
