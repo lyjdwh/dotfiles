@@ -97,7 +97,7 @@
 ** oh-my-zsh
 
    #+BEGIN_SRC sh
-     sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+     sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
      curl -L git.io/antigen > ~/.oh-my-zsh/plugins/antigen.zsh
      git clone https://github.com/pindexis/marker  ~/.marker
      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -158,8 +158,12 @@
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
      git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
      sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls
+     cnpm install mathjax-node-cli
      ## all-the-icons-install-fonts
      ## company-tabnine-install-binary
+
+     ## update
+     ## cd ~/.emacs.d && git pull --rebase
 
      mkdir ~/bin
    #+END_SRC
@@ -173,7 +177,7 @@
       cd ~/bin && git clone https://github.com/manateelazycat/emacs-application-framework.git
 
       sudo pacman -S python-pyqt5 python-pyqt5-sip python-pyqtwebengine \
-           python-qrcode python-feedparser python-dbus python-pyinotify \
+           python-qrcode python-dbus python-pyinotify \
            python-markdown nodejs aria2 libreoffice python-qtconsole \
            filebrowser-bin wmctrl
 
@@ -239,6 +243,19 @@
      sudo virsh net-start default
    #+END_SRC
 
+** linuxbrew
+
+   #+BEGIN_SRC sh
+     git clone https://mirrors.sjtug.sjtu.edu.cn/git/brew.git ~/.linuxbrew/Homebrew
+     mkdir ~/.linuxbrew/bin
+     ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+     ## add these to .zshrc
+     export HOMEBREW_CORE_GIT_REMOTE=https://git.sjtu.edu.cn/sjtug/linuxbrew-core
+     export HOMEBREW_BOTTLE_DOMAIN=https://siyuan.internal.sjtug.org/linuxbrew-bottles
+     eval $(~/.linuxbrew/bin/brew shellenv)
+     brew update
+   #+END_SRC
+
 * misc
 ** tlp
 
@@ -278,7 +295,7 @@
 ** pip
 
    #+BEGIN_SRC sh
-     pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+     pip config set global.index-url https://mirrors.sjtug.sjtu.edu.cn/pypi/web/simple
    #+END_SRC
 
 ** gtk-key-theme
@@ -302,9 +319,10 @@
 
    #+BEGIN_SRC sh
      sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
-          okular texlive-most texlive-langchinese bleachbit expac fd net-tools
+          okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
+          shellcheck mendeleydesktop-bundled
      yay -S deepin-wine-wechat deepin-wine-tim
-     yay -S loc lazygit
+     yay -S loc lazygit twmn-git
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      pip3 install NetEase-MusicBox
 

@@ -127,7 +127,7 @@ compdef -d mcd
 
 export EDITOR="nvim"
 
-source ~/.private/zshrc
+[ -f ~/.private/zsh ] && source ~/.private/zshrc
 source ~/.zsh_aliases
 alias vim="nvim"
 alias od="xdg-open ."

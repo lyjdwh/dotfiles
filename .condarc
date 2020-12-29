@@ -11,3 +11,4 @@ custom_channels:
   bioconda: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
   menpo: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
   pytorch: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud
+auto_activate_base: false
