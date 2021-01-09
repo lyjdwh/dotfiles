@@ -85,6 +85,8 @@
 
    #+BEGIN_SRC sh
      yay -S electron-ssr
+
+     sudo pacman -U electron-ssr-0.2.7-2-x86_64.pkg.tar.zst
    #+END_SRC
 
 ** fcitx
@@ -224,7 +226,7 @@
 
      sudo pacman -S rofi xorg-xinput acpilight slock xautolock feh picom \
           network-manager-applet xfce4-volumed-pulse flameshot goldendict \
-          redshift trayer dmenu
+          redshift trayer dmenu pasystray
    #+END_SRC
 
 ** st
@@ -320,9 +322,9 @@
    #+BEGIN_SRC sh
      sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
-          shellcheck mendeleydesktop-bundled
+          shellcheck mendeleydesktop-bundled hugo
      yay -S deepin-wine-wechat deepin-wine-tim
-     yay -S loc lazygit twmn-git
+     yay -S loc lazygit notify-osd
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      pip3 install NetEase-MusicBox
 
