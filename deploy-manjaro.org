@@ -331,4 +331,8 @@
      # 切换到 deepin-wine
      /opt/apps/com.qq.weixin.deepin/files/run.sh -d
      /opt/deepinwine/apps/Deepin-TIM/run.sh -d
+
+     # cht.sh
+     curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht
+     chmod +x /usr/local/bin/cht
    #+END_SRC
