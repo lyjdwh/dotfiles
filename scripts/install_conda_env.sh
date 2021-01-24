@@ -15,4 +15,4 @@ pip install torch-geometric
 # others
 conda install -y jupyter biopython seaborn py3Dmol
 pip install ptipython black isort
-pip install biopandas torchsnooper loguru optuna keras-tuner pretty_errors omegaconf
+pip install biopandas torchsnooper loguru optuna keras-tuner pretty_errors omegaconf tensor-sensor

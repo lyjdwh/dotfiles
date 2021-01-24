@@ -5,9 +5,7 @@ import subprocess
 
 basedir = "~/bin"
 watched_repos = ["emacs-application-framework",
-                 "inherit-org",
                  "notdeft",
-                 "org-clock-watch",
                  "snails"]
 
 for repo in watched_repos:

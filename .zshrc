@@ -195,6 +195,7 @@ alias m="proxychains -q tldr"
 alias osi="optimus-manager --switch intel"
 alias osn="optimus-manager --switch nvidia"
 alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
+alias chts="cht --shell"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -213,6 +214,7 @@ export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary
 export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.yarn/bin:$PATH
+export PATH=$HOME/doom-emacs/bin:$PATH
 # export EDITOR="emacsclient -t"
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="$HOME/.antigen/bundles/skywind3000/z.lua/z.lua"

@@ -61,7 +61,7 @@
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs fzf thesilversearcher pandoc wakatime \
-          cmake ranger tldr neofetch visual-studio-code-bin
+          cmake ranger tldr neofetch visual-studio-code-bin htop glances
           sudo pacman -R firefox
    #+END_SRC
 
@@ -120,6 +120,7 @@
 
    #+BEGIN_SRC sh
      conda init bash
+     . scripts/install_conda_env.sh
    #+END_SRC
 
 ** vim
@@ -158,9 +159,11 @@
 
    #+BEGIN_SRC sh
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
-     git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
-     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls
+     git clone -b develop https://github.com/syl20bnr/spacemacs ~/spacemacs
+     git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
+     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls telegram-tdlib
      cnpm install mathjax-node-cli
+     yay -S pyright
      ## all-the-icons-install-fonts
      ## company-tabnine-install-binary
 
@@ -175,16 +178,13 @@
 
 *** eaf
 
+    [[https://github.com/manateelazycat/emacs-application-framework#install][eaf install]]
+
     #+BEGIN_SRC sh
-      cd ~/bin && git clone https://github.com/manateelazycat/emacs-application-framework.git
+      git clone --depth=1 -b master https://github.com/manateelazycat/emacs-application-framework.git ~/bin/emacs-application-framework
 
-      sudo pacman -S python-pyqt5 python-pyqt5-sip python-pyqtwebengine \
-           python-qrcode python-dbus python-pyinotify \
-           python-markdown nodejs aria2 libreoffice python-qtconsole \
-           filebrowser-bin wmctrl
-
-      ## Grip has dependency of flask and Markdown
-      pip install pymupdf grip flask Markdown
+      cd ~/bin/emacs-application-framework
+      ./install-eaf.sh
     #+END_SRC
 
 *** snails
@@ -204,18 +204,6 @@
       cd ~/bin && git clone https://github.com/hasu/notdeft.git
       cd notdeft && make
       cd xapian && make
-    #+END_SRC
-
-*** inherit-org
-
-    #+BEGIN_SRC sh
-      cd ~/bin && git clone https://github.com/chenyanming/inherit-org.git
-    #+END_SRC
-
-*** org-clock-watch
-
-    #+BEGIN_SRC sh
-      cd ~/bin && git clone https://github.com/wztdream/org-clock-watch.git
     #+END_SRC
 
 ** dwm
@@ -258,14 +246,21 @@
      brew update
    #+END_SRC
 
+
 * misc
 ** tlp
-
    #+BEGIN_SRC sh
      sudo pacman -S tlp tlp-rdw smartmontools
      sudo systemctl enable tlp.service
      sudo systemctl mask systemd-rfkill.service
      sudo systemctl mask systemd-rfkill.socket
+   #+END_SRC
+
+** nvidia-prime
+
+   #+BEGIN_SRC sh
+     sudo mhwd -r pci video-nvidia
+     sudo mhwd -i pci video-hybrid-intel-nvidia-prime
    #+END_SRC
 
 ** hack capslk
@@ -324,7 +319,7 @@
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
           shellcheck mendeleydesktop-bundled hugo
      yay -S deepin-wine-wechat deepin-wine-tim
-     yay -S loc lazygit notify-osd
+     yay -S loc lazygit notify-osd zoom
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      pip3 install NetEase-MusicBox
 
