@@ -1,4 +1,4 @@
-alias bluec="bluetoothctl connect 38:18:4C:3D:3B:D4"
+alias bluec="bluetoothctl connect 94:DB:56:FA:04:D4"
 alias blued="bluetoothctl disconnect"
 alias wechat="/opt/deepinwine/apps/Deepin-WeChat/run.sh"
 alias tim="/opt/deepinwine/apps/Deepin-TIM/run.sh"

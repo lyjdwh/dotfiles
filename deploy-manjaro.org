@@ -94,7 +94,8 @@
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs fzf thesilversearcher pandoc wakatime \
-          cmake ranger tldr neofetch visual-studio-code-bin htop glances
+          cmake ranger tldr neofetch visual-studio-code-bin htop glances  \
+          blueman bluez-git pavucontrol
           sudo pacman -R firefox
    #+END_SRC
 
@@ -194,7 +195,7 @@
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
      git clone -b develop https://github.com/syl20bnr/spacemacs ~/spacemacs
      git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
-     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls telegram-tdlib
+     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls telegram-tdlib libvterm
      cnpm install mathjax-node-cli
      yay -S pyright
      ## all-the-icons-install-fonts
