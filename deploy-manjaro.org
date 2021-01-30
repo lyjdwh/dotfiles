@@ -239,6 +239,17 @@
       cd xapian && make
     #+END_SRC
 
+*** mail
+
+    #+BEGIN_SRC sh
+      sudo pacman -S offlineimap pass
+      yay -S mu
+
+      gpg --gen-key 生成密钥
+      pass init gpg_id
+      pass insert --multiline mail/xxx
+    #+END_SRC
+
 ** dwm
 
    #+BEGIN_SRC sh

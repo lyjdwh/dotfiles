@@ -26,6 +26,9 @@
 
     ~/.Xresources                                       :  .Xresources
 
+    ~/.offlineimap.py                                   :  officelineimap/offlineimap.py
+    ~/.offlineimaprc                                    :  officelineimap/offlineimaprc
+
     ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
     ~/.config/ncmpcpp/config                            :  ncmpcpp/config
 

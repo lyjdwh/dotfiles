@@ -1,0 +1,71 @@
+# -*- mode: python2 -*-
+[general]
+accounts = Foxmail, SJTU, Gmail
+maxsyncaccounts = 2
+pythonfile = ~/.offlineimap.py
+
+[Account Foxmail]
+localrepository = Foxmail-Local
+remoterepository = Foxmail-Remote
+
+[Repository Foxmail-Local]
+type = Maildir
+localfolders = ~/.mail/qq
+
+[Repository Foxmail-Remote]
+type = IMAP
+remotehost = imap.qq.com
+remoteusereval = get_pass("qq")["user"]
+remotepasseval = get_pass("qq")["password"]
+ssl = true
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda foldername: foldername.decode('imap4-utf-7').encode('utf-8')
+folderfilter = lambda foldername: foldername in ['INBOX','Drafts', 'Sent Messages', "&UXZO1mWHTvZZOQ-/&kK5O9l9SaGM-", "&UXZO1mWHTvZZOQ-/QQ&kK5O9ouilgU-"]
+maxconnections = 2
+realdelete = yes
+
+
+[Account SJTU]
+localrepository = SJTU-Local
+remoterepository = SJTU-Remote
+
+[Repository SJTU-Local]
+type = Maildir
+localfolders = ~/.mail/sjtu
+
+[Repository SJTU-Remote]
+type = IMAP
+auth_mechanisms = LOGIN
+remotehost = mail.sjtu.edu.cn
+remoteusereval = get_pass("sjtu")["user"]
+remotepasseval = get_pass("sjtu")["password"]
+ssl = true
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda foldername: foldername.decode('imap4-utf-7').encode('utf-8')
+folderfilter = lambda foldername: foldername in ['INBOX', 'Sent', 'Drafts']
+maxconnections = 2
+realdelete = yes
+
+
+[Account Gmail]
+localrepository = Gmail-Local
+remoterepository = Gmail-Remote
+proxy = SOCKS5:127.0.0.1:1080
+authproxy = SOCKS5:127.0.0.1:1080
+
+[Repository Gmail-Local]
+type = Maildir
+localfolders = ~/.mail/gmail
+
+[Repository Gmail-Remote]
+type = Gmail
+auth_mechanisms = LOGIN
+remotehost = imap.gmail.com
+remoteusereval = get_pass("gmail")["user"]
+remotepasseval = get_pass("gmail")["password"]
+ssl = true
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda foldername: foldername.decode('imap4-utf-7').encode('utf-8')
+folderfilter = lambda foldername: foldername in ['INBOX', '[Gmail]/&kc2JgQ-', '[Gmail]/&g0l6Pw-', "[Gmail]/&XfJT0ZCuTvY-"]
+maxconnections = 2
+realdelete = yes
