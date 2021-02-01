@@ -83,6 +83,7 @@
 ** package cache
 
    #+BEGIN_SRC sh
+     sudo pacman -S pacman-contrib
      sudo paccache -r
      sudo systemctl enable paccache.timer
      sudo systemctl start paccache.timer
@@ -95,24 +96,27 @@
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs fzf thesilversearcher pandoc wakatime \
           cmake ranger tldr neofetch visual-studio-code-bin htop glances  \
-          blueman bluez-git pavucontrol
           sudo pacman -R firefox
+
+     # 蓝牙
+     sudo apacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman
+
+     yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
    #+END_SRC
 
 ** 必备字体
 
    #+BEGIN_SRC sh
      # 必备字体
-     sudo pacman -S wqy-bitmapfont wqy-microhei \
-          wqy-zenhei adobe-source-code-pro-fonts \
-          adobe-source-han-sans-cn-fonts ttf-monaco noto-fonts-emoji
+     sudo pacman -S wqy-bitmapfont wqy-microhei wqy-zenhei \
+          adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts \
+          ttf-monaco noto-fonts-emoji
 
      # windows 字体
      sudo mkdir /usr/share/fonts/WindowsFonts
      sudo cp /Windows/Fonts/* /usr/share/fonts/WindowsFonts
      sudo chmod 755 /usr/share/fonts/WindowsFonts/*
      sudo fc-cache -f
-
    #+END_SRC
 
 ** electron-ssr
@@ -273,10 +277,18 @@
 
    #+BEGIN_SRC sh
      sudo pacman -Sqemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat freerdp
+     # 图形化的管理界面
+     # yay -Sy virt-manager
      sudo systemctl start libvirtd
      sudo virsh net-autostart default
      sudo virsh net-start default
    #+END_SRC
+
+   使用远程桌面连接虚拟机
+   1. 在虚拟机win10 设置/系统/远程桌面 启动远程桌面, 并在高级设置下查看远程桌面端口,默认是3389
+   2. virsh net-dhcp-leases default 可以获得虚拟机的ip地址
+   3. xfreerdp /u:user /p:password /v:host:port /dynamic-resolution +auto-reconnect +home-drive +fonts +clipboard -grab-keyboard
+   4. 而且还可在虚拟机中开启openssh server, 在宿主机使用ssh, sshfs, sftp等连接虚拟机!
 
 ** linuxbrew
 
@@ -364,8 +376,13 @@
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
           shellcheck mendeleydesktop-bundled hugo
      yay -S deepin-wine-wechat deepin-wine-tim
-     yay -S loc lazygit notify-osd zoom
+     yay -S loc lazygit notify-osd zoom nutstore-experimental
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
+     # or sudo pacman -S libreoffice-fresh libreoffice-fresh-zh-cn
+
+     # 中文汉化
+     sudo pacman -S man-pages-zh_cn # gimp-help-zh_cn libreoffice-fresh-zh-cn
+
      pip3 install NetEase-MusicBox
 
      # 切换到 deepin-wine
