@@ -127,7 +127,7 @@ compdef -d mcd
 
 export EDITOR="nvim"
 
-[ -f ~/.private/zsh ] && source ~/.private/zshrc
+[ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
 alias vim="nvim"
 alias od="xdg-open ."
@@ -197,6 +197,7 @@ alias osi="optimus-manager --switch intel"
 alias osn="optimus-manager --switch nvidia"
 alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
 alias chts="cht --shell"
+alias man="man -L zh_CN"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
