@@ -143,6 +143,7 @@ alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
 alias yay="yay --aur"
 alias yi="yay -S"
 alias yu="yay -Syu"
+alias ys="yay -Ss"
 alias ra="ranger"
 alias sra='sudo -E ranger'
 alias pc="proxychains -q"
