@@ -148,7 +148,7 @@
 
    #+BEGIN_SRC sh
      git clone https://github.com/lyjdwh/dotfiles.git ~/dotfiles
-     pip install dotbot, thefuck
+     pip install dotbot thefuck
      cd ~/dotfiles
      dotbot -c install.conf.yaml
      mkdir ~/.private
@@ -253,6 +253,20 @@
       gpg --gen-key 生成密钥
       pass init gpg_id
       pass insert --multiline mail/xxx
+    #+END_SRC
+
+*** emacs-anywhere
+
+    #+BEGIN_SRC sh
+      curl -fsSL https://raw.github.com/zachcurry/emacs-anywhere/master/install | bash
+    #+END_SRC
+
+    #+BEGIN_SRC emacs-lisp
+      (defun popup-handler (app-name window-title x y w h)
+        ;; set major mode
+        (org-mode))
+
+      (add-hook 'ea-popup-hook 'popup-handler)
     #+END_SRC
 
 ** dwm
