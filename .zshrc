@@ -209,7 +209,7 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 # export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
 export FZF_DEFAULT_OPTS='--bind ctrl-n:down,ctrl-p:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_COMPLETION_TRIGGER='**' # tab/** + tab
+export FZF_COMPLETION_TRIGGER='88' # tab/88 + tab
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
@@ -364,6 +364,11 @@ fp() {
     ps aux | grep -E $1 | grep -v grep
 }
 
+cmp(){
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$3} END {mem=s*160 ;print "cpu: " s " % ;" mem " M"}'
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$4} END {mem=s*160 ;print "mem: " s " % ;" mem " M"}'
+}
+
 pcpu(){
     ps aux | grep -E $1 | grep -v grep |awk '{s+=$3} END {mem=s*160 ;print "cpu: " s " % ;" mem " M"}'
 }
@@ -374,4 +379,16 @@ pmem(){
 
 todo() {
     emacsclient --eval '(org-agenda-list)'
+}
+
+fman() {
+    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+}
+
+in() {
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+}
+
+re() {
+      yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
