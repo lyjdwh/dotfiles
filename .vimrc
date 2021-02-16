@@ -226,7 +226,7 @@ nnoremap <LEADER>gs :FloatermNew lazygit<CR>
 " zE	删除所有折叠
 " zj	移动至下一个折叠
 " zk	移动至上一个折叠
-Plug 'tmhedberg/simpylfold'
+" Plug 'tmhedberg/simpylfold'
 
 Plug 'hotoo/pangu.vim'
 autocmd BufWritePre *.markdown,*.org, *.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
