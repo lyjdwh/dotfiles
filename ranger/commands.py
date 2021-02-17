@@ -1,5 +1,6 @@
 import os
 import re
+import signal
 
 from ranger.api.commands import Command
 from ranger.core.loader import CommandLoader
@@ -339,3 +340,21 @@ class empty(Command):
 
     def execute(self):
         self.fm.run("rm -rf /home/${USER}/.local/share/Trash/files/{*,.[^.]*}")
+
+def zranger_chdir_handler(signal, frame):
+    tmpfile = "/tmp/zranger-cwd-{}".format(os.getuid())
+    with open(tmpfile, "r") as f:
+        Command.fm.cd(f.readline().strip())
+        os.unlink(tmpfile)
+signal.signal(signal.SIGUSR1, zranger_chdir_handler)
+
+class tmux_detach(Command):
+    """
+    :tmux_detach
+
+    Detach from this tmux session (if inside tmux).
+    """
+    def execute(self):
+        if not os.environ.get('TMUX'):
+            return
+        os.system("tmux detach")

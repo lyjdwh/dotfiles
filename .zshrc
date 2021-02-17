@@ -83,6 +83,7 @@ antigen bundle hlissner/zsh-autopair
 antigen bundle sobolevn/wakatime-zsh-plugin
 antigen bundle MichaelAquilina/zsh-you-should-use
 antigen bundle MichaelAquilina/zsh-auto-notify
+antigen bundle vifon/zranger
 
 # Tell Antigen that you're done.
 antigen apply
@@ -243,7 +244,6 @@ export YSU_MESSAGE_POSITION="after"
 
 #export LC_CTYPE=zh_CN.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. /usr/share/autojump/autojump.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -281,6 +281,8 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^o' autosuggest-accept
+autoload -U zranger
+bindkey -s '^]' 'zranger\n'
 
 # Don't take 0.4s to change modes
 export KEYTIMEOUT=20
