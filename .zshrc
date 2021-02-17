@@ -245,6 +245,8 @@ export YSU_MESSAGE_POSITION="after"
 #export LC_CTYPE=zh_CN.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
