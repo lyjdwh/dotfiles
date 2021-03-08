@@ -138,7 +138,7 @@ alias vv="$EDITOR ~/.vimrc"
 alias ai="sudo pacman -S"
 alias ar="sudo pacman -Rns"
 alias au="sudo pacman -Syu"
-alias ac="sudo pacman -R $(pacman -Qdtq)"
+alias ac="sudo pacman -Rs $(pacman -Qdtq)"
 alias as="pacman -Ss"
 alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
 alias yay="yay --aur"
@@ -154,7 +154,7 @@ alias coa="conda activate"
 alias cod="conda deactivate"
 alias coi="conda install"
 alias coui="conda uninstall"
-alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=https://127.0.0.1:12333"
+alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=http://127.0.0.1:12333"
 alias unproxy="unset http_proxy; unset https_proxy"
 alias pp="ptipython"
 alias dstat='dstat -cdlmnpsy'
@@ -200,6 +200,7 @@ alias osn="optimus-manager --switch nvidia"
 alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
 alias chts="cht --shell"
 alias man="man -L zh_CN"
+alias gc="git clone"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -215,6 +216,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+export PATH="/opt/anaconda/bin:$PATH"
 export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.yarn/bin:$PATH

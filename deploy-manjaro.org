@@ -99,7 +99,7 @@
           sudo pacman -R firefox
 
      # 蓝牙
-     sudo apacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman
+     sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman
 
      yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
    #+END_SRC
@@ -248,11 +248,15 @@
 
     #+BEGIN_SRC sh
       sudo pacman -S offlineimap pass
-      yay -S mu
+      yay -S mu pam-gnupg
 
       gpg --gen-key 生成密钥
       pass init gpg_id
       pass insert --multiline mail/xxx
+
+      # /etc/pam.d/sddm
+      auth     optional  pam_gnupg.so store-only
+      session  optional  pam_gnupg.so
     #+END_SRC
 
 *** emacs-anywhere
