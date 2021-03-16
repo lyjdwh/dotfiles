@@ -26,8 +26,8 @@
 
     ~/.Xresources                                       :  .Xresources
 
-    ~/.offlineimap.py                                   :  officelineimap/offlineimap.py
-    ~/.offlineimaprc                                    :  officelineimap/offlineimaprc
+    ~/.offlineimap.py                                   :  offlineimap/offlineimap.py
+    ~/.offlineimaprc                                    :  offlineimap/offlineimaprc
 
     ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
     ~/.config/ncmpcpp/config                            :  ncmpcpp/config
@@ -35,6 +35,10 @@
     ~/.config/mpd/mpd.conf                              :  mpd/mpd.conf
 
     ~/.config/neofetch/config.conf                      :  neofetch/config.conf
+
+    ~/.local/share/kxmlgui5/okular/part.rc              :  okular/part.rc
+    ~/.local/share/kxmlgui5/okular/shell.rc             :  okular/shell.rc
+    ~/.config/okularpartrc                              :  okular/okularpartrc
 
     ~/.config/llpp.conf                                 :  llpp.conf
     ~/.config/surfingkeys.js                            :  surfingkeys.js
