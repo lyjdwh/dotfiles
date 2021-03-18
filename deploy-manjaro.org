@@ -292,21 +292,32 @@
    #+END_SRC
 
 ** kvm
+*** install requirements
+    #+BEGIN_SRC sh
+      sudo pacman -Sqemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat freerdp
+      # 图形化的管理界面
+      # yay -Sy virt-manager
+      sudo systemctl start libvirtd
+      sudo virsh net-autostart default
+      sudo virsh net-start default
+    #+END_SRC
 
-   #+BEGIN_SRC sh
-     sudo pacman -Sqemu libvirt ebtables dnsmasq bridge-utils openbsd-netcat freerdp
-     # 图形化的管理界面
-     # yay -Sy virt-manager
-     sudo systemctl start libvirtd
-     sudo virsh net-autostart default
-     sudo virsh net-start default
-   #+END_SRC
+*** 使用远程桌面连接虚拟机
+    1. 在虚拟机win10 设置/系统/远程桌面 启动远程桌面, 并在高级设置下查看远程桌面端口,默认是3389
+    2. virsh net-dhcp-leases default 可以获得虚拟机的ip地址
+    3. xfreerdp /u:user /p:password /v:host:port /dynamic-resolution +auto-reconnect +home-drive +fonts +clipboard -grab-keyboard
+    4. 而且还可在虚拟机中开启openssh server, 在宿主机使用ssh, sshfs, sftp等连接虚拟机!
 
-   使用远程桌面连接虚拟机
-   1. 在虚拟机win10 设置/系统/远程桌面 启动远程桌面, 并在高级设置下查看远程桌面端口,默认是3389
-   2. virsh net-dhcp-leases default 可以获得虚拟机的ip地址
-   3. xfreerdp /u:user /p:password /v:host:port /dynamic-resolution +auto-reconnect +home-drive +fonts +clipboard -grab-keyboard
-   4. 而且还可在虚拟机中开启openssh server, 在宿主机使用ssh, sshfs, sftp等连接虚拟机!
+*** windows intel GVT-g 显卡直通：
+    1. [[https://medium.com/@langleyhouge/%E8%AE%A9-kvm-%E4%B8%8A%E7%9A%84-windows-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8F%92%E4%B8%8Agvt-g-%E7%9A%84%E7%BF%85%E8%86%80-ac0ac28b73b8][让 KVM 上的 Windows 虚拟机插上GVT-g 的翅膀]] or use https://github.com/pavolelsig/gvtd_helper
+    2. Systemd files to automatically create and remove gvtg vgpu
+       1. yay -S gvtg_vgpu-git
+       2. 修改 /etc/conf.d/gvtg_vgpu
+    3. https://looking-glass.io/ https://www.youtube.com/watch?v=wEhvQEyiOwI
+
+*** macos
+    1. https://github.com/foxlet/macOS-Simple-KVM
+    2. https://github.com/PassthroughPOST/Example-OSX-Virt-Manager
 
 ** linuxbrew
 
