@@ -95,8 +95,8 @@
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs fzf thesilversearcher pandoc wakatime \
-          cmake ranger tldr neofetch visual-studio-code-bin htop glances  \
-          sudo pacman -R firefox
+          cmake ranger tldr neofetch visual-studio-code-bin htop glances trash
+     sudo pacman -R firefox
 
      # 蓝牙
      sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman

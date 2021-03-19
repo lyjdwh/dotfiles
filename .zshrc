@@ -201,6 +201,13 @@ alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
 alias chts="cht --shell"
 alias man="man -L zh_CN"
 alias gc="git clone"
+alias wg="google"
+alias wh="github"
+alias port="netstat -tunlp | grep"
+alias tm="trash"
+alias t0="trash-empty"
+alias t1="trash-restore"
+alias tl="trash-list"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
