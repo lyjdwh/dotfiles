@@ -360,11 +360,11 @@ rga-fzf() {
 
 kp(){
     if [[ $1 == "wechat" ]]; then
-        pgrep "WeChat" | xargs kill
+        pgrep "WeChat" | xargs kill -9
     elif [[ $1 == "tim" ]];then
-        pgrep "TIM" | xargs kill
+        pgrep "TIM" | xargs kill -9
     else
-        pgrep $1 | xargs kill
+        pgrep $1 | xargs kill -9
     fi
 }
 

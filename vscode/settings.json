@@ -1543,7 +1543,7 @@
                 "e"
             ],
             "commands": [
-                "python.execInTerminal"
+                "code-runner.run"
             ]
         },
         {
