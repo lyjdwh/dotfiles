@@ -94,7 +94,7 @@
 
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
-          xclip xsel neovim anaconda emacs-git fzf thesilversearcher pandoc wakatime \
+          xclip xsel neovim anaconda emacs-native-comp-git fzf thesilversearcher pandoc wakatime \
           cmake ranger tldr neofetch visual-studio-code-bin htop glances trash
      sudo pacman -R firefox
 
@@ -381,8 +381,19 @@
      pip config set global.index-url https://mirrors.sjtug.sjtu.edu.cn/pypi/web/simple
    #+END_SRC
 
-** gtk-key-theme
-   https://wiki.archlinux.org/index.php/GTK#Keyboard_shortcuts
+** themes
+*** gtk, qt theme
+    https://draculatheme.com/gtk
+
+    #+BEGIN_SRC sh
+      yay -S lxappearance-gtk3 # use lxappearance
+      sudo pacman -S qt5-styleplugins
+    #+END_SRC
+*** sddm theme
+    ~/etc/sddm.conf~
+
+*** gtk-key-theme
+    https://wiki.archlinux.org/index.php/GTK#Keyboard_shortcuts
 
 ** 系统时钟
    启动 NTP 自动对时
