@@ -422,4 +422,8 @@
      # cht.sh
      curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht
      chmod +x /usr/local/bin/cht
+
+     # kernel
+     yay -S linux-xanmod-cacule linux-xanmod-cacule-headers
+     sudo pacman -S dkms nvidia-dkms
    #+END_SRC
