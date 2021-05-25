@@ -98,6 +98,9 @@
           cmake ranger tldr neofetch visual-studio-code-bin htop glances trash
      sudo pacman -R firefox
 
+     # chrome with surfingkeys
+     # https://brookhong.github.io/2021/04/18/brook-build-of-chromium.html
+
      # 蓝牙
      sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman paprefs
 
