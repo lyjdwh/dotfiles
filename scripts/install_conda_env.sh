@@ -10,8 +10,15 @@ conda install -y pytorch-lightning -c conda-forge
 pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.7.0+cu101.html
 pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.7.0+cu101.html
 pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.7.0+cu101.html
-pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.7.0+cu101.html
 pip install torch-geometric
+
+# pyg torch 1.8
+pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+pip install torch-geometric
+
 # others
 conda install -y jupyter biopython seaborn
 pip install ptipython black isort py3Dmol

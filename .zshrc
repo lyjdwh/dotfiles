@@ -208,6 +208,8 @@ alias tm="trash"
 alias t0="trash-empty"
 alias t1="trash-restore"
 alias tl="trash-list"
+alias kb="kill %1"
+alias 0="cd ~"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -361,6 +363,8 @@ rga-fzf() {
 kp(){
     if [[ $1 == "wechat" ]]; then
         pgrep "WeChat" | xargs kill -9
+    elif [[ $1 == "wxwork" ]];then
+        pgrep "WXWork" | xargs kill -9
     elif [[ $1 == "tim" ]];then
         pgrep "TIM" | xargs kill -9
     else

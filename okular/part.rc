@@ -1,5 +1,6 @@
-<!DOCTYPE kpartgui SYSTEM 'kpartgui.dtd'>
-<kpartgui name="okular_part" version="47">
+<?xml version='1.0'?>
+<!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
+<gui version="48" name="okular_part">
  <MenuBar>
   <Menu name="file">
    <text>&amp;File</text>
@@ -86,6 +87,8 @@
    <Separator/>
    <Action name="mouse_toggle_annotate"/>
    <Separator/>
+   <Action name="add_digital_signature"/>
+   <Separator/>
    <Action name="speak_document"/>
    <Action name="speak_current_page"/>
    <Action name="speak_stop_all"/>
@@ -103,21 +106,7 @@
    <Action group="about_merge" name="help_about_backend"/>
   </Menu>
  </MenuBar>
- <ToolBar name="mainToolBar">
-  <text>Main Toolbar</text>
-  <Action name="show_leftpanel"/>
-  <Separator/>
-  <Action name="mouse_drag"/>
-  <Action name="mouse_selecttools"/>
-  <Action name="annotation_favorites"/>
-  <Spacer/>
-  <Action name="page_number"/>
-  <Spacer/>
-  <Action name="view_zoom_out"/>
-  <Action name="zoom_to"/>
-  <Action name="view_zoom_in"/>
- </ToolBar>
- <ToolBar name="annotationToolBar" iconText="icononly" newline="true" hidden="true">
+ <ToolBar iconText="icononly" newline="true" hidden="true" name="annotationToolBar">
   <text>Annotation Toolbar</text>
   <Action name="annotation_highlighter"/>
   <Action name="annotation_underline"/>
@@ -142,13 +131,27 @@
   <Spacer/>
   <Action name="hide_annotation_toolbar"/>
  </ToolBar>
- <ActionProperties scheme="Default">
-  <Action name="go_next" shortcut="L"/>
-  <Action name="go_previous" shortcut="H"/>
-  <Action name="go_document_back" shortcut="Shift+B"/>
-  <Action name="view_scroll_page_down" shortcut="D"/>
-  <Action name="view_scroll_page_up" shortcut="U"/>
-  <Action name="first_page" shortcut="G"/>
-  <Action name="last_page" shortcut="Shift+G"/>
+ <ToolBar name="mainToolBar">
+  <text>Main Toolbar</text>
+  <Action name="show_leftpanel"/>
+  <Separator/>
+  <Action name="mouse_drag"/>
+  <Action name="mouse_selecttools"/>
+  <Action name="annotation_favorites"/>
+  <Spacer/>
+  <Action name="page_number"/>
+  <Spacer/>
+  <Action name="view_zoom_out"/>
+  <Action name="zoom_to"/>
+  <Action name="view_zoom_in"/>
+ </ToolBar>
+ <ActionProperties>
+  <Action shortcut="G" name="first_page"/>
+  <Action shortcut="Shift+B" name="go_document_back"/>
+  <Action shortcut="L" name="go_next"/>
+  <Action shortcut="H" name="go_previous"/>
+  <Action shortcut="Shift+G" name="last_page"/>
+  <Action shortcut="D" name="view_scroll_page_down"/>
+  <Action shortcut="U" name="view_scroll_page_up"/>
  </ActionProperties>
-</kpartgui>
+</gui>
