@@ -2,7 +2,7 @@
 win_class=$1 # 'terminator' # $1
 
 # get list of all windows matching with the class above
-win_list=$(wmctrl -x -l | awk '{print $1,$3}' | grep -i $win_class | awk '{print $1}' )
+win_list=$(wmctrl -x -l | awk '{print $1,$3,$5}' | sed -e s/.*tmux// -e s/.*ta// | grep -i $win_class | awk '{print $1}' )
 
 # get id of the focused window
 active_win_id=$(xprop -root | grep '^_NET_ACTIVE_W' | awk -F'# 0x' '{print $2}')
