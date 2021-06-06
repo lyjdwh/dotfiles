@@ -1,3 +1,5 @@
+[ -f ~/.private/zshrc_alias ] && source ~/.private/zshrc_alias
+
 alias bluec="bluetoothctl connect 94:DB:56:FA:04:D4"
 alias blued="bluetoothctl disconnect"
 alias wechat="/opt/apps/com.qq.weixin.deepin/files/run.sh"

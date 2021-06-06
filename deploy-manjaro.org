@@ -95,7 +95,7 @@
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs-native-comp-git fzf thesilversearcher pandoc wakatime \
-          cmake ranger tldr neofetch visual-studio-code-bin htop glances trash
+          cmake ranger tldr neofetch visual-studio-code-bin htop glances trash oath-toolkit
      sudo pacman -R firefox
 
      # chrome with surfingkeys
