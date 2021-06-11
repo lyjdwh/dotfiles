@@ -1,5 +1,3 @@
-[ -f ~/.private/zshrc_alias ] && source ~/.private/zshrc_alias
-
 alias bluec="bluetoothctl connect 94:DB:56:FA:04:D4"
 alias blued="bluetoothctl disconnect"
 alias wechat="/opt/apps/com.qq.weixin.deepin/files/run.sh"
@@ -27,3 +25,6 @@ alias mi="scrcpy -Sw --push-target /sdcard/aalinux --window-x 1540 --window-y 16
 alias sw="~/bin/scripts/scrcpy_wifi.sh"
 alias swl="adb connect 10.162.189.92:5555"
 alias sws="adb connect 10.151.126.189:5555"
+alias vpnu="nmcli connection up sensetime-auth-sh"
+alias vpnd="nmcli connection down sensetime-auth-sh"
+alias oa="~/bin/scripts/google_auth.sh"

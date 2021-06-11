@@ -12,17 +12,26 @@ def cycle(app):
 # define timeout for multipurpose_modmap
 define_timeout(0.5)
 
+define_multipurpose_modmap({
+    # To use this example, you can't remap capslock with define_modmap.
+    Key.CAPSLOCK: [Key.ESC, Key.LEFT_CTRL],
+    Key.LEFT_CTRL: [Key.ESC, Key.LEFT_CTRL],
+    Key.TAB: [Key.TAB, Key.RIGHT_CTRL],
+    Key.LEFT_SHIFT: [Key.F13, Key.LEFT_SHIFT],
+})
+
 define_keymap(re.compile("Chromium|Google-chrome"), {
     # Ctrl+Alt+j/k to switch next/previous tab
     K("RC-M-j"): K("C-TAB"),
     K("RC-M-k"): K("C-Shift-TAB"),
 }, "Chromium and Chrome")
 
-define_multipurpose_modmap({
-    # To use this example, you can't remap capslock with define_modmap.
-    Key.CAPSLOCK: [Key.ESC, Key.LEFT_CTRL],
-    Key.LEFT_CTRL: [Key.ESC, Key.LEFT_CTRL],
-    Key.TAB: [Key.TAB, Key.RIGHT_CTRL],
+define_keymap(re.compile("st-256color"), {
+    K("C-y"): K("C-Shift-V")
+}, "st")
+
+define_keymap(lambda wm_class: wm_class not in ("Emacs",), {
+    K("M-w"): K("C-c")
 })
 
 define_keymap(None, {
@@ -51,4 +60,6 @@ define_keymap(None, {
     K("RC-Y"): launch(cycle("yesplaymusic")),
     K("RC-SEMICOLON"): launch(cycle("st-256color")),
     K("RC-W"): launch(cycle("wine")),
+
+    K("F13"): K("C-space"),
 })

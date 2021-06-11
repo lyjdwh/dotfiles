@@ -72,8 +72,8 @@ addSearchAliasX('s', 'google scholar', 'https://scholar.google.com/scholar?q=', 
 
 map('P', 'cc');
 map('F', 'gf');
-map('K', 'R');
-map('J', 'E');
+map('J', 'R');
+map('K', 'E');
 map('ot', 'T');
 map('ob', 'b');
 map('t', 'on');
