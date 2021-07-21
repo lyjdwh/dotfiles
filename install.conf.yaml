@@ -50,4 +50,5 @@
     ~/.config/Code/User/settings.json                   :  vscode/settings.json
     ~/.config/Code/User/keybindings.json                :  vscode/keybindings.json
     ~/.config/ptpython/config.py                        :  ptpython_config.py
+    ~/.config/qv2ray/Qv2ray.conf                        :  qv2ray.conf
     ~/.oh-my-zsh/themes/robbyrussell-modified.zsh-theme :  robbyrussell-modified.zsh-theme
