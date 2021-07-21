@@ -130,6 +130,12 @@
      sudo pacman -U electron-ssr-0.2.7-2-x86_64.pkg.tar.zst
    #+END_SRC
 
+** v2ray
+
+   #+BEGIN_SRC sh
+     sudo pacman -S v2ray qv2ray-dev-git qv2ray-plugin-ssr-dev-git
+   #+END_SRC
+
 ** fcitx
 
    #+BEGIN_SRC sh
@@ -303,7 +309,7 @@
      cd dwm && sudo make install
 
      sudo pacman -S rofi xorg-xinput acpilight slock xautolock feh picom \
-          network-manager-applet xfce4-volumed-pulse flameshot goldendict \
+          network-manager-applet xfce4-volumed-pulse flameshot-git goldendict \
           redshift trayer dmenu pasystray
    #+END_SRC
 

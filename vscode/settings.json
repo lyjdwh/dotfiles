@@ -20,6 +20,10 @@
     "editor.dragAndDrop": false,
     "explorer.openEditors.visible": 0,
     "editor.formatOnType": true,
+    "editor.tabSize": 4,
+    "editor.cursorStyle": "line",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.inlineSuggest.enabled": true,
     "sync.gist": "4f13a66b6a5e9c2f8fcd4660dd1447eb",
     "sync.forceUpload": true,
     "search.showLineNumbers": true,
@@ -33,6 +37,13 @@
     "workbench.settings.useSplitJSON": true,
     "workbench.settings.editor": "json",
     "workbench.colorTheme": "Dracula",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
     "commentTranslate.targetLanguage": "zh-CN",
     "commentTranslate.multiLineMerge": true,
     "code-runner.saveFileBeforeRun": true,
@@ -60,7 +71,7 @@
     "python.analysis.typeCheckingMode": "basic",
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 1,
-    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}", //${separator}${appName}
+    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     // "outline.showVariables": true,
     "outline.showFunctions": true,
@@ -88,6 +99,7 @@
     "alt-editor.args": "-a emacs --no-wait +{line} {filename}",
     "latex-utilities.liveReformat.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
+    "latex-utilities.countWord.format": "${words} Words",
     "latex-workshop.latex.clean.fileTypes": [
         "*.aux",
         "*.bbl",
@@ -1824,7 +1836,6 @@
         "yml"
     ],
     "vsicons.dontShowNewVersionMessage": true,
-    "workbench.activityBar.visible": true,
     "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7Zmxvd2NoYXJ0XCIsXCJjdXN0b21MaWJyYXJpZXNcIjpbXCJMLnNjcmF0Y2hwYWRcIl0sXCJwbHVnaW5zXCI6W10sXCJyZWNlbnRDb2xvcnNcIjpbXSxcImZvcm1hdFdpZHRoXCI6XCIyNDBcIixcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjgyNyxcImhlaWdodFwiOjExNjl9LFwic2VhcmNoXCI6dHJ1ZSxcInNob3dTdGFydFNjcmVlblwiOnRydWUsXCJncmlkQ29sb3JcIjpcIiNkMGQwZDBcIixcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImF1dG9zYXZlXCI6dHJ1ZSxcInJlc2l6ZUltYWdlc1wiOm51bGwsXCJvcGVuQ291bnRlclwiOjAsXCJ2ZXJzaW9uXCI6MTgsXCJ1bml0XCI6MSxcImlzUnVsZXJPblwiOmZhbHNlLFwidWlcIjpcIlwifSJ9",
     "jupyter.alwaysTrustNotebooks": true,
     "leetcode.editor.shortcuts": [
@@ -1839,10 +1850,12 @@
     "leetcode.defaultLanguage": "python3",
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.hint.commentDescription": false,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "python": true
+    },
+    "github.copilot.autocomplete.enable": true,
 }

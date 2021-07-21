@@ -155,6 +155,7 @@ alias cod="conda deactivate"
 alias coi="conda install"
 alias coui="conda uninstall"
 alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=http://127.0.0.1:12333"
+alias proxyss="export http_proxy=http://172.16.1.135:3128; export https_proxy=http://172.16.1.135:3128"
 alias unproxy="unset http_proxy; unset https_proxy"
 alias pp="ptipython"
 alias dstat='dstat -cdlmnpsy'
