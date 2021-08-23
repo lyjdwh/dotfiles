@@ -95,14 +95,14 @@
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs-native-comp-git fzf thesilversearcher pandoc wakatime \
-          cmake ranger tldr neofetch visual-studio-code-bin htop glances trash oath-toolkit
+          cmake ranger tealdeer neofetch visual-studio-code-bin htop glances trash oath-toolkit tokei
      sudo pacman -R firefox
 
      # chrome with surfingkeys
      # https://brookhong.github.io/2021/04/18/brook-build-of-chromium.html
 
      # 蓝牙
-     sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman paprefs
+     sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman paprefs bluedevil
 
      yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
    #+END_SRC
@@ -133,7 +133,13 @@
 ** v2ray
 
    #+BEGIN_SRC sh
+     # qv2ray
      sudo pacman -S v2ray qv2ray-dev-git qv2ray-plugin-ssr-dev-git
+     sudo systemctl enable --now v2ray
+
+     # v2raya
+     sudo pacman -S v2raya
+     sudo systemctl enable --now v2raya
    #+END_SRC
 
 ** fcitx
@@ -157,8 +163,9 @@
    #+END_SRC
 
    #+BEGIN_SRC sh
-     sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
-     curl -L git.io/antigen > ~/.oh-my-zsh/plugins/antigen.zsh
+     # sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
+     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
      git clone https://github.com/pindexis/marker  ~/.marker
      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
      ~/.fzf/install
@@ -179,6 +186,9 @@
    #+BEGIN_SRC sh
      conda init bash
      . scripts/install_conda_env.sh
+
+     # mamba
+     conda install -c conda-forge mamba
    #+END_SRC
 
 ** vim
@@ -211,8 +221,9 @@
 
    #+BEGIN_SRC sh
      pip install python-bidi
-     sudo pacman -S autojump ueberzug mpv imagemagick ffmpegthumbnailer \
+     sudo pacman -S ueberzug mpv imagemagick ffmpeg \
           highlight bat pygmentize atool unrar tar unzip zip w3m mediainfo
+     yay -S dragon-drag-and-drop
    #+END_SRC
 
 ** tmux
@@ -248,7 +259,7 @@
     [[https://github.com/manateelazycat/emacs-application-framework#install][eaf install]]
 
     #+BEGIN_SRC sh
-      git clone --depth=1 -b master https://github.com/manateelazycat/emacs-application-framework.git ~/bin/emacs-application-framework
+      git clone --depth=1 -b master https://github.com/manateelazycat/emacs-application-framework.git ~/bin/eaf
 
       cd ~/bin/emacs-application-framework
       ./install-eaf.sh
@@ -268,6 +279,7 @@
 *** notdeft
 
     #+BEGIN_SRC sh
+      yay -S emacs-hydra emacs-swiper
       cd ~/bin && git clone https://github.com/hasu/notdeft.git
       cd notdeft && make
       cd xapian && make
@@ -300,6 +312,13 @@
         (org-mode))
 
       (add-hook 'ea-popup-hook 'popup-handler)
+    #+END_SRC
+
+*** emacs daemon
+
+    #+BEGIN_SRC sh
+      systemctl enable --user emacs
+      systemctl start --user emacs
     #+END_SRC
 
 ** dwm
@@ -381,7 +400,9 @@
 ** xkeysnail
 
    #+BEGIN_SRC sh
-     yay -S xkeysnail
+     # yay -S xkeysnail
+     git clone https://github.com/lyjdwh/xkeysnail.git
+     sudo pip3 install -e .
      sudo systemctl enable xkeysnail
      sudo systemctl start xkeysnail
 
@@ -392,7 +413,7 @@
      [Service]
      Type=simple
      KillMode=process
-     ExecStart=/usr/bin/sudo /usr/bin/xkeysnail --quiet /home/liuyan/dotfiles/xkeysnail.py --watch
+     ExecStart=/usr/bin/sudo /usr/bin/xkeysnail --quiet /home/liuyan/dotfiles/xkeysnail.py --watch --devices "WI-1000XM2"
      ExecStop=/usr/bin/sudo /usr/bin/killall xkeysnail
      Restart=on-failure
      RestartSec=3
@@ -449,7 +470,7 @@
 
    #+BEGIN_SRC sh
      sudo pacman -S npm
-     npm install -g cnpm --registry=https://registry.npm.taobao.org
+     # npm install -g cnpm --registry=https://registry.npm.taobao.org
    #+END_SRC
 
 ** pip
@@ -492,8 +513,9 @@
      sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
           shellcheck mendeleydesktop-bundled hugo
-     yay -S deepin-wine-wechat deepin-wine-tim
-     yay -S loc lazygit notify-osd zoom nutstore-experimental
+     yay -S texlive-mostt-doc tllocalmgr-git
+     yay -S deepin-wine-wechat deepin-wine-tim com.qq.weixin.work.deepin
+     yay -S lazygit notify-osd zoom nutstore-experimental
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      # or sudo pacman -S libreoffice-fresh libreoffice-fresh-zh-cn
      yay -S scrcpy sndcpy

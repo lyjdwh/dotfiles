@@ -11,18 +11,19 @@
 # **********************************************************************
 
 # oh-my-zsh
-if [ -d ~/.oh-my-zsh ]; then
-    echo "oh-my-zsh already installed"
-else
-    echo "install oh-my-zsh ..."
-    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
+# if [ -d ~/.oh-my-zsh ]; then
+#     echo "oh-my-zsh already installed"
+# else
+#     echo "install oh-my-zsh ..."
+#     sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
+# fi
 
-# antigen
-if [ -a ~/.oh-my-zsh/plugins/antigen.zsh ]; then
-    echo "antigen already installed"
+# zplug
+if [ -d ~/.zplug ]; then
+    echo "zplug already installed"
 else
-    curl -L git.io/antigen > ~/.oh-my-zsh/plugins/antigen.zsh
+    echo "install zplug  ..."
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
 # install marker

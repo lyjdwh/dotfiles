@@ -2,13 +2,11 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://gEnables the zsh completion from git.git folks, which is much faster than the official one from zsh. A lot of zsh-specific features are not supported, like descriptions for every argument, but everything the bash completion has, this one does too (as it is using it behind the scenes). Not only is it faster, it should be more robust, and updated regularly to the latest git upstream version.ithub.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell-modified"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -65,28 +63,49 @@ ZSH_THEME="robbyrussell-modified"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras vi-mode  thefuck sudo extract copydir command-not-found web-search common-aliases debian colored-man-pages)
-
+export ZSH="$HOME/.zplug/repos/robbyrussell/oh-my-zsh"
+ZSH_THEME="robbyrussell-modified"
 source $ZSH/oh-my-zsh.sh
-source $ZSH/plugins/antigen.zsh
 
-antigen bundle wfxr/forgit
-antigen bundle skywind3000/z.lua
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-# antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zdharma/fast-syntax-highlighting
-antigen bundle kutsan/zsh-system-clipboard
-antigen bundle Aloxaf/fzf-tab
-antigen bundle hlissner/zsh-autopair
-antigen bundle sobolevn/wakatime-zsh-plugin
-antigen bundle MichaelAquilina/zsh-you-should-use
-antigen bundle MichaelAquilina/zsh-auto-notify
-antigen bundle vifon/zranger
+source ~/.zplug/init.zsh
 
-# Tell Antigen that you're done.
-antigen apply
+zplug "plugins/vi-mode",  from:oh-my-zsh
+zplug "plugins/git",  from:oh-my-zsh
+zplug "plugins/git-extras",  from:oh-my-zsh
+zplug "plugins/thefuck",  from:oh-my-zsh
+zplug "plugins/sudo",  from:oh-my-zsh
+zplug "plugins/extract",  from:oh-my-zsh
+zplug "plugins/copydir",  from:oh-my-zsh
+zplug "plugins/command-not-found",  from:oh-my-zsh
+zplug "plugins/web-search",  from:oh-my-zsh
+zplug "plugins/common-aliases",  from:oh-my-zsh
+zplug "plugins/debian",  from:oh-my-zsh
+zplug "plugins/colored-man-pages",  from:oh-my-zsh
+
+zplug "wfxr/forgit"
+zplug "skywind3000/z.lua"
+zplug "changyuheng/fz", defer:1
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zdharma/fast-syntax-highlighting"
+zplug "kutsan/zsh-system-clipboard"
+zplug "Aloxaf/fzf-tab"
+zplug "hlissner/zsh-autopair"
+zplug "sobolevn/wakatime-zsh-plugin"
+zplug "MichaelAquilina/zsh-you-should-use"
+zplug "MichaelAquilina/zsh-auto-notify"
+zplug "vifon/zranger"
+zplug "IngoMeyer441/zsh-easy-motion"
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
 
 # User configuration
 setopt no_nomatch
@@ -126,7 +145,8 @@ compdef -d mcd
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR="nvim"
+# export EDITOR="nvim"
+export EDITOR="emacsclient -t"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
@@ -162,7 +182,7 @@ alias dstat='dstat -cdlmnpsy'
 alias clean='sudop sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias ed='emacs --daemon'
 alias ec='emacsclient -c -n'
-alias et='emacsclient -t'
+alias e='emacsclient -t'
 alias ez='emacs -nw'
 alias scpr="rsync -P --rsh=ssh"
 alias wget="wget -c"
@@ -213,6 +233,10 @@ alias t1="trash-restore"
 alias tl="trash-list"
 alias kb="kill %1"
 alias 0="cd ~"
+alias rs="rsync -av /home/liuyan/bin/PaddleDetection/ --exclude={'PaddleDetection/output','PaddleDetection/models','PaddleDetection/arun_log','*.pyc'} ss86:/mnt/lustre/liuyan/PaddleDetection"
+alias loc="tokei"
+alias mm="emacsclient -t -eval '(netease-cloud-music)'"
+alias zu="zplug update"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -233,9 +257,9 @@ export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/doom-emacs/bin:$PATH
-# export EDITOR="emacsclient -t"
 export _FASD_DATA="$HOME/.zlua"
-export RANGER_ZLUA="$HOME/.antigen/bundles/skywind3000/z.lua/z.lua"
+export RANGER_ZLUA="$HOME/.zplug/repos/skywind3000/z.lua/z.lua"
+export _ZL_HYPHEN=1 # 为z 支持连字符-
 export GTAGSLABEL=pygments
 export TERM=xterm-256color
 # Meta: ^[, Ctrl: ^
@@ -257,6 +281,8 @@ export YSU_MESSAGE_POSITION="after"
 
 
 #export LC_CTYPE=zh_CN.UTF-8
+source /usr/share/nvm/init-nvm.sh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
@@ -291,6 +317,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 bindkey -M vicmd 'K' up-line-or-history
 bindkey -M vicmd 'J' down-line-or-history
 
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -299,6 +327,10 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey '^o' autosuggest-accept
 autoload -U zranger
 bindkey -s '^]' 'zranger\n'
+
+bindkey -M vicmd ' ' vi-easy-motion
+
+function _z() { _zlua "$@"; }
 
 # Don't take 0.4s to change modes
 export KEYTIMEOUT=20

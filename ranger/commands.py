@@ -407,3 +407,11 @@ class YankContent(Command):
 
     def tab(self, tabnum):
         return self._tab_directory_content()
+
+class dlfile(Command):
+    """dragon file
+    """
+
+    def execute(self):
+        self.fm.run("~/dotfiles/scripts/dlfile.sh")
+

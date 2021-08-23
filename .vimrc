@@ -126,14 +126,6 @@ nnoremap <Leader>pd :PlugDiff<CR>
 
 Plug 'tpope/vim-sensible'
 
-"CTRL-T/CTRL-X/CTRL-V open up a file in a new tab, a new horizontal split, or in a new vertical split.
-"Pressing yw in Ranger will emit Ranger's cwd to Neovim's, gw will jump to Neovim's cwd.
-"Using :RnvimrResize to cycle the preset layouts.
-Plug 'kevinhwang91/rnvimr'
-nnoremap <Leader>ff :RnvimrToggle<CR>
-let g:rnvimr_enable_ex  =  1
-let g:rnvimr_enable_picker  =  1
-
 "<c-z> to mark/unmark multiple files and <c-o> to open them.
 "<c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
 "<c-y> to create a new file and its parent directories.
@@ -155,7 +147,7 @@ Plug 'felikz/ctrlp-py-matcher'
 " ? a quick summary of these keys, repeat to close
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
-nnoremap <LEADER>sd :Ack
+" nnoremap <LEADER>sd :Ack
 nnoremap <LEADER>sf :AckFile
 nnoremap <Leader>ss :Ack  %<Left><Left>
 
@@ -202,8 +194,11 @@ map <Leader>V <Plug>(expand_region_shrink)
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'voldikss/vim-floaterm'
-nnoremap <LEADER>at :FloatermToggle<CR>
+nnoremap <LEADER>' :FloatermToggle<CR>
 nnoremap <LEADER>gs :FloatermNew lazygit<CR>
+nnoremap <LEADER>fF :FloatermNew ranger<CR>
+nnoremap <LEADER>ff :FloatermNew fzf<CR>
+nnoremap <LEADER>sd :FloatermNew --width=0.8 --height=0.8 rg<CR>
 
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'

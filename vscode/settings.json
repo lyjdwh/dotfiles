@@ -5,6 +5,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.autoGuessEncoding": true,
+    "editor.autoClosingBrackets": "always",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.suggest.snippetsPreventQuickSuggestions": false,

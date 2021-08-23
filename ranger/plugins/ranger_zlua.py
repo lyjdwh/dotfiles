@@ -21,14 +21,15 @@ if not PATH_LUA:
     sys.exit()
 
 if (not PATH_ZLUA) or (not os.path.exists(PATH_ZLUA)):
-    path = "/home/liuyan/.antigen/bundles/skywind3000/z.lua/z.lua"
+    path = "/home/liuyan/.zplug/repos/skywind3000/z.lua/z.lua"
+
     if os.path.exists(path):
         PATH_ZLUA = path
     else:
         sys.stderr.write('Not find z.lua, please set $RANGER_ZLUA to absolute path of z.lua.\n')
         sys.exit()
 
-            
+
 def hook_init(fm):
     def update_zlua(signal):
         import os, random
@@ -88,4 +89,3 @@ class z(ranger.api.commands.Command):
                 else:
                     self.fm.notify('No matching found', bad = True)
         return True
-

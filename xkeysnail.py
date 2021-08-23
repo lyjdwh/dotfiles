@@ -9,6 +9,11 @@ def cycle(app):
     _cycle = "bash /home/liuyan/dotfiles/scripts/cycle.sh "
     return shlex.split(_cycle+app)
 
+def emacs_eval(command):
+    commands = ["emacsclient", "--eval"]
+    commands.append(command)
+    return commands
+
 # define timeout for multipurpose_modmap
 define_timeout(0.5)
 
@@ -62,4 +67,12 @@ define_keymap(None, {
     K("RC-W"): launch(cycle("wine")),
 
     K("F13"): K("C-space"),
+
+    K("PAUSECD") : launch(emacs_eval("(netease-cloud-music-pause-or-continue)")),
+    K("PLAYCD") : launch(emacs_eval("(netease-cloud-music-pause-or-continue)")),
+    K("NEXTSONG") : launch(emacs_eval("(netease-cloud-music-play-next-song)")),
+    # K("PREVIOUSSONG") : launch(emacs_eval("(netease-cloud-music-play-previous-song)")),
+    K("PREVIOUSSONG") : launch(emacs_eval("(netease-cloud-music-love-song)")),
+    K("FASTFORWARD") : launch(emacs_eval("(netease-cloud-music-seek-forward)")),
+    K("REWIND") : launch(emacs_eval("(netease-cloud-music-seek-backward)")),
 })

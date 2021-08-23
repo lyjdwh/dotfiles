@@ -29,6 +29,8 @@
     ~/.offlineimap.py                                   :  offlineimap/offlineimap.py
     ~/.offlineimaprc                                    :  offlineimap/offlineimaprc
 
+    ~/.latexmkrc                                        :  .latexmkrc
+
     ~/.config/ncmpcpp/bindings                          :  ncmpcpp/bindings
     ~/.config/ncmpcpp/config                            :  ncmpcpp/config
 
@@ -39,6 +41,8 @@
     ~/.local/share/kxmlgui5/okular/part.rc              :  okular/part.rc
     ~/.local/share/kxmlgui5/okular/shell.rc             :  okular/shell.rc
     ~/.config/okularpartrc                              :  okular/okularpartrc
+
+    ~/.config/systemd/user/emacs.service                :  emacs.service
 
     ~/.config/llpp.conf                                 :  llpp.conf
     ~/.config/surfingkeys.js                            :  surfingkeys.js
@@ -51,4 +55,4 @@
     ~/.config/Code/User/keybindings.json                :  vscode/keybindings.json
     ~/.config/ptpython/config.py                        :  ptpython_config.py
     ~/.config/qv2ray/Qv2ray.conf                        :  qv2ray.conf
-    ~/.oh-my-zsh/themes/robbyrussell-modified.zsh-theme :  robbyrussell-modified.zsh-theme
+    ~/.zplug/repos/robbyrussell/oh-my-zsh/themes/robbyrussell-modified.zsh-theme         :  robbyrussell-modified.zsh-theme
