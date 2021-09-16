@@ -1,111 +1,73 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+module_path+=( "/home/liuyan/.zinit/mod-bin/zmodules/Src" )
+zmodload zdharma/zplugin
 
-# Path to your oh-my-zsh installation.
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://gEnables the zsh completion from git.git folks, which is much faster than the official one from zsh. A lot of zsh-specific features are not supported, like descriptions for every argument, but everything the bash completion has, this one does too (as it is using it behind the scenes). Not only is it faster, it should be more robust, and updated regularly to the latest git upstream version.ithub.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.  # DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-export ZSH="$HOME/.zplug/repos/robbyrussell/oh-my-zsh"
-ZSH_THEME="robbyrussell-modified"
-source $ZSH/oh-my-zsh.sh
-
-source ~/.zplug/init.zsh
-
-zplug "plugins/vi-mode",  from:oh-my-zsh
-zplug "plugins/git",  from:oh-my-zsh
-zplug "plugins/git-extras",  from:oh-my-zsh
-zplug "plugins/thefuck",  from:oh-my-zsh
-zplug "plugins/sudo",  from:oh-my-zsh
-zplug "plugins/extract",  from:oh-my-zsh
-zplug "plugins/copydir",  from:oh-my-zsh
-zplug "plugins/command-not-found",  from:oh-my-zsh
-zplug "plugins/web-search",  from:oh-my-zsh
-zplug "plugins/common-aliases",  from:oh-my-zsh
-zplug "plugins/debian",  from:oh-my-zsh
-zplug "plugins/colored-man-pages",  from:oh-my-zsh
-
-zplug "wfxr/forgit"
-zplug "skywind3000/z.lua"
-zplug "changyuheng/fz", defer:1
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zdharma/fast-syntax-highlighting"
-zplug "kutsan/zsh-system-clipboard"
-zplug "Aloxaf/fzf-tab"
-zplug "hlissner/zsh-autopair"
-zplug "sobolevn/wakatime-zsh-plugin"
-zplug "MichaelAquilina/zsh-you-should-use"
-zplug "MichaelAquilina/zsh-auto-notify"
-zplug "vifon/zranger"
-zplug "IngoMeyer441/zsh-easy-motion"
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-zplug load
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+      zinit-zsh/z-a-rust \
+      zinit-zsh/z-a-as-monitor \
+      zinit-zsh/z-a-bin-gem-node
+
+# theme
+zinit snippet OMZL::git.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
+zinit snippet https://github.com/lyjdwh/dotfiles/blob/master/robbyrussell-modified.zsh-theme
+
+# oh my zsh plugin
+zinit snippet OMZL::clipboard.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+zinit snippet OMZL::directories.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::git-extras
+zinit snippet OMZP::sudo
+zinit snippet OMZP::copydir
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::web-search
+zinit snippet OMZP::common-aliases
+
+zinit ice svn
+zinit snippet OMZP::extract
+zinit ice svn
+zinit snippet OMZP::colored-man-pages
+
+# github plugin
+zinit light IngoMeyer441/zsh-easy-motion
+zinit snippet OMZP::vi-mode
+
+zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+zinit ice lucid wait='0' atinit='zpcompinit'
+zinit light zdharma/fast-syntax-highlighting
+
+zinit wait="0" lucid light-mode for \
+      wfxr/forgit \
+      skywind3000/z.lua \
+      changyuheng/fz \
+      zsh-users/zsh-completions \
+      zsh-users/zsh-history-substring-search \
+      kutsan/zsh-system-clipboard \
+      Aloxaf/fzf-tab \
+      hlissner/zsh-autopair \
+      sobolevn/wakatime-zsh-plugin \
+      MichaelAquilina/zsh-you-should-use \
+      MichaelAquilina/zsh-auto-notify \
+      vifon/zranger
+
+### End of Zinit's installer chunk
 
 # User configuration
 setopt no_nomatch
@@ -119,7 +81,6 @@ setopt automenu
 setopt correct
 #NOCLOBBER prevents you from accidentally overwriting an existing file.
 setopt noclobber
-compdef -d mcd
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -236,7 +197,8 @@ alias 0="cd ~"
 alias rs="rsync -av /home/liuyan/bin/PaddleDetection/ --exclude={'PaddleDetection/output','PaddleDetection/models','PaddleDetection/arun_log','*.pyc'} ss86:/mnt/lustre/liuyan/PaddleDetection"
 alias loc="tokei"
 alias mm="emacsclient -t -eval '(netease-cloud-music)'"
-alias zu="zplug update"
+alias zu="zinit update"
+alias zt="zpmod source-study"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -258,7 +220,7 @@ export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/doom-emacs/bin:$PATH
 export _FASD_DATA="$HOME/.zlua"
-export RANGER_ZLUA="$HOME/.zplug/repos/skywind3000/z.lua/z.lua"
+export RANGER_ZLUA="$HOME/.zinit/plugins/skywind3000---z.lua/z.lua"
 export _ZL_HYPHEN=1 # 为z 支持连字符-
 export GTAGSLABEL=pygments
 export TERM=xterm-256color
@@ -281,33 +243,13 @@ export YSU_MESSAGE_POSITION="after"
 
 
 #export LC_CTYPE=zh_CN.UTF-8
-source /usr/share/nvm/init-nvm.sh
+eval $(thefuck --alias)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Alt-space: search for commands that match the current written string in the command-line.
-# Ctrl-k (or marker mark): Bookmark a command.
-# Alt-n: place the cursor at the next placeholder, identified by '{{anything}}'
-# marker remove: remove a bookmark
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-fpath=(~/.zsh.d/ $fpath)
+. "/opt/anaconda/etc/profile.d/conda.sh"
 
 #keybindings
 zle -N history-substring-search-up

@@ -18,18 +18,10 @@
 #     sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
 # fi
 
-# zplug
-if [ -d ~/.zplug ]; then
-    echo "zplug already installed"
+# zinit
+if [ -d ~/.zinit ]; then
+    echo "zinit already installed"
 else
-    echo "install zplug  ..."
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
-
-# install marker
-if [ -d ~/.marker ]; then
-    echo "marker already cloned"
-else
-    echo "clone marker ..."
-    git clone https://github.com/pindexis/marker  ~/.marker
+    echo "install zinit  ..."
+    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 fi

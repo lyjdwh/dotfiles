@@ -164,9 +164,8 @@
 
    #+BEGIN_SRC sh
      # sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
-     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-
-     git clone https://github.com/pindexis/marker  ~/.marker
+     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+     zinit module build
      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
      ~/.fzf/install
    #+END_SRC
