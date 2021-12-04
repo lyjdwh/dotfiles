@@ -94,8 +94,9 @@
 
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
-          xclip xsel neovim anaconda emacs-native-comp-git fzf thesilversearcher pandoc wakatime \
-          cmake ranger tealdeer neofetch visual-studio-code-bin htop glances trash oath-toolkit tokei
+          xclip xsel neovim anaconda emacs-native-comp-git fzf the_silver_searcher pandoc wakatime \
+          cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf
+     yay -S visual-studio-code-bin
      sudo pacman -R firefox
 
      # chrome with surfingkeys
@@ -145,8 +146,7 @@
 ** fcitx
 
    #+BEGIN_SRC sh
-     sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt \
-          fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl fcitx5-configtool
+     sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl
    #+END_SRC
 
 ** oh-my-zsh
@@ -164,7 +164,7 @@
 
    #+BEGIN_SRC sh
      # sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
-     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+     git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
      zinit module build
      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
      ~/.fzf/install
@@ -238,9 +238,9 @@
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
      git clone -b develop https://github.com/syl20bnr/spacemacs ~/spacemacs
      git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
-     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls telegram-tdlib libvterm
+     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls libvterm pyright emacs-org-mode-git
      cnpm install mathjax-node-cli
-     yay -S pyright
+     yay -S libtd
      ## all-the-icons-install-fonts
      ## company-tabnine-install-binary
 
@@ -481,6 +481,7 @@
 ** themes
 *** gtk, qt theme
     https://draculatheme.com/gtk
+    # dracula-xresources-git dracula-gtk-theme https://draculatheme.com/qt5
 
     #+BEGIN_SRC sh
       yay -S lxappearance-gtk3 # use lxappearance
@@ -533,6 +534,7 @@
      chmod +x /usr/local/bin/cht
 
      # kernel
-     yay -S linux-xanmod-cacule linux-xanmod-cacule-headers
+     # https://github.com/antman666/linux-xanmod-cacule-uksm-cjktty/releases
+     yay -S linux-xanmod-cacule-uksm-cjktty linux-xanmod-cacule-uksm-cjktty-headers
      sudo pacman -S dkms nvidia-dkms
    #+END_SRC

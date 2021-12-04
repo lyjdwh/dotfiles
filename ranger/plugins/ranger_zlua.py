@@ -21,7 +21,8 @@ if not PATH_LUA:
     sys.exit()
 
 if (not PATH_ZLUA) or (not os.path.exists(PATH_ZLUA)):
-    path = "/home/liuyan/.zinit/plugins/skywind3000---z.lua/z.lua"
+    path = "~/.zinit/plugins/skywind3000---z.lua/z.lua"
+    path = os.path.expanduser(path)
 
     if os.path.exists(path):
         PATH_ZLUA = path

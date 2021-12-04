@@ -5,7 +5,7 @@ update_info=okular.upd:annotation-toolbar,okular.upd:builtin-annotations
 ExternalEditor=Emacsclient
 
 [Main View]
-SplitterSizes=342,1558
+SplitterSizes=312,727
 
 [PageView]
 MouseMode=TextSelect

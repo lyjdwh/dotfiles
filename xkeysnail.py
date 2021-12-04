@@ -6,7 +6,8 @@ import shlex
 from xkeysnail.transform import *
 
 def cycle(app):
-    _cycle = "bash /home/liuyan/dotfiles/scripts/cycle.sh "
+    path = os.path.expanduser("~/dotfiles/scripts/cycle.sh ")
+    _cycle = "bash " + path
     return shlex.split(_cycle+app)
 
 def emacs_eval(command):

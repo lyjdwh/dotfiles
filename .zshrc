@@ -1,10 +1,10 @@
-module_path+=( "/home/liuyan/.zinit/mod-bin/zmodules/Src" )
+module_path+=( "$HOME/.zinit/mod-bin/zmodules/Src" )
 zmodload zdharma/zplugin
 
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -51,7 +51,7 @@ zinit snippet OMZP::vi-mode
 zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 zinit ice lucid wait='0' atinit='zpcompinit'
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit wait="0" lucid light-mode for \
       wfxr/forgit \
@@ -143,7 +143,7 @@ alias dstat='dstat -cdlmnpsy'
 alias clean='sudop sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias ed='emacs --daemon'
 alias ec='emacsclient -c -n'
-alias e='emacsclient -t'
+alias e='emacsclient -t -a nvim'
 alias ez='emacs -nw'
 alias scpr="rsync -P --rsh=ssh"
 alias wget="wget -c"
@@ -199,6 +199,7 @@ alias loc="tokei"
 alias mm="emacsclient -t -eval '(netease-cloud-music)'"
 alias zu="zinit update"
 alias zt="zpmod source-study"
+alias df="/usr/bin/duf"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -219,6 +220,7 @@ export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/doom-emacs/bin:$PATH
+export ZSH_WAKATIME_BIN=/usr/bin/wakatime
 export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="$HOME/.zinit/plugins/skywind3000---z.lua/z.lua"
 export _ZL_HYPHEN=1 # 为z 支持连字符-
