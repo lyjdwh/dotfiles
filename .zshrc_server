@@ -1,0 +1,321 @@
+module_path+=( "$HOME/.zinit/mod-bin/zmodules/Src" )
+zmodload zdharma/zplugin
+
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+      zinit-zsh/z-a-rust \
+      zinit-zsh/z-a-as-monitor \
+      zinit-zsh/z-a-bin-gem-node
+
+# theme
+zinit snippet OMZL::git.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
+zinit snippet https://github.com/lyjdwh/dotfiles/blob/master/robbyrussell-modified.zsh-theme
+
+# oh my zsh plugin
+zinit snippet OMZL::clipboard.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+zinit snippet OMZL::directories.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::git-extras
+zinit snippet OMZP::sudo
+zinit snippet OMZP::copydir
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::web-search
+zinit snippet OMZP::common-aliases
+
+zinit ice svn
+zinit snippet OMZP::extract
+zinit ice svn
+zinit snippet OMZP::colored-man-pages
+
+# github plugin
+zinit light IngoMeyer441/zsh-easy-motion
+zinit snippet OMZP::vi-mode
+
+zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+zinit ice lucid wait='0' atinit='zpcompinit'
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit wait="0" lucid light-mode for \
+      wfxr/forgit \
+      skywind3000/z.lua \
+      changyuheng/fz \
+      zsh-users/zsh-completions \
+      zsh-users/zsh-history-substring-search \
+      kutsan/zsh-system-clipboard \
+      Aloxaf/fzf-tab \
+      hlissner/zsh-autopair \
+      sobolevn/wakatime-zsh-plugin \
+      MichaelAquilina/zsh-you-should-use \
+      MichaelAquilina/zsh-auto-notify \
+      vifon/zranger
+
+### End of Zinit's installer chunk
+
+# User configuration
+setopt no_nomatch
+#Remove superfluous blanks from each command line being added to the history list
+setopt histreduceblanks
+#Do not enter command lines into the history list if they are duplicates of the previous event.
+setopt histignorealldups
+# Automatically use menu completion after the second consecutive request for completion
+setopt automenu
+# Try to correct the spelling of commands
+setopt correct
+#NOCLOBBER prevents you from accidentally overwriting an existing file.
+setopt noclobber
+
+[ -f ~/.private/zshrc ] && source ~/.private/zshrc
+alias od="xdg-open ."
+alias sz="source ~/.zshrc"
+alias vz="$EDITOR ~/.zshrc"
+alias vv="$EDITOR ~/.vimrc"
+alias ai="sudo pacman -S"
+alias ar="sudo pacman -Rns"
+alias au="sudo pacman -Syu"
+alias ac="sudo pacman -Rs $(pacman -Qdtq)"
+alias as="pacman -Ss"
+alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
+alias yay="yay --aur"
+alias yi="yay -S"
+alias yu="yay -Syu"
+alias ys="yay -Ss"
+alias ra="ranger"
+alias sra='sudo -E ranger'
+alias pc="proxychains -q"
+#alias pa="pacapt"
+alias co="conda"
+alias coa="conda activate"
+alias cod="conda deactivate"
+alias coi="conda install"
+alias coui="conda uninstall"
+alias pp="ptipython"
+alias dstat='dstat -cdlmnpsy'
+alias clean='sudop sh -c "echo 3 > /proc/sys/vm/drop_caches"'
+alias ed='emacs --daemon'
+alias ec='emacsclient -c -n'
+alias e='emacsclient -t -a nvim'
+alias ez='emacs -nw'
+alias scpr="rsync -P --rsh=ssh"
+alias wget="wget -c"
+alias mkdir="mkdir -p"
+alias zz='z -c' # 严格匹配当前路径的子路径
+alias zi='z -i' # 使用交互式选择模式
+alias zf='z -I' # 使用 fzf 对多个结果进行选择
+alias zb='z -b' # 快速回到父目录
+alias rm="rm -f" # rm -iv 删除时提醒
+#cp, mv 时显示进度条
+alias rscp="rsync -ahP"
+alias rsmv="rsync -ahP --remove-source-files"
+alias s="neofetch"
+alias lg='lazygit'
+alias sslab1="sshfs lab1:/data/liuyan $HOME/labs/lab1"
+alias sslab2="sshfs lab2:/data1/liuyan $HOME/labs/lab2"
+alias sslab3="sshfs lab3:/data/liuyan $HOME/labs/lab3"
+alias record="asciinema rec"  #ctrl+d to quit
+alias tz="trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n -pager bat"
+alias te="trans -e google -s auto -t en -show-original y -show-original-phonetics y -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary y -show-alternatives n -pager bat"
+#alias curl="curl -x socks5://127.0.0.1:1080"
+# Download videos from YouTube, youku ....
+
+alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
+alias wn="watch -n 5 -d nvidia-smi"
+alias wn2="watch --color -n1 gpustat -cpu"
+alias sudo='sudo -E'
+alias c='clear'
+alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
+alias ta="tmux attach"
+alias sta="tmux attach"
+alias stm="tmux"
+alias ut="~/.tmux/plugins/tpm/bin/update_plugins all"
+alias q="exit"
+alias m="proxychains -q tldr"
+alias osi="optimus-manager --switch intel"
+alias osn="optimus-manager --switch nvidia"
+alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
+alias chts="cht --shell"
+alias man="man -L zh_CN"
+alias gc="git clone"
+alias wg="google"
+alias wh="github"
+alias port="netstat -tunlp | grep"
+alias tm="trash"
+alias t0="trash-empty"
+alias t1="trash-restore"
+alias tl="trash-list"
+alias kb="kill %1"
+alias 0="cd ~"
+alias rs="rsync -av /home/liuyan/bin/PaddleDetection/ --exclude={'PaddleDetection/output','PaddleDetection/models','PaddleDetection/arun_log','*.pyc'} ss86:/mnt/lustre/liuyan/PaddleDetection"
+alias loc="tokei"
+alias mm="emacsclient -t -eval '(netease-cloud-music)'"
+alias zu="zinit update"
+alias zt="zpmod source-study"
+alias df="/usr/bin/duf"
+alias su2="ssh super2"
+alias su3="ssh super3"
+alias su4="ssh super4"
+alias sr="spring.remote"
+
+export RANGER_LOAD_DEFAULT_RC=false
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+#fzf
+#usage: command + ** +tab ...
+# export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+export FZF_DEFAULT_OPTS='--bind ctrl-n:down,ctrl-p:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_COMPLETION_TRIGGER='88' # tab/88 + tab
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT='80%'
+export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+export PATH="/opt/anaconda/bin:$PATH"
+export PATH=$HOME/.conda/envs/torch/bin:$PATH
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export PATH=$HOME/.yarn/bin:$PATH
+export PATH=$HOME/doom-emacs/bin:$PATH
+export ZSH_WAKATIME_BIN=/usr/bin/wakatime
+export _FASD_DATA="$HOME/.zlua"
+export RANGER_ZLUA="$HOME/.zinit/plugins/skywind3000---z.lua/z.lua"
+export _ZL_HYPHEN=1 # 为z 支持连字符-
+export GTAGSLABEL=pygments
+export TERM=xterm-256color
+# Meta: ^[, Ctrl: ^
+export MARKER_KEY_GET='^b'
+export MARKER_KEY_NEXT_PLACEHOLDER='^n'
+export YSU_MESSAGE_POSITION="after"
+
+eval $(thefuck --alias)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
+
+#keybindings
+zle -N history-substring-search-up
+zle -N history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'K' up-line-or-history
+bindkey -M vicmd 'J' down-line-or-history
+
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+bindkey '^o' autosuggest-accept
+autoload -U zranger
+bindkey -s '^]' 'zranger\n'
+
+bindkey -M vicmd ' ' vi-easy-motion
+
+function _z() { _zlua "$@"; }
+
+mcd(){
+  mkdir -p $1
+  cd $1
+}
+
+cdlast() {
+  cd -
+#  ls -lrth --color=auto | tail
+    zle reset-prompt
+}
+zle -N cdlast
+bindkey '^Q' cdlast
+
+cd_sibling() {
+  cd $(ls --dired |fzf)
+}
+zle -N cd_sibling
+bindkey '^S' cd_sibling
+
+fif() {
+    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+    rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	    echo "opening $file" &&
+	    xdg-open "$file"
+}
+
+kp(){
+    if [[ $1 == "wechat" ]]; then
+        pgrep "WeChat" | xargs kill -9
+    elif [[ $1 == "wxwork" ]];then
+        pgrep "WXWork" | xargs kill -9
+    elif [[ $1 == "tim" ]];then
+        pgrep "TIM" | xargs kill -9
+    else
+        pgrep $1 | xargs kill -9
+    fi
+}
+
+topp(){
+    top -p $(pgrep -d ',' $1) #process name
+}
+
+fp() {
+    ps aux | head -n 1
+    ps aux | grep -E $1 | grep -v grep
+}
+
+cmp(){
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$3} END {mem=s*160 ;print "cpu: " s " % ;" mem " M"}'
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$4} END {mem=s*160 ;print "mem: " s " % ;" mem " M"}'
+}
+
+pcpu(){
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$3} END {mem=s*160 ;print "cpu: " s " % ;" mem " M"}'
+}
+
+pmem(){
+    ps aux | grep -E $1 | grep -v grep |awk '{s+=$4} END {mem=s*160 ;print "mem: " s " % ;" mem " M"}'
+}
+
+todo() {
+    emacsclient --eval '(org-agenda-list)'
+}
+
+fman() {
+    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+}
+
+in() {
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+}
+
+re() {
+      yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+}
