@@ -1,5 +1,5 @@
-module_path+=( "$HOME/.zinit/mod-bin/zmodules/Src" )
-zmodload zdharma/zplugin
+module_path+=( "$HOME/.zinit/module/Src")
+zmodload zdharma_continuum/zinit
 
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -12,13 +12,6 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-      zinit-zsh/z-a-rust \
-      zinit-zsh/z-a-as-monitor \
-      zinit-zsh/z-a-bin-gem-node
 
 # theme
 zinit snippet OMZL::git.zsh
@@ -47,6 +40,7 @@ zinit snippet OMZP::colored-man-pages
 # github plugin
 zinit light IngoMeyer441/zsh-easy-motion
 zinit snippet OMZP::vi-mode
+zinit light romkatv/zsh-defer
 
 zinit ice lucid wait='0' atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
@@ -215,7 +209,6 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-export PATH="/opt/anaconda/bin:$PATH"
 export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.yarn/bin:$PATH
@@ -250,8 +243,6 @@ eval $(thefuck --alias)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
-
-. "/opt/anaconda/etc/profile.d/conda.sh"
 
 #keybindings
 zle -N history-substring-search-up
@@ -388,3 +379,21 @@ in() {
 re() {
       yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
+
+conda_init_fun () {
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+            . "/opt/anaconda/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/anaconda/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
+zsh-defer conda_init_fun

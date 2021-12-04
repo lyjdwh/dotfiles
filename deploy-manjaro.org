@@ -155,7 +155,7 @@
      # build zsh
      wget https://www.zsh.org/pub/zsh-5.8.tar.xz
      tar xvf zsh-5.8.tar.xz
-     ./configure --prefix=$HOME/.local/bin
+     ./configure --prefix=$HOME/.local
      make
      make install
      # --prefix, 指定安装目录
@@ -163,8 +163,7 @@
    #+END_SRC
 
    #+BEGIN_SRC sh
-     # sh -c "$(wget https://git.sjtu.edu.cn/sjtug/ohmyzsh/-/raw/master/tools/install.sh -O -)"
-     git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
+     zsh
      zinit module build
      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
      ~/.fzf/install
@@ -195,7 +194,7 @@
    #+BEGIN_SRC sh
      # make nvim
      git clone https://github.com/neovim/neovim
-     make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/bin"
+     make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
      make install
      export PATH="$HOME/.local/bin/neovim/bin:$PATH"
 
