@@ -1,0 +1,71 @@
+# qq
+IMAPAccount qq
+Host imap.qq.com
+User 1412511544@qq.com
+PassCmd "pass mail/qq| head -n 1"
+AuthMechs LOGIN
+SSLType IMAPS
+
+IMAPStore qq-remote
+Account qq
+
+MaildirStore qq-local
+Path ~/.mail/qq/
+Inbox ~/.mail/qq/Inbox
+Subfolders Verbatim
+
+Channel qq
+Far :qq-remote:
+Near :qq-local:
+Create Both
+Expunge Both
+Patterns "Sent Messages" "Inbox" "Drafts"
+SyncState *
+
+# sjtu
+IMAPAccount sjtu
+Host mail.sjtu.edu.cn
+User yan.liu@sjtu.edu.cn
+PassCmd "pass mail/sjtu| head -n 1"
+AuthMechs LOGIN
+SSLType IMAPS
+
+IMAPStore sjtu-remote
+Account sjtu
+
+MaildirStore sjtu-local
+Path ~/.mail/sjtu/
+Inbox ~/.mail/sjtu/Inbox
+Subfolders Verbatim
+
+Channel sjtu
+Far :sjtu-remote:
+Near :sjtu-local:
+Create Both
+Expunge Both
+Patterns "Sent" "Inbox" "Drafts"
+SyncState *
+
+# gmail
+IMAPAccount gmail
+Host imap.gmail.com
+User lyjdwh@gmail.com
+PassCmd "pass mail/gmail| head -n 1"
+AuthMechs LOGIN
+SSLType IMAPS
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
+Subfolders Verbatim
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Create Both
+Expunge Both
+Patterns "Sent" "Inbox" "[Gmail]/Important" "[Gmail]/Drafts"
+SyncState *

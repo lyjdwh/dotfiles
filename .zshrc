@@ -194,6 +194,7 @@ alias mm="emacsclient -t -eval '(netease-cloud-music)'"
 alias zu="zinit update"
 alias zt="zpmod source-study"
 alias df="/usr/bin/duf"
+alias um="proxychains -q mbsync -a"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'

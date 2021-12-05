@@ -23,6 +23,7 @@
     ~/.Xmodmap                                          :  .Xmodmap
     ~/.gitconfig                                        :  .gitconfig
     ~/.wakatime.cfg                                     :  .wakatime.cfg
+    ~/.mbsyncrc                                         :  .mbsyncrc
 
     ~/.Xresources                                       :  .Xresources
 

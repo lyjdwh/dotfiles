@@ -287,7 +287,7 @@
 
     #+BEGIN_SRC sh
       sudo pacman -S offlineimap pass
-      yay -S mu pam-gnupg
+      yay -S mu pam-gnupg mu mbsync
 
       gpg --gen-key 生成密钥
       pass init gpg_id
@@ -296,6 +296,11 @@
       # /etc/pam.d/sddm
       auth     optional  pam_gnupg.so store-only
       session  optional  pam_gnupg.so
+
+      # emacs
+      mu init --my-address=1412511544@qq.com --my-address=yan.liu@sjtu.edu.cn --my-address=lyjdwh@gmail.com -m ~/.mail
+      mu index --maildir=~/.mail
+
     #+END_SRC
 
 *** emacs-anywhere
