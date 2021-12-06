@@ -244,6 +244,13 @@ eval $(thefuck --alias)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
+zstyle ':completion:*' sort false
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+export LESSOPEN='|~/.lessfilter %s'
 
 #keybindings
 zle -N history-substring-search-up

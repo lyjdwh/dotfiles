@@ -24,6 +24,7 @@
     ~/.gitconfig                                        :  .gitconfig
     ~/.wakatime.cfg                                     :  .wakatime.cfg
     ~/.mbsyncrc                                         :  .mbsyncrc
+    ~/.lessfilter                                       :  .lessfilter
 
     ~/.Xresources                                       :  .Xresources
 
