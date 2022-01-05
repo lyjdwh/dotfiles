@@ -2,6 +2,27 @@
   Personal chrome extension Surfingkeys config
   Partily convert from https://github.com/b0o/surfingkeys-conf
 */
+const {
+    aceVimMap,
+    mapkey,
+    imap,
+    imapkey,
+    getClickableElements,
+    vmapkey,
+    map,
+    unmap,
+    vunmap,
+    cmap,
+    addSearchAlias,
+    removeSearchAlias,
+    tabOpenLink,
+    readText,
+    Clipboard,
+    Front,
+    Hints,
+    Visual,
+    RUNTIME
+} = api;
 
 parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"bCLS":[function(require,module,exports) {
 module.exports.categories={help:0,mouseClick:1,scroll:2,tabs:3,pageNav:4,sessions:5,searchSelectedWith:6,clipboard:7,omnibar:8,visualMode:9,vimMarks:10,settings:11,chromeURLs:12,proxy:13,misc:14,insertMode:15};
@@ -25,17 +46,6 @@ const{keys:e}=require("./conf.priv.js"),{escape:a,createSuggestionItem:t,createU
 const e=require("./util"),s=require("./keys"),a=require("./completions");e.addSettings({hintAlign:"left",omnibarSuggestionTimeout:500,richHintsForKeystroke:1,theme:"\n    /* Disable RichHints CSS animation */\n    .expandRichHints {\n        animation: 0s ease-in-out 1 forwards expandRichHints;\n    }\n    .collapseRichHints {\n        animation: 0s ease-in-out 1 forwards collapseRichHints;\n    }\n  "}),"undefined"!=typeof Hints&&(Hints.characters="qwertasdfgzxcvb");const i="<Space>",n="a";e.rmMaps(s.unmaps.mappings),e.rmSearchAliases(s.unmaps.searchAliases),e.processMaps(s.maps,s.aliases,"<Space>"),e.processCompletions(a,"a"),module.exports={siteleader:"<Space>",searchleader:"a"};
 },{"./util":"YOqM","./keys":"BSXI","./completions":"HkY7"}]},{},["Nwkc"], null)
 //# sourceMappingURL=/conf.js.map
-
-//google translate
-const setTranslateQuery = (lang) => {
-    const render = (res) => res[0].map(r => r[0]).join('');
-    Front.registerInlineQuery({
-        url: `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&dt=bd&q=`,
-        parseResult: res => [ render(JSON.parse(res.text)) ],
-    });
-};
-
-setTranslateQuery('zh-CN');
 
 //key map
 mapkey('p', "Open the clipboard's URL in the current tab", function() {
@@ -68,7 +78,7 @@ mapkey('yc', '#7Copy code text', function() {
     });
 });
 
-addSearchAliasX('s', 'google scholar', 'https://scholar.google.com/scholar?q=', 'o');
+addSearchAlias('s', 'google scholar', 'https://scholar.google.com/scholar?q=', 'o');
 
 map('P', 'cc');
 map('F', 'gf');

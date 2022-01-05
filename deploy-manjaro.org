@@ -94,9 +94,9 @@
 
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
-          xclip xsel neovim anaconda emacs-native-comp-git fzf the_silver_searcher pandoc wakatime \
+          xclip xsel neovim anaconda emacs-native-comp-git fzf the_silver_searcher pandoc-bin \
           cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf
-     yay -S visual-studio-code-bin
+     yay -S visual-studio-code-bin wakatime-cli
      sudo pacman -R firefox
 
      # chrome with surfingkeys
@@ -121,6 +121,8 @@
      sudo cp /Windows/Fonts/* /usr/share/fonts/WindowsFonts
      sudo chmod 755 /usr/share/fonts/WindowsFonts/*
      sudo fc-cache -f
+     # or
+     yay -S ttf-ms-fonts
    #+END_SRC
 
 ** electron-ssr
@@ -151,15 +153,20 @@
 
 ** oh-my-zsh
 
-   #+BEGIN_SRC sh
-     # build zsh
-     wget https://www.zsh.org/pub/zsh-5.8.tar.xz
-     tar xvf zsh-5.8.tar.xz
-     ./configure --prefix=$HOME/.local
-     make
-     make install
-     # --prefix, 指定安装目录
-     # --exec-prefix zsh执行文件的安装目录
+  默认终端改为zsh
+  #+BEGIN_SRC sh
+    chsh -s /usr/bin/zsh
+  #+END_SRC
+
+  #+BEGIN_SRC sh
+    # build zsh
+    wget https://www.zsh.org/pub/zsh-5.8.tar.xz
+    tar xvf zsh-5.8.tar.xz
+    ./configure --prefix=$HOME/.local
+    make
+    make install
+    # --prefix, 指定安装目录
+    # --exec-prefix zsh执行文件的安装目录
    #+END_SRC
 
    #+BEGIN_SRC sh
@@ -167,6 +174,22 @@
      zinit module build
      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
      ~/.fzf/install
+   #+END_SRC
+
+** 将bash/zsh的终端输出信息和日志改回英文
+   LANGUAGE参数的优先级比LANG要高、LC_X参数优先级比LANGUAGE高，修改LANGUAGE变量即可。
+
+   #+BEGIN_SRC sh
+     export LANGUAGE="en_US:UTF-8"
+   #+END_SRC
+
+   只修改终端那就在.bashrc加上
+
+   #+BEGIN_SRC sh
+     if [ "$TERM"="xterm-256color" ] ;then
+        export LANGUAGE=en_US
+        export LANG=en_US.UTF-8
+     fi
    #+END_SRC
 
 ** dotfiles
@@ -272,6 +295,17 @@
       cd fuz.el
       cargo build --release
       cp target/release/libfuz_core.so fuz-core.so
+    #+END_SRC
+
+*** tree-sitter
+
+    #+BEGIN_SRC sh
+      cd ~/bin
+      git clone https://github.com/emacs-tree-sitter/tree-sitter-langs.git
+      git clone https://github.com/Wilfred/tree-sitter-elisp
+      cd tree-sitter-elisp
+      gcc ./src/parser.c -fPIC -I./ --shared -o elisp.so
+      cp ./elisp.so ../tree-sitter-langs/bin
     #+END_SRC
 
 *** notdeft
@@ -392,6 +426,12 @@
      sudo systemctl mask systemd-rfkill.service
      sudo systemctl mask systemd-rfkill.socket
    #+END_SRC
+** earlyoom
+
+  #+BEGIN_SRC sh
+    sudo pacman -S earlyoom
+    sudo systemctl enable earlyoom --now
+  #+END_SRC
 
 ** nvidia-prime
 
@@ -405,7 +445,7 @@
    #+BEGIN_SRC sh
      # yay -S xkeysnail
      git clone https://github.com/lyjdwh/xkeysnail.git
-     sudo pip3 install -e .
+     sudo pip3 install -e . # sudo python setup.py install
      sudo systemctl enable xkeysnail
      sudo systemctl start xkeysnail
 
@@ -516,8 +556,8 @@
    #+BEGIN_SRC sh
      sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
-          shellcheck mendeleydesktop-bundled hugo
-     yay -S texlive-mostt-doc tllocalmgr-git
+          shellcheck mendeleydesktop-bundled hugo xmind-2021 downgrade
+     yay -S texlive-most-doc tllocalmgr-git
      yay -S deepin-wine-wechat deepin-wine-tim com.qq.weixin.work.deepin
      yay -S lazygit notify-osd zoom nutstore-experimental
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
@@ -528,10 +568,6 @@
      sudo pacman -S man-pages-zh_cn # gimp-help-zh_cn libreoffice-fresh-zh-cn
 
      pip3 install NetEase-MusicBox
-
-     # 切换到 deepin-wine
-     /opt/apps/com.qq.weixin.deepin/files/run.sh -d
-     /opt/deepinwine/apps/Deepin-TIM/run.sh -d
 
      # cht.sh
      curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht

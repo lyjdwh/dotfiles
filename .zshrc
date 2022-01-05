@@ -110,10 +110,11 @@ alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="$EDITOR ~/.zshrc"
 alias vv="$EDITOR ~/.vimrc"
+alias vg="$EDITOR ~/.gitconfig"
 alias ai="sudo pacman -S"
 alias ar="sudo pacman -Rns"
 alias au="sudo pacman -Syu"
-alias ac="sudo pacman -Rs $(pacman -Qdtq)"
+alias ac="pacman -Qdtq | sudo pacman -Rs"
 alias as="pacman -Ss"
 alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
 alias yay="yay --aur"
@@ -177,6 +178,7 @@ alias osi="optimus-manager --switch intel"
 alias osn="optimus-manager --switch nvidia"
 alias -g hg="--help 2>&1 |grep -Ei" # vim hg "vim|diff"
 alias chts="cht --shell"
+alias chp="cht --shell python"
 alias man="man -L zh_CN"
 alias gc="git clone"
 alias wg="google"
@@ -211,8 +213,6 @@ export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 export PATH=$HOME/.conda/envs/torch/bin:$PATH
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/doom-emacs/bin:$PATH
 export ZSH_WAKATIME_BIN=/usr/bin/wakatime
 export _FASD_DATA="$HOME/.zlua"
@@ -346,7 +346,7 @@ kp(){
     elif [[ $1 == "tim" ]];then
         pgrep "TIM" | xargs kill -9
     else
-        pgrep $1 | xargs kill -9
+        pkill $1
     fi
 }
 
@@ -405,3 +405,8 @@ conda_init_fun () {
     # <<< conda initialize <<<
 }
 zsh-defer conda_init_fun
+
+init_nvm (){
+    source /usr/share/nvm/init-nvm.sh
+}
+zsh-defer init_nvm
