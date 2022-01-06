@@ -16,6 +16,7 @@
     ~/.condarc                                          :  .condarc
     ~/.tmux.conf                                        :  .tmux.conf
     ~/.vimrc                                            :  .vimrc
+    ~/.config/lvim                                      :  lvim
     ~/.emacs-profiles.el                                :  .emacs-profiles.el
     ~/.zshrc                                            :  .zshrc
     ~/.zsh_aliases                                      :  .zsh_aliases

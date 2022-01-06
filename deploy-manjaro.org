@@ -232,6 +232,11 @@
      ## start nvim, :PlugInstall, :checkhealth
    #+END_SRC
 
+** lvim
+  #+BEGIN_SRC sh
+    bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+  #+END_SRC
+
 ** z, fasd
 
    #+BEGIN_SRC sh

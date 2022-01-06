@@ -105,7 +105,8 @@ export EDITOR="emacsclient -t"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
-alias vim="nvim"
+alias vim="lvim"
+alias v="vim"
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="$EDITOR ~/.zshrc"
