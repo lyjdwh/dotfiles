@@ -80,7 +80,7 @@ lvim.builtin.which_key.mappings.f = {
   f = {"<cmd>Telescope find_files<cr>", "Find File" },
   j = {"<cmd>FloatermNew ranger<cr>", "Ranger"},
   r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  s = {"<C-s>", "Save file"},
+  s = {"<cmd>w<cr>", "Save file"},
   t = {"<cmd>NvimTreeFindFileToggle<cr>", "Toggle tree"}
 }
 
@@ -94,11 +94,11 @@ lvim.builtin.which_key.mappings.p = {
 lvim.builtin.which_key.mappings.a = {
   name = "+Apps",
   t = {"<cmd>TranslateW<CR>", "Translate"},
+  r = {"<cmd>Asyncrun<CR>", "Asyncrun"},
 }
 lvim.builtin.which_key.vmappings.a = {
   name = "+Apps",
   t = {"<cmd>TranslateWV<CR>", "Translate"},
-  r = {"<cmd>Asyncrun<CR>", "Asyncrun"},
 }
 
 -- use magit replace lazygit
@@ -107,6 +107,8 @@ lvim.builtin.which_key.mappings["gg"] = {"<cmd>Neogit<cr>", "Git Status"}
 lvim.builtin.which_key.mappings[';'] = {"<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"}
 lvim.builtin.which_key.mappings["sc"] = { "<cmd>Telescope commands<cr>", "Commands" }
 lvim.builtin.which_key.mappings["sC"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" }
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Colorscheme" }
+lvim.builtin.which_key.mappings["lR"] = { "<cmd>Telescope lsp_references<cr>", "References" }
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -289,7 +291,7 @@ lvim.plugins = {
       vim.g.translator_proxy_url = 'socks5://127.0.0.1:1080'
     end,
   },
-  {"skywind3000/asyncrun.vim"}
+  {"skywind3000/asyncrun.vim"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

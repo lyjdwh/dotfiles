@@ -100,13 +100,13 @@ setopt noclobber
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# export EDITOR="nvim"
-export EDITOR="emacsclient -t"
+export EDITOR="lvim"
+# export EDITOR="emacsclient -t"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
 alias vim="lvim"
-alias v="vim"
+alias v="lvim"
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="$EDITOR ~/.zshrc"
@@ -139,7 +139,7 @@ alias dstat='dstat -cdlmnpsy'
 alias clean='sudop sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 alias ed='emacs --daemon'
 alias ec='emacsclient -c -n'
-alias e='emacsclient -t -a nvim'
+alias e='emacsclient -t -a lvim'
 alias ez='emacs -nw'
 alias scpr="rsync -P --rsh=ssh"
 alias wget="wget -c"
