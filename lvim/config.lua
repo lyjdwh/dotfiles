@@ -12,13 +12,16 @@ an executable
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
+vim.opt.relativenumber = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["J"] = "5j"
 lvim.keys.normal_mode["<F2>"] = ":Dashboard<cr>"
+
+vim.cmd("nmap j <Plug>(accelerated_jk_gj)")
+vim.cmd("nmap k <Plug>(accelerated_jk_gk)")
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
@@ -73,6 +76,7 @@ lvim.builtin.which_key.mappings.w  = {
 }
 
 lvim.builtin.which_key.mappings.b['b'] = {"<cmd>Telescope buffers<cr>", "Buffers"}
+lvim.builtin.which_key.mappings['<Tab>'] = { "<cmd>b#<cr>", "Previous" }
 lvim.builtin.which_key.mappings.b["d"] = {"<cmd>BufferClose!<CR>", "Close Buffer" }
 
 lvim.builtin.which_key.mappings.f = {
@@ -81,7 +85,9 @@ lvim.builtin.which_key.mappings.f = {
   j = {"<cmd>FloatermNew ranger<cr>", "Ranger"},
   r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   s = {"<cmd>w<cr>", "Save file"},
-  t = {"<cmd>NvimTreeFindFileToggle<cr>", "Toggle tree"}
+  S = {"<cmd>SudaWrite<cr>", "Sudo Save file"},
+  t = {"<cmd>NvimTreeFindFileToggle<cr>", "Toggle tree"},
+  e = {"<cmd>SudaRead<cr>", "Sudo Edit"},
 }
 
 lvim.builtin.which_key.mappings.P = lvim.builtin.which_key.mappings.p
@@ -94,7 +100,7 @@ lvim.builtin.which_key.mappings.p = {
 lvim.builtin.which_key.mappings.a = {
   name = "+Apps",
   t = {"<cmd>TranslateW<CR>", "Translate"},
-  r = {"<cmd>Asyncrun<CR>", "Asyncrun"},
+  r = {"<cmd>AsyncRun<CR>", "Asyncrun"},
 }
 lvim.builtin.which_key.vmappings.a = {
   name = "+Apps",
@@ -109,8 +115,9 @@ lvim.builtin.which_key.mappings["sc"] = { "<cmd>Telescope commands<cr>", "Comman
 lvim.builtin.which_key.mappings["sC"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" }
 lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Colorscheme" }
 lvim.builtin.which_key.mappings["lR"] = { "<cmd>Telescope lsp_references<cr>", "References" }
+lvim.builtin.which_key.mappings["v"] = {"<cmd>lua require('tsht').nodes()<cr>", "Select Text"}
 
--- TODO: User Config for predefined plugins
+-- User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.notify.active = true
@@ -122,20 +129,7 @@ lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "css",
-  "rust",
-  "java",
-  "yaml",
-}
-
+lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -277,21 +271,83 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   {"machakann/vim-sandwich"},
   {"gelguy/wilder.nvim"},
-  {"xeluxee/nvim-treehopper"},
-  {"mfussenegger/nvim-ts-hint-textobject"},
+  {"mfussenegger/nvim-ts-hint-textobject",
+    after = "nvim-treesitter"
+  },
+  {"nvim-treesitter/nvim-treesitter-textobjects",
+    config = function()
+      require"nvim-treesitter.configs".setup {
+          ensure_installed = "maintained",
+          highlight = {enable = true, disable = {"vim"}},
+          textobjects = {
+              select = {
+                  enable = true,
+                  keymaps = {
+                      ["af"] = "@function.outer",
+                      ["if"] = "@function.inner",
+                      ["aF"] = "@call.outer",
+                      ["iF"] = "@call.inner",
+                      ["ac"] = "@class.outer",
+                      ["ic"] = "@class.inner",
+                      ["aC"] = "@comment.outer",
+                      ["iC"] = "@comment.inner",
+                      ["ax"] = "@statement.outer",
+                      ["ix"] = "@statement.outer",
+                      ["al"] = "@loop.outer",
+                      ["il"] = "@loop.inner",
+                      ["ai"] = "@conditional.outer",
+                      ["ii"] = "@conditional.inner",
+                  }
+              },
+              move = {
+                  enable = true,
+                  set_jumps = true, -- whether to set jumps in the jumplist
+                  goto_next_start = {
+                      ["]["] = "@function.outer",
+                      ["]m"] = "@class.outer"
+                  },
+                  goto_next_end = {
+                      ["]]"] = "@function.outer",
+                      ["]M"] = "@class.outer"
+                  },
+                  goto_previous_start = {
+                      ["[["] = "@function.outer",
+                      ["[m"] = "@class.outer"
+                  },
+                  goto_previous_end = {
+                      ["[]"] = "@function.outer",
+                      ["[M"] = "@class.outer"
+                  }
+              }
+          },
+        }
+    end,
+    after = "nvim-treesitter"
+  },
   {'TimUntersberger/neogit',
     requires = 'nvim-lua/plenary.nvim' ,
     config = function()
       require('neogit').setup()
     end,
   },
-  {"voldikss/vim-floaterm"},
+  {"voldikss/vim-floaterm",
+    cmd = "FloatermNew"
+  },
   {"voldikss/vim-translator",
     config = function()
       vim.g.translator_proxy_url = 'socks5://127.0.0.1:1080'
     end,
   },
-  {"skywind3000/asyncrun.vim"},
+  {"skywind3000/asyncrun.vim",
+    cmd = "AsyncRun"
+  },
+  {"rlue/vim-barbaric"},
+  {"lambdalisue/suda.vim",
+    config = function()
+      vim.g.suda_smart_edit = 1
+    end,
+  },
+  {"rhysd/accelerated-jk"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
