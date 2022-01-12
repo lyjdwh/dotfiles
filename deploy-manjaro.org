@@ -105,6 +105,11 @@
      # 蓝牙
      sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman paprefs bluedevil
 
+     # pipewire
+     sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+     sudo pacman -S bluez bluez-utils pavucontrol blueman
+     systemctl --user enable pipewire pipewire-pulse wireplumber --now
+
      yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
    #+END_SRC
 
