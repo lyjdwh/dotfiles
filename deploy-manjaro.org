@@ -103,12 +103,12 @@
      # https://brookhong.github.io/2021/04/18/brook-build-of-chromium.html
 
      # 蓝牙
-     sudo pacman -S bluez-git pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman paprefs bluedevil
+     sudo pacman -S bluez bluez-utils pulseaudio-bluetooth pavucontrol pulseaudio-alsa blueman paprefs bluedevil
 
      # pipewire
-     sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+     sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-media-session
      sudo pacman -S bluez bluez-utils pavucontrol blueman
-     systemctl --user enable pipewire pipewire-pulse wireplumber --now
+     systemctl --user enable pipewire pipewire-pulse pipewire-media-session --now
 
      yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
    #+END_SRC
@@ -428,7 +428,6 @@
      eval $(~/.linuxbrew/bin/brew shellenv)
      brew update
    #+END_SRC
-
 
 * misc
 ** tlp

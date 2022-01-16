@@ -100,8 +100,8 @@ setopt noclobber
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR="lvim"
-# export EDITOR="emacsclient -t"
+# export EDITOR="lvim"
+export EDITOR="emacsclient -t"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
@@ -115,7 +115,7 @@ alias vg="$EDITOR ~/.gitconfig"
 alias ai="sudo pacman -S"
 alias ar="sudo pacman -Rns"
 alias au="sudo pacman -Syu"
-alias ac="pacman -Qdtq | sudo pacman -Rs"
+# alias ac="pacman -Qdtq | sudo pacman -Rs"
 alias as="pacman -Ss"
 alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
 alias yay="yay --aur"
@@ -225,6 +225,7 @@ export TERM=xterm-256color
 export MARKER_KEY_GET='^b'
 export MARKER_KEY_NEXT_PLACEHOLDER='^n'
 export YSU_MESSAGE_POSITION="after"
+export LSP_USE_PLISTS=true
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
@@ -387,6 +388,10 @@ in() {
 
 re() {
       yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+}
+
+ac() {
+    sudo pacman -Rs $(pacman -Qtdq)
 }
 
 conda_init_fun () {
