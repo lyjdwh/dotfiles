@@ -101,7 +101,7 @@ setopt noclobber
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # export EDITOR="lvim"
-export EDITOR="emacsclient -t"
+export EDITOR="emacsclient -t -a lvim"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
@@ -122,7 +122,8 @@ alias yay="yay --aur"
 alias yi="yay -S"
 alias yu="yay -Syu"
 alias ys="yay -Ss"
-alias ra="ranger"
+alias ranger="TERM=xterm-256color ranger"
+alias ra="TERM=xterm-256color ranger"
 alias sra='sudo -E ranger'
 alias pc="proxychains -q"
 #alias pa="pacapt"
@@ -220,7 +221,7 @@ export _FASD_DATA="$HOME/.zlua"
 export RANGER_ZLUA="$HOME/.zinit/plugins/skywind3000---z.lua/z.lua"
 export _ZL_HYPHEN=1 # 为z 支持连字符-
 export GTAGSLABEL=pygments
-export TERM=xterm-256color
+export TERM=st-direct
 # Meta: ^[, Ctrl: ^
 export MARKER_KEY_GET='^b'
 export MARKER_KEY_NEXT_PLACEHOLDER='^n'
