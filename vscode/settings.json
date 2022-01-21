@@ -50,22 +50,18 @@
     "code-runner.saveFileBeforeRun": true,
     "code-runner.runInTerminal": true,
     "C_Cpp.clang_format_sortIncludes": true,
-    // "python.pythonPath": "/home/liuyan/anaconda3/bin/python",
     "python.linting.pylintEnabled": false,
-    // "python.linting.flake8Path": "/home/liuyan/anaconda3/bin/flake8",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=88",
         "--extend-ignore=F403 F405 W503 E203",
         "--maximum-complexity=10",
     ],
-    "python.formatting.provider": "black", //yapf
-    // "python.formatting.yapfPath": "/home/liuyan/anaconda3/bin/yapf",
-    // "python.formatting.yapfArgs": [
-    //     "--max-line-length=90"
-    // ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--skip-string-normalization",
+    ],
     "python.testing.pytestEnabled": false,
-    //"python.testing.pytestPath": "/home/liuyan/anaconda3/bin/pytest",
     "tabnine.experimentalAutoImports": true,
     "python.languageServer": "Pylance",
     "python.analysis.diagnosticMode": "workspace",
@@ -81,13 +77,10 @@
     "zenMode.centerLayout": false,
     "zenMode.hideLineNumbers": false,
     "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.rendererType": "dom",
     "terminal.external.linuxExec": "st",
     "[markdown]": {
         "editor.quickSuggestions": true
     },
-    "evermonkey.token": "S=s57:U=c11b33:E=16f3b1a3551:C=16f170dad90:P=1cd:A=en-devtoken:V=2:H=37bafb0eea19a1c133fafa653b2b4693",
-    "evermonkey.noteStoreUrl": "https://app.yinxiang.com/shard/s57/notestore",
     "explorer.confirmDelete": false,
     "gitlens.advanced.messages": {
         "suppressGitVersionWarning": true
@@ -1837,8 +1830,6 @@
         "yml"
     ],
     "vsicons.dontShowNewVersionMessage": true,
-    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7Zmxvd2NoYXJ0XCIsXCJjdXN0b21MaWJyYXJpZXNcIjpbXCJMLnNjcmF0Y2hwYWRcIl0sXCJwbHVnaW5zXCI6W10sXCJyZWNlbnRDb2xvcnNcIjpbXSxcImZvcm1hdFdpZHRoXCI6XCIyNDBcIixcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjgyNyxcImhlaWdodFwiOjExNjl9LFwic2VhcmNoXCI6dHJ1ZSxcInNob3dTdGFydFNjcmVlblwiOnRydWUsXCJncmlkQ29sb3JcIjpcIiNkMGQwZDBcIixcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImF1dG9zYXZlXCI6dHJ1ZSxcInJlc2l6ZUltYWdlc1wiOm51bGwsXCJvcGVuQ291bnRlclwiOjAsXCJ2ZXJzaW9uXCI6MTgsXCJ1bml0XCI6MSxcImlzUnVsZXJPblwiOmZhbHNlLFwidWlcIjpcIlwifSJ9",
-    "jupyter.alwaysTrustNotebooks": true,
     "leetcode.editor.shortcuts": [
         "submit",
         "test",
@@ -1851,12 +1842,4 @@
     "leetcode.defaultLanguage": "python3",
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.hint.commentDescription": false,
-    "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
-        "python": true
-    },
-    "github.copilot.autocomplete.enable": true,
 }
