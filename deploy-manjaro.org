@@ -17,6 +17,21 @@
      Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch
    #+END_SRC
 
+** chaotic-aur
+
+   #+BEGIN_SRC sh
+     # First, install the primary key - it can then be used to install our keyring and mirrorlist.
+     sudo pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+     sudo pacman-key --lsign-key FBA220DFC880C036
+     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' \
+          'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+     # Append (adding to the end of the file) to /etc/pacman.conf:
+     # Use USA and cdn source
+     [chaotic-aur]
+     Include = /etc/pacman.d/chaotic-mirrorlist
+   #+END_SRC
+
+
 ** speed up AUR
 *** makepkg
     #+BEGIN_SRC sh
