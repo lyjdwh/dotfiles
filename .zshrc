@@ -58,8 +58,7 @@ zinit wait="0" lucid light-mode for \
       hlissner/zsh-autopair \
       sobolevn/wakatime-zsh-plugin \
       MichaelAquilina/zsh-you-should-use \
-      MichaelAquilina/zsh-auto-notify \
-      vifon/zranger
+      MichaelAquilina/zsh-auto-notify
 
 ### End of Zinit's installer chunk
 
@@ -271,7 +270,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^o' autosuggest-accept
-autoload -U zranger
 bindkey -s '^]' 'zranger\n'
 
 bindkey -M vicmd ' ' vi-easy-motion
