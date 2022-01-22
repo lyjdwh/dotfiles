@@ -10,7 +10,6 @@
     "editor.formatOnPaste": true,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
-    "editor.renderIndentGuides": false,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.wordWrap": "on",
     "editor.quickSuggestions": {
@@ -44,7 +43,7 @@
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
-    }
+    },
     "commentTranslate.targetLanguage": "zh-CN",
     "commentTranslate.multiLineMerge": true,
     "code-runner.saveFileBeforeRun": true,
@@ -53,9 +52,9 @@
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
-        "--max-line-length=88",
+        "--max-line-length=120",
         "--extend-ignore=F403 F405 W503 E203",
-        "--maximum-complexity=10",
+        "--maximum-complexity=18",
     ],
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
@@ -70,7 +69,6 @@
     "window.zoomLevel": 1,
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    // "outline.showVariables": true,
     "outline.showFunctions": true,
     "breadcrumbs.showVariables": true,
     "debug.toolBarLocation": "docked",
@@ -87,60 +85,14 @@
     },
     "git.ignoreLegacyWarning": true,
     "bookmarks.saveBookmarksInProject": true,
-    "remote-github.mountPoint": "/home/liuyan/",
     "alt-editor.name": "emacs",
     "alt-editor.binary": "emacsclient",
     "alt-editor.args": "-a emacs --no-wait +{line} {filename}",
     "latex-utilities.liveReformat.enabled": true,
-    "latex-workshop.view.pdf.viewer": "tab",
     "latex-utilities.countWord.format": "${words} Words",
-    "latex-workshop.latex.clean.fileTypes": [
-        "*.aux",
-        "*.bbl",
-        "*.blg",
-        "*.idx",
-        "*.ind",
-        "*.lof",
-        "*.lot",
-        "*.out",
-        "*.toc",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo",
-        "*.gls",
-        "*.ist",
-        "*.fls",
-        "*.log",
-        "*.fdb_latexmk",
-        "*.snm",
-        "*.nav",
-        "*.synctex.gz"
-    ],
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "xelatex",
-            "tools": [
-                "xelatex"
-            ]
-        },
-        {
-            "name": "xelatex -> bibtex -> xelatex*2",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
-            ]
-        },
-        {
-            "name": "pdflatex",
-            "tools": [
-                "pdflatex"
-            ]
-        },
-    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
@@ -150,25 +102,10 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-pdf",
+                "-outdir=%OUTDIR%",
                 "%DOC%"
-            ]
-        },
-        {
-            "name": "xelatex",
-            "command": "xelatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ]
+            ],
+            "env": {}
         },
         {
             "name": "pdflatex",
@@ -177,9 +114,18 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "%DOCFILE%"
-            ]
+                "%DOC%"
+            ],
+            "env": {}
         },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
     ],
     "vim.easymotion": true,
     "vim.surround": true,
@@ -336,6 +282,16 @@
             "commands": [
                 // "workbench.action.files.openFile"
                 "fzf-quick-open.runFzfFile",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "j"
+            ],
+            "commands": [
+                "extension.dired.open",
             ]
         },
         {
@@ -1110,7 +1066,7 @@
             "before": [
                 "<leader>",
                 "t",
-                "a"
+                "e"
             ],
             "commands": [
                 "workbench.action.toggleActivityBarVisibility"
@@ -1121,6 +1077,16 @@
                 "<leader>",
                 "t",
                 "b"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "t"
             ],
             "commands": [
                 "workbench.action.toggleSidebarVisibility"
@@ -1842,4 +1808,6 @@
     "leetcode.defaultLanguage": "python3",
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.hint.commentDescription": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "dired.ask_directory": false,
 }
