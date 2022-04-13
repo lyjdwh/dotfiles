@@ -165,7 +165,7 @@ alias te="trans -e google -s auto -t en -show-original y -show-original-phonetic
 
 alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
 alias wn="watch -n 5 -d nvidia-smi"
-alias wn2="watch --color -n1 gpustat -cpu"
+alias wn2="gpustat -i 1 -cpu"
 alias sudo='sudo -E'
 alias c='clear'
 alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
@@ -198,6 +198,7 @@ alias zu="zinit update"
 alias zt="zpmod source-study"
 alias df="/usr/bin/duf"
 alias um="proxychains -q mbsync -a"
+alias f="fuck"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -270,7 +271,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^o' autosuggest-accept
-bindkey -s '^]' 'zranger\n'
 
 bindkey -M vicmd ' ' vi-easy-motion
 
@@ -347,7 +347,7 @@ kp(){
     elif [[ $1 == "tim" ]];then
         pgrep "TIM" | xargs kill -9
     else
-        pkill $1
+        pkill -9 $1
     fi
 }
 

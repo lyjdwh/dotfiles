@@ -38,7 +38,8 @@
     "workbench.settings.editor": "json",
     "workbench.colorTheme": "Dracula",
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter-notebook",
+        "*.drawio": "hediet.vscode-drawio-text"
     },
     "notebook.cellToolbarLocation": {
         "default": "right",
@@ -66,7 +67,6 @@
     "python.analysis.diagnosticMode": "workspace",
     "python.analysis.typeCheckingMode": "basic",
     "window.menuBarVisibility": "toggle",
-    "window.zoomLevel": 1,
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "outline.showFunctions": true,
@@ -1810,4 +1810,11 @@
     "leetcode.hint.commentDescription": false,
     "security.workspace.trust.untrustedFiles": "open",
     "dired.ask_directory": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "hediet.vscode-drawio.theme": "Kennedy",
+    "hediet.vscode-drawio.codeLinkActivated": true,
+    "window.zoomLevel": 1,
 }

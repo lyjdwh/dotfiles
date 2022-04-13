@@ -95,3 +95,4 @@ unmap('od');
 
 settings.tabsMRUOrder = false;
 settings.tabsThreshold = 20;
+settings.smoothScroll = false;

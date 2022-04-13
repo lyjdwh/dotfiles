@@ -26,7 +26,7 @@ define_multipurpose_modmap({
     Key.LEFT_SHIFT: [Key.F13, Key.LEFT_SHIFT],
 })
 
-define_keymap(re.compile("Chromium|Google-chrome"), {
+define_keymap(re.compile("Chromium|Google-chrome|microsoft-edge"), {
     # Ctrl+Alt+j/k to switch next/previous tab
     K("RC-M-j"): K("C-TAB"),
     K("RC-M-k"): K("C-Shift-TAB"),
@@ -66,6 +66,7 @@ define_keymap(None, {
     K("RC-Y"): launch(cycle("yesplaymusic")),
     K("RC-SEMICOLON"): launch(cycle("st-256color")),
     K("RC-W"): launch(cycle("wine")),
+    K("RC-S"): launch(cycle("steam")),
 
     K("F13"): K("C-space"),
 

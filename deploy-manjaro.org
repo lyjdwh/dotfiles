@@ -31,7 +31,6 @@
      Include = /etc/pacman.d/chaotic-mirrorlist
    #+END_SRC
 
-
 ** speed up AUR
 *** makepkg
     #+BEGIN_SRC sh
@@ -194,8 +193,6 @@
    #+BEGIN_SRC sh
      zsh
      zinit module build
-     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-     ~/.fzf/install
    #+END_SRC
 
 ** 将bash/zsh的终端输出信息和日志改回英文
@@ -444,6 +441,16 @@
      brew update
    #+END_SRC
 
+** 游戏
+
+   #+BEGIN_SRC sh
+     sudo pacman -S steam-native lutris-git
+     yay -S proton-ge-custom-bin # enable in steam play
+
+     # wine-ge-custom
+     # https://github.com/loathingKernel/PKGBUILDs/releases/tag/packages
+   #+END_SRC
+
 * misc
 ** tlp
    #+BEGIN_SRC sh
@@ -563,6 +570,8 @@
 *** gtk-key-theme
     https://wiki.archlinux.org/index.php/GTK#Keyboard_shortcuts
 
+** wallpaper engine
+   https://github.com/Almamu/linux-wallpaperengine
 ** 系统时钟
    启动 NTP 自动对时
 
@@ -600,7 +609,7 @@
      chmod +x /usr/local/bin/cht
 
      # kernel
-     # https://github.com/antman666/linux-xanmod-cacule-uksm-cjktty/releases
-     yay -S linux-xanmod-cacule-uksm-cjktty linux-xanmod-cacule-uksm-cjktty-headers
+     # https://github.com/antman666/linux-xanmod-tt-uksm-cjktty/releases
+     yay -S linux-xanmod-tt-uksm-cjktty linux-xanmod-cacule-tt-cjktty-headers
      sudo pacman -S dkms nvidia-dkms
    #+END_SRC
