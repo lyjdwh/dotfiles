@@ -59,3 +59,5 @@
     ~/.config/ptpython/config.py                        :  ptpython_config.py
     ~/.config/qv2ray/Qv2ray.conf                        :  qv2ray.conf
     ~/.config/mpv/scripts                               :  mpv
+
+    ~/.config/yesplaymusic/config.json                  :  yesplaymusic-config.json
