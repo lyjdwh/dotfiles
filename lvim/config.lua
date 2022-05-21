@@ -119,7 +119,7 @@ lvim.builtin.which_key.mappings["v"] = {"<cmd>lua require('tsht').nodes()<cr>", 
 
 -- User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
@@ -129,7 +129,7 @@ lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ensure_installed = "all"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -277,7 +277,7 @@ lvim.plugins = {
   {"nvim-treesitter/nvim-treesitter-textobjects",
     config = function()
       require"nvim-treesitter.configs".setup {
-          ensure_installed = "maintained",
+          ensure_installed = "all",
           highlight = {enable = true, disable = {"vim"}},
           textobjects = {
               select = {

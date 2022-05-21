@@ -107,7 +107,7 @@
 ** base
 
    #+BEGIN_SRC sh
-     sudo pacman -S vim zsh tmux google-chrome yay axel base-devel proxychains \
+     sudo pacman -S vim zsh tmux google-chrome tor-browser yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs-git fzf the_silver_searcher pandoc-bin \
           cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf
      yay -S visual-studio-code-bin wakatime-cli
@@ -444,11 +444,16 @@
 ** 游戏
 
    #+BEGIN_SRC sh
-     sudo pacman -S steam-native lutris-git
+     sudo pacman -S steam-manjaro lutris-git
      yay -S proton-ge-custom-bin # enable in steam play
 
      # wine-ge-custom
      # https://github.com/loathingKernel/PKGBUILDs/releases/tag/packages
+
+     # steam 中文简体interface
+     # https://orcuslc.github.io/dev/2019/10/09/Solving-Problems-with-Simplified-Chinese-in-Steam-on-Arch-Linux/
+     # add next line to ~/.local/share/Steam/steam.sh
+     export FONTCONFIG_FILE=/usr/bin/.local/share/Steam/steam-fontconfig.conf
    #+END_SRC
 
 * misc

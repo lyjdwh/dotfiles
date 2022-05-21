@@ -1,7 +1,9 @@
 {
 	"window": {
-		"height": 1039,
-		"width": 1906
+		"x": 7,
+		"y": 20,
+		"width": 1906,
+		"height": 1039
 	},
 	"settings": {
 		"lang": "zh-CN",
@@ -85,7 +87,8 @@
 				"shortcut": "CommandOrControl+M",
 				"globalShortcut": "Control+Command+M"
 			}
-		]
+		],
+		"unmQQCookie": "uin=1412511544; qm_keyst=Q_H_L_5q-y-lVWGp0wInO-GNVGmFukVUd_TI0CTPjTebQnhMSJg5kA2HyWqCQ;"
 	},
 	"osdlyrics": {
 		"show": false

@@ -27,7 +27,7 @@ zinit snippet OMZL::directories.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::git-extras
 zinit snippet OMZP::sudo
-zinit snippet OMZP::copydir
+zinit snippet OMZP::copypath
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::web-search
 zinit snippet OMZP::common-aliases
@@ -132,7 +132,6 @@ alias cod="conda deactivate"
 alias coi="conda install"
 alias coui="conda uninstall"
 alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=http://127.0.0.1:12333"
-alias proxyss="export http_proxy=http://172.16.1.135:3128; export https_proxy=http://172.16.1.135:3128"
 alias unproxy="unset http_proxy; unset https_proxy"
 alias pp="ptipython"
 alias dstat='dstat -cdlmnpsy'
@@ -166,6 +165,7 @@ alias te="trans -e google -s auto -t en -show-original y -show-original-phonetic
 alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
 alias wn="watch -n 5 -d nvidia-smi"
 alias wn2="gpustat -i 1 -cpu"
+alias wn3="nvtop"
 alias sudo='sudo -E'
 alias c='clear'
 alias fzf="fzf -m" # multi-select mode, TAB and Shift-TAB to mark multiple items
@@ -248,7 +248,6 @@ eval $(thefuck --alias)
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle' 'ctrl-a:toggle-all' 'ctrl-o:accept'
 zstyle ':completion:*' sort false
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
