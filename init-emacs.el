@@ -11,7 +11,7 @@
 
 (require 'cl-lib)
 (defvar my/packages '(use-package which-key counsel quelpa-use-package evil evil-collection
-                       all-the-icons cape unicode-escape orderless))
+                       all-the-icons corfu cape unicode-escape orderless))
 
 (defun my/packages-installed-p ()
   (cl-loop for pkg in my/packages
@@ -72,6 +72,24 @@
 
 (menu-bar-mode -1)
 
+(use-package corfu
+  :config
+  (setq corfu-cycle t)
+  (setq corfu-auto t)
+
+  (setq corfu-auto-delay 0)
+  (setq corfu-auto-prefix 1)
+
+  (require 'corfu-info)
+  (require 'corfu-history)
+
+  (global-corfu-mode)
+  (corfu-history-mode t)
+
+  (define-key corfu-map (kbd "C-j") 'corfu-next)
+  (define-key corfu-map (kbd "C-k") 'corfu-previous)
+  )
+
 (use-package cape
   :config
   (add-to-list 'completion-at-point-functions #'cape-symbol)
@@ -86,7 +104,7 @@
   (defun my-tab ()
     (interactive)
     (or (copilot-accept-completion)
-        (lsp-bridge-ui-complete)))
+        (corfu-complete)))
 
   :hook (prog-mode . copilot-mode)
   :bind (:map evil-insert-state-map
@@ -95,7 +113,7 @@
               ("C-S-l" . 'copilot-accept-completion-by-line)
               ("C-," . 'copilot-next-completion)
               ("C-." . 'copilot-previous-completion)
-              :map lsp-bridge-ui-map
+              :map corfu-map
               ("<tab>" . 'my-tab)
               ("TAB" . 'my-tab)
               ("C-l" . 'copilot-accept-completion-by-word)
@@ -112,15 +130,9 @@
     :quelpa
     (lsp-bridge :fetcher github :repo "manateelazycat/lsp-bridge" :files ("*"))
     :config
-    (require 'lsp-bridge-ui)
-    (require 'lsp-bridge-ui-history)
-    (require 'lsp-bridge-orderless) ;; make lsp-bridge support fuzzy match, optional
-    (require 'tabnine-capf)
-
-    (global-lsp-bridge-ui-mode)       ;; use lsp-bridge-ui as completion ui
-    (lsp-bridge-ui-history-mode t)
-
-    (setq lsp-bridge-ui-auto-delay 0)
+    (setq lsp-bridge-completion-provider 'corfu)
+    (require 'lsp-bridge-icon)
+    (require 'lsp-bridge-orderless)
 
     ;; For Xref support
     (add-hook 'lsp-bridge-mode-hook (lambda ()
@@ -146,21 +158,10 @@
                        (lsp-bridge-mix-multi-backends) ; 通过Cape融合多个补全后端
                        )))
 
-    ;; make evil jump & jump back as expected
-    (setq-local evil-goto-definition-functions '(lsp-bridge-jump))
-    (evil-add-command-properties #'lsp-bridge-jump :jump t)
-
-    ;; keybindings
-    (evil-define-key 'normal lsp-bridge-ref-mode-map
-      (kbd "RET") 'lsp-bridge-ref-open-file-and-stay
-      "q" 'lsp-bridge-ref-quit)
-
     (define-key evil-motion-state-map "gR" #'lsp-bridge-rename)
     (define-key evil-motion-state-map "gr" #'lsp-bridge-find-references)
     (define-key evil-normal-state-map "gi" #'lsp-bridge-find-impl)
-    (define-key evil-motion-state-map "gd" #'lsp-bridge-jump)
+    (define-key evil-motion-state-map "gd" #'lsp-bridge-find-def)
     (define-key evil-motion-state-map "gs" #'lsp-bridge-restart-process)
     (define-key evil-normal-state-map "gh" #'lsp-bridge-lookup-documentation)
-
-    (define-key lsp-bridge-ui-map (kbd "s-SPC") #'lsp-bridge-ui-insert-separator)
   )
