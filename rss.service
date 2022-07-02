@@ -1,0 +1,10 @@
+[Unit]
+Description=rss server
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/python /home/liuyan/bin/morerssplz/main.py --cache-dir=/home/liuyan/.cache/rss
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

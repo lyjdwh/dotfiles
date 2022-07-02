@@ -46,6 +46,7 @@
     ~/.config/okularpartrc                              :  okular/okularpartrc
 
     ~/.config/systemd/user/emacs.service                :  emacs.service
+    ~/.config/systemd/user/rss.service                  :  rss.service
 
     ~/.config/llpp.conf                                 :  llpp.conf
     ~/.config/surfingkeys.js                            :  surfingkeys.js
