@@ -64,3 +64,5 @@
     ~/.config/yesplaymusic/config.json                  :  yesplaymusic-config.json
     ~/.local/share/Steam/steam-fontconfig.conf          :  steam-fontconfig.conf
 
+    ~/.config/clangd/config.yaml                        :  clangd-config.yaml
+

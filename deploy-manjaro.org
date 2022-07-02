@@ -110,6 +110,7 @@
      sudo pacman -S vim zsh tmux google-chrome tor-browser yay axel base-devel proxychains \
           xclip xsel neovim anaconda emacs-native-comp-nopgtk-git fzf the_silver_searcher pandoc-bin \
           cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf wakatime
+     sudo pacman -S clang llvm llvm-libs lldb
      yay -S visual-studio-code-bin
      sudo pacman -R firefox
 
@@ -319,7 +320,7 @@
 
     #+BEGIN_SRC sh
       cd ~/bin && git clone https://github.com/manateelazycat/snails.git
-      sudo pacman -S rust clang-git
+      sudo pacman -S rust
       cd ~/bin && git clone https://github.com/cireu/fuz.el
       cd fuz.el
       cargo build --release
