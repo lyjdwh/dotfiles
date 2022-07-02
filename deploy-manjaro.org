@@ -108,9 +108,9 @@
 
    #+BEGIN_SRC sh
      sudo pacman -S vim zsh tmux google-chrome tor-browser yay axel base-devel proxychains \
-          xclip xsel neovim anaconda emacs-git fzf the_silver_searcher pandoc-bin \
-          cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf
-     yay -S visual-studio-code-bin wakatime-cli
+          xclip xsel neovim anaconda emacs-native-comp-nopgtk-git fzf the_silver_searcher pandoc-bin \
+          cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf wakatime
+     yay -S visual-studio-code-bin
      sudo pacman -R firefox
 
      # chrome with surfingkeys
@@ -268,7 +268,7 @@
      pip install python-bidi
      sudo pacman -S ueberzug mpv imagemagick ffmpeg \
           highlight bat pygmentize atool unrar tar unzip zip w3m mediainfo
-     yay -S dragon-drag-and-drop
+     yay -S dragon-drop
    #+END_SRC
 
 ** tmux
@@ -284,9 +284,10 @@
      git clone https://github.com/lyjdwh/spacemacs.d.git ~/.spacemacs.d
      git clone -b develop https://github.com/syl20bnr/spacemacs ~/spacemacs
      git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
-     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf ccls libvterm pyright emacs-org-mode-git
+     sudo pacman -S zeal aspell aspell-en git-delta wkhtmltopdf libvterm pyright emacs-org-mode-git
      cnpm install mathjax-node-cli
      yay -S libtd
+     pip install cmake-language-server --user
      ## all-the-icons-install-fonts
      ## company-tabnine-install-binary
 
@@ -296,6 +297,10 @@
      mkdir ~/bin
    #+END_SRC
 
+*** setup
+    - dap-cpptools-setup
+    - dap-gdb-lldb-setup
+ 
 *** org protocol
     https://www.orgroam.com/manual.html#Installation-_00281_0029
 
@@ -314,7 +319,7 @@
 
     #+BEGIN_SRC sh
       cd ~/bin && git clone https://github.com/manateelazycat/snails.git
-      sudo pacman -S rust clang
+      sudo pacman -S rust clang-git
       cd ~/bin && git clone https://github.com/cireu/fuz.el
       cd fuz.el
       cargo build --release
@@ -594,15 +599,16 @@
 ** others
 
    #+BEGIN_SRC sh
-     sudo pacman -S ncdu you-get youtube-dl ripgrep ripgrep-all qbittorrent \
+     sudo pacman -S ncdu you-get yt-dlp ripgrep ripgrep-all qbittorrent \
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
-          shellcheck-static mendeleydesktop-bundled hugo xmind-2021 downgrade
+          shellcheck-static mendeleydesktop-bundled hugo xmind-2021 downgrade procs
      yay -S texlive-most-doc tllocalmgr-git
      yay -S deepin-wine-wechat deepin-wine-tim com.qq.weixin.work.deepin
      yay -S lazygit notify-osd zoom nutstore-experimental
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      # or sudo pacman -S libreoffice-fresh libreoffice-fresh-zh-cn
      yay -S scrcpy sndcpy
+     yay -S okular-backend-mupdf-git
 
      # 中文汉化
      sudo pacman -S man-pages-zh_cn # gimp-help-zh_cn libreoffice-fresh-zh-cn

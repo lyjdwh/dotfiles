@@ -162,7 +162,7 @@ alias te="trans -e google -s auto -t en -show-original y -show-original-phonetic
 #alias curl="curl -x socks5://127.0.0.1:1080"
 # Download videos from YouTube, youku ....
 
-alias yd="youtube-dl --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
+alias yd="yt-dlp --external-downloader 'axel'  --external-downloader-args '-n 16' -ic "
 alias wn="watch -n 5 -d nvidia-smi"
 alias wn2="gpustat -i 1 -cpu"
 alias wn3="nvtop"
@@ -199,6 +199,7 @@ alias zt="zpmod source-study"
 alias df="/usr/bin/duf"
 alias um="proxychains -q mbsync -a"
 alias f="fuck"
+alias fp="procs"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -243,6 +244,9 @@ export LSP_USE_PLISTS=true
 
 #export LC_CTYPE=zh_CN.UTF-8
 eval $(thefuck --alias)
+
+# fix vterm ls
+[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || eval $(dircolors -b)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -354,11 +358,6 @@ topp(){
     top -p $(pgrep -d ',' $1) #process name
 }
 
-fp() {
-    ps aux | head -n 1
-    ps aux | grep -E $1 | grep -v grep
-}
-
 cmp(){
     ps aux | grep -E $1 | grep -v grep |awk '{s+=$3} END {mem=s*160 ;print "cpu: " s " % ;" mem " M"}'
     ps aux | grep -E $1 | grep -v grep |awk '{s+=$4} END {mem=s*160 ;print "mem: " s " % ;" mem " M"}'
@@ -390,6 +389,11 @@ re() {
 
 ac() {
     sudo pacman -Rs $(pacman -Qtdq)
+}
+
+og(){
+    url=$(git remote -v | sed 1q | awk '{print $2}')
+    xdg-open $url
 }
 
 conda_init_fun () {

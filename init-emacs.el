@@ -1,6 +1,17 @@
 ;; init-emacs.el
 ;; emacs -Q -l init-emacs.el
 
+;; basics
+;; don't auto-save and back up files
+(setq auto-save-default nil
+      make-backup-files nil)
+
+;; look and feel
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives
       '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
@@ -9,24 +20,15 @@
 
 (package-initialize)
 
-(require 'cl-lib)
-(defvar my/packages '(use-package which-key counsel quelpa-use-package evil evil-collection
-                       all-the-icons corfu cape unicode-escape orderless))
-
-(defun my/packages-installed-p ()
-  (cl-loop for pkg in my/packages
-	    when (not (package-installed-p pkg)) do (cl-return nil)
-	    finally (cl-return t)))
-
-(unless (my/packages-installed-p)
-  (message "%s" "Refreshing package database...")
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (dolist (pkg my/packages)
-    (when (not (package-installed-p pkg))
-	  (package-install pkg))))
+  (package-install 'use-package))
 
 (require 'use-package)
-(require 'quelpa-use-package)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
+(use-package quelpa-use-package)
 
 (use-package which-key
   :config
@@ -59,8 +61,10 @@
   (awesome-tab :fetcher github :repo "manateelazycat/awesome-tab")
   :config
   (defun awesome-tab-project-name ()
-    (let ((project-name (nth 2 (project-current))))
-      (message project-name)
+    (let ((project-name
+           (if (version< "29.0" emacs-version)
+               (nth 2 (project-current))
+             (cdr (project-current)))))
       (if project-name
           (format "Project: %s" (expand-file-name project-name))
         awesome-tab-common-group-name)))
@@ -88,6 +92,11 @@
 
   (define-key corfu-map (kbd "C-j") 'corfu-next)
   (define-key corfu-map (kbd "C-k") 'corfu-previous)
+  )
+
+(use-package corfu-doc
+  :bind (:map corfu-map
+              ("C-h" . corfu-doc-toggle))
   )
 
 (use-package cape
@@ -126,11 +135,18 @@
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
 (use-package lsp-bridge
     :quelpa
     (lsp-bridge :fetcher github :repo "manateelazycat/lsp-bridge" :files ("*"))
     :config
-    (setq lsp-bridge-completion-provider 'corfu)
+    (setq lsp-bridge-hide-completion-characters '(":" ";" ")" "]" "}" ","))
+    (setq lsp-bridge-enable-diagnostics t)
+    (setq lsp-bridge-enable-candidate-doc-preview t)
+
     (require 'lsp-bridge-icon)
     (require 'lsp-bridge-orderless)
 
@@ -154,14 +170,16 @@
 
     (dolist (hook lsp-bridge-default-mode-hooks)
       (add-hook hook (lambda ()
+                       (setq-local corfu-auto nil)
                        (lsp-bridge-mode 1)         ; 开启lsp-bridge
                        (lsp-bridge-mix-multi-backends) ; 通过Cape融合多个补全后端
                        )))
 
-    (define-key evil-motion-state-map "gR" #'lsp-bridge-rename)
-    (define-key evil-motion-state-map "gr" #'lsp-bridge-find-references)
-    (define-key evil-normal-state-map "gi" #'lsp-bridge-find-impl)
-    (define-key evil-motion-state-map "gd" #'lsp-bridge-find-def)
-    (define-key evil-motion-state-map "gs" #'lsp-bridge-restart-process)
-    (define-key evil-normal-state-map "gh" #'lsp-bridge-lookup-documentation)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "gR") 'lsp-bridge-rename)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "gr") 'lsp-bridge-find-references)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "gi") 'lsp-bridge-find-impl)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "gd") 'lsp-bridge-find-def)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "gs") 'lsp-bridge-restart-process)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "gh") 'lsp-bridge-lookup-documentation)
+    (evil-define-key 'normal 'lsp-bridge-mode (kbd "K") 'lsp-bridge-lookup-documentation)
   )

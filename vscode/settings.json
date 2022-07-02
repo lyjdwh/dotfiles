@@ -77,7 +77,11 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.external.linuxExec": "st",
     "[markdown]": {
-        "editor.quickSuggestions": true
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
     },
     "explorer.confirmDelete": false,
     "gitlens.advanced.messages": {
