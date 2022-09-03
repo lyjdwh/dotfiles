@@ -1,5 +1,5 @@
-module_path+=( "$HOME/.zinit/module/Src")
-zmodload zdharma_continuum/zinit
+# module_path+=( "$HOME/.zinit/module/Src")
+# zmodload zdharma_continuum/zinit
 
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -49,7 +49,6 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit wait="0" lucid light-mode for \
       wfxr/forgit \
-      skywind3000/z.lua \
       changyuheng/fz \
       zsh-users/zsh-completions \
       zsh-users/zsh-history-substring-search \
@@ -59,6 +58,8 @@ zinit wait="0" lucid light-mode for \
       sobolevn/wakatime-zsh-plugin \
       MichaelAquilina/zsh-you-should-use \
       MichaelAquilina/zsh-auto-notify
+
+zinit load skywind3000/z.lua
 
 ### End of Zinit's installer chunk
 
@@ -114,13 +115,15 @@ alias vg="$EDITOR ~/.gitconfig"
 alias ai="sudo pacman -S"
 alias ar="sudo pacman -Rns"
 alias au="sudo pacman -Syu"
-# alias ac="pacman -Qdtq | sudo pacman -Rs"
 alias as="pacman -Ss"
-alias at="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
+alias ap="pacman -F"
+alias af="pacman -Ql"
 alias yay="yay --aur"
 alias yi="yay -S"
 alias yu="yay -Syu"
 alias ys="yay -Ss"
+alias yp="yay -Ps"
+alias yg="yay -G"
 alias ranger="TERM=xterm-256color ranger"
 alias ra="TERM=xterm-256color ranger"
 alias sra='sudo -E ranger'
@@ -146,7 +149,7 @@ alias mkdir="mkdir -p"
 alias zz='z -c' # 严格匹配当前路径的子路径
 alias zi='z -i' # 使用交互式选择模式
 alias zf='z -I' # 使用 fzf 对多个结果进行选择
-alias zb='z -b' # 快速回到父目录
+alias zb='z -b -I' # 快速回到父目录
 alias rm="rm -f" # rm -iv 删除时提醒
 #cp, mv 时显示进度条
 alias rscp="rsync -ahP"
@@ -215,7 +218,6 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-export PATH=$HOME/.conda/envs/torch/bin:$PATH
 export PATH=$HOME/doom-emacs/bin:$PATH
 export ZSH_WAKATIME_BIN=/usr/bin/wakatime
 export _FASD_DATA="$HOME/.zlua"
@@ -227,6 +229,8 @@ export TERM=st-direct
 export MARKER_KEY_GET='^b'
 export MARKER_KEY_NEXT_PLACEHOLDER='^n'
 export YSU_MESSAGE_POSITION="after"
+export LSP_USE_PLISTS=true
+export ANACONDA_HOME="~/.conda"
 export LSP_USE_PLISTS=true
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
@@ -389,6 +393,11 @@ re() {
 
 ac() {
     sudo pacman -Rs $(pacman -Qtdq)
+}
+
+at(){
+    NUM=${1:-20}
+    expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n $NUM
 }
 
 og(){

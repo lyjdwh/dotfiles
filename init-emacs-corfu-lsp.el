@@ -46,6 +46,8 @@
   (setq corfu-quit-at-boundary t)
   (setq corfu-quit-no-match t)
   (setq corfu-preview-current nil)
+  (setq corfu-preselect-first t)
+  (setq corfu-scroll-margin 5)
 
   (require 'corfu-info)
   (require 'corfu-history)
@@ -91,7 +93,46 @@
         completion-category-overrides nil))
 
 (use-package cape
+  :init
+  (defun lsp-trigger-chars ()
+    (->> (lsp--server-capabilities)
+         (lsp:server-capabilities-completion-provider?)
+         (lsp:completion-options-trigger-characters?)))
+
+  (defun cape-check-trigger (trigger-chars)
+    (not (save-excursion
+           (goto-char (or (car (bounds-of-thing-at-point 'symbol)) (point)))
+           (and (lsp-completion--looking-back-trigger-characterp trigger-chars) t))))
+
+  (defun trigger-char-p (sym)
+    (let ((trigger-chars (lsp-trigger-chars)))
+      (cape-check-trigger trigger-chars)))
+
+  (defun yas-trigger-char-p (sym)
+    (let ((trigger-chars (append (lsp-trigger-chars)
+                                 '("\'" "\""))))
+      (cape-check-trigger trigger-chars)))
+
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(orderless))
+
+    ;; configure the cape-capf-buster.
+    (setq-local completion-at-point-functions
+                (list (cape-capf-buster
+                       (cape-super-capf
+                        (cape-capf-predicate #'cape-file #'trigger-char-p)
+                        #'lsp-completion-at-point
+                        (cape-capf-predicate #'cape-dabbrev #'trigger-char-p)
+                        (cape-capf-predicate (cape-company-to-capf #'company-yasnippet) #'yas-trigger-char-p)
+                        )
+                       'equal
+                       ))))
+
   :config
+  (setq cape-dabbrev-min-length 3)
+  (setq cape-dabbrev-check-other-buffers 'some)
+
   (add-to-list 'completion-at-point-functions #'cape-symbol)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
@@ -110,21 +151,6 @@
   (lsp-completion-provider :none) ;; we use Corfu!
   (lsp-enable-file-watchers nil)
   :init
-  (defun my/lsp-mode-setup-completion ()
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless))
-
-    ;; configure the cape-capf-buster.
-    (setq-local completion-at-point-functions
-                (list (cape-capf-buster
-                       (cape-super-capf
-                        #'lsp-completion-at-point
-                        #'cape-file
-                        #'cape-dabbrev
-                        (cape-company-to-capf #'company-yasnippet))
-                       'equal
-                       ))))
-
   (add-hook 'python-mode-hook #'lsp-deferred)
   (add-hook 'c++-mode-hook #'lsp-deferred)
 

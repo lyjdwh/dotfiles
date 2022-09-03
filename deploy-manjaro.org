@@ -31,6 +31,13 @@
      Include = /etc/pacman.d/chaotic-mirrorlist
    #+END_SRC
 
+** 自动选择源
+
+   #+BEGIN_SRC sh
+     Server = https://mirrors.cernet.edu.cn/manjaro/unstable/$repo/$arch
+     Server = https://mirrors.cernet.edu.cn/archlinuxcn/$arch
+   #+END_SRC
+
 ** speed up AUR
 *** makepkg
     #+BEGIN_SRC sh
@@ -107,9 +114,9 @@
 ** base
 
    #+BEGIN_SRC sh
-     sudo pacman -S vim zsh tmux google-chrome tor-browser yay axel base-devel proxychains \
+     sudo pacman -S vim zsh tmux google-chrome tor-browser yay axel base-devel ntfs-3g proxychains \
           xclip xsel neovim anaconda emacs-native-comp-nopgtk-git fzf the_silver_searcher pandoc-bin \
-          cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf wakatime
+          cmake ranger tealdeer neofetch htop glances trash oath-toolkit tokei duf wakatime autorandr
      sudo pacman -S clang llvm llvm-libs lldb
      yay -S visual-studio-code-bin
      sudo pacman -R firefox
@@ -170,7 +177,8 @@
    #+BEGIN_SRC sh
      sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-lua \
           fcitx5-pinyin-zhwiki fcitx5-pinyin-moegirl
-     yay -S fcitx5-pinyin-sougou
+     yay -S fcitx5-pinyin-sougou # https://github.com/CHN-beta/sougou-dict
+     yay -S fcitx5-skin-zhuobihaotian-luotianyi
    #+END_SRC
 
 ** oh-my-zsh
@@ -301,7 +309,7 @@
 *** setup
     - dap-cpptools-setup
     - dap-gdb-lldb-setup
- 
+
 *** org protocol
     https://www.orgroam.com/manual.html#Installation-_00281_0029
 
@@ -596,15 +604,20 @@
      sudo timedatectl set-ntp true
      sudo timedatectl timesync-status
    #+END_SRC
+** chrome 设置
+
+   显示完整地址：右键地址栏然后选择 “总是选择完整地址”
 
 ** others
 
    #+BEGIN_SRC sh
      sudo pacman -S ncdu you-get yt-dlp ripgrep ripgrep-all qbittorrent \
           okular texlive-most texlive-langchinese bleachbit expac fd net-tools \
-          shellcheck-static mendeleydesktop-bundled hugo xmind-2021 downgrade procs
+          shellcheck-static mendeleydesktop-bundled hugo xmind-2021 downgrade \
+          procs scrot gifsicle pcmanfm \
+     sudo pacman -S icalingua++
      yay -S texlive-most-doc tllocalmgr-git
-     yay -S deepin-wine-wechat deepin-wine-tim com.qq.weixin.work.deepin
+     yay -S deepin-wine-wechat com.qq.weixin.work.deepin
      yay -S lazygit notify-osd zoom nutstore-experimental
      yay -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts
      # or sudo pacman -S libreoffice-fresh libreoffice-fresh-zh-cn
@@ -624,4 +637,7 @@
      # https://github.com/antman666/linux-xanmod-tt-uksm-cjktty/releases
      yay -S linux-xanmod-tt-uksm-cjktty linux-xanmod-cacule-tt-cjktty-headers
      sudo pacman -S dkms nvidia-dkms
+
+     # mpris-proxy
+     systemctl enable mpris-proxy --user --now
    #+END_SRC
