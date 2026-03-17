@@ -27,3 +27,5 @@
     diffFilter = delta --color-only
 [include]
     path = ~/.private/gitconfig
+[http]
+	postBuffer = 524288000

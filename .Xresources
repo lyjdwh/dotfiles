@@ -1,16 +1,18 @@
 !!Xft settings
-Xft.dpi:           96
+Xft.dpi:           157
 Xft.antialias:     true
 Xft.rgba:          rgb
 Xft.hinting:       true
 Xft.hintstyle:     hintslight
 
 ! rofi vim-like keybindings
-rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab
-rofi.kb-row-down:                    Down,Control+j
 rofi.kb-accept-entry:                Control+m,Return,KP_Enter
 rofi.kb-remove-to-eol:               Control+Shift+e
 rofi.kb-remove-char-back:            BackSpace
+rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab
+rofi.kb-row-down:                    Down,Control+j
+rofi.kb-mode-next:                   Shift+Right,Control+Tab,Control+l
+rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Control+h
 
 !! urxvt
 URxvt*externalBorder: 0

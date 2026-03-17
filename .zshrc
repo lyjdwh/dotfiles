@@ -100,13 +100,13 @@ setopt noclobber
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# export EDITOR="lvim"
+# export EDITOR="nvim"
 export EDITOR="emacsclient -t -a lvim"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
-alias vim="lvim"
-alias v="lvim"
+alias vim="nvim"
+alias v="nvim"
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="$EDITOR ~/.zshrc"
@@ -133,8 +133,8 @@ alias sra='sudo -E ranger'
 alias pc="proxychains -q"
 #alias pa="pacapt"
 alias co="conda"
-alias coa="conda activate"
-alias cod="conda deactivate"
+alias sa="conda activate"
+alias sd="conda deactivate"
 alias coi="conda install"
 alias coui="conda uninstall"
 alias proxy="export http_proxy=http://127.0.0.1:12333; export https_proxy=http://127.0.0.1:12333"
@@ -206,6 +206,8 @@ alias df="/usr/bin/duf"
 alias um="proxychains -q mbsync -a"
 alias f="fuck"
 alias fp="procs"
+alias copy="xrandr --output HDMI-0 --auto --output HDMI-A-1-0 --auto"
+alias q="cd .."
 
 export RANGER_LOAD_DEFAULT_RC=false
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
@@ -224,7 +226,7 @@ export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary
 export PATH=$HOME/doom-emacs/bin:$PATH
 export ZSH_WAKATIME_BIN=/usr/bin/wakatime
 export _FASD_DATA="$HOME/.zlua"
-export RANGER_ZLUA="$HOME/.zinit/plugins/skywind3000---z.lua/z.lua"
+export RANGER_ZLUA="$HOME/.local/share/zinit/plugins/skywind3000---z.lua/z.lua"
 export _ZL_HYPHEN=1 # 为z 支持连字符-
 export GTAGSLABEL=pygments
 export TERM=st-direct
@@ -235,6 +237,8 @@ export YSU_MESSAGE_POSITION="after"
 export LSP_USE_PLISTS=true
 export ANACONDA_HOME="~/.conda"
 export LSP_USE_PLISTS=true
+
+export PATH=~/.npm-global/bin:$PATH
 
 #修改按键caps->esc, space->ctrl,空格键在按住时作为附加的ctrl键
 #使用caps2esc
@@ -248,6 +252,10 @@ export LSP_USE_PLISTS=true
 ##Finally use xcape to cause the space bar to generate a space when tapped.
 #xcape -e "$spare_modifier=space"
 
+if [ "$TERM"="xterm-256color" ] ;then
+   export LANGUAGE=en_US
+   export LANG=en_US.UTF-8
+fi
 
 #export LC_CTYPE=zh_CN.UTF-8
 eval $(thefuck --alias)
@@ -289,6 +297,8 @@ function _z() { _zlua "$@"; }
 # Don't take 0.4s to change modes
 export KEYTIMEOUT=20
 export zsh_input_method=1
+
+export PATH=$HOME/.conda/envs/torch/bin:$PATH
 
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]] && [[ $(/usr/bin/fcitx5-remote) == 2 ]] ; then
@@ -430,3 +440,34 @@ init_nvm (){
     source /usr/share/nvm/init-nvm.sh
 }
 zsh-defer init_nvm
+### End of Zinit's installer chunk
+
+alias up="sudo docker compose up -d"
+# Shell-GPT integration ZSH v0.1
+_sgpt_zsh() {
+if [[ -n "$BUFFER" ]]; then
+    _sgpt_prev_cmd=$BUFFER
+    BUFFER+="⌛"
+    zle -I && zle redisplay
+    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd")
+    zle end-of-line
+fi
+}
+zle -N _sgpt_zsh
+bindkey ^k _sgpt_zsh
+# Shell-GPT integration ZSH v0.1
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# opencode
+export PATH=/home/liuyan/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/home/liuyan/.bun/_bun" ] && source "/home/liuyan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias claude-mem='/home/liuyan/.bun/bin/bun "/home/liuyan/.claude/plugins/cache/thedotmack/claude-mem/10.5.6/scripts/worker-service.cjs"'
+alias ck="claude --dangerously-skip-permissions"

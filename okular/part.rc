@@ -1,21 +1,21 @@
 <?xml version='1.0'?>
 <!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
-<gui version="49" name="okular_part">
+<gui name="okular_part" version="55">
  <MenuBar>
   <Menu name="file">
    <text>&amp;File</text>
-   <Action name="get_new_stuff" group="file_open"/>
-   <Action name="import_ps" group="file_open"/>
-   <Action name="file_save" group="file_save"/>
-   <Action name="file_save_as" group="file_save"/>
-   <Action name="file_reload" group="file_save"/>
-   <Action name="file_print" group="file_print"/>
-   <Action name="file_print_preview" group="file_print"/>
-   <Action name="open_containing_folder" group="file_print"/>
-   <Action name="properties" group="file_print"/>
-   <Action name="embedded_files" group="file_print"/>
-   <Action name="file_export_as" group="file_print"/>
-   <Action name="file_share" group="file_print"/>
+   <Action group="file_open" name="get_new_stuff"/>
+   <Action group="file_open" name="import_ps"/>
+   <Action group="file_save" name="file_save"/>
+   <Action group="file_save" name="file_save_as"/>
+   <Action group="file_save" name="file_reload"/>
+   <Action group="file_print" name="file_print"/>
+   <Action group="file_print" name="file_print_preview"/>
+   <Action group="file_print" name="open_containing_folder"/>
+   <Action group="file_print" name="properties"/>
+   <Action group="file_print" name="embedded_files"/>
+   <Action group="file_print" name="file_export_as"/>
+   <Action group="file_print" name="file_share"/>
   </Menu>
   <Menu name="edit">
    <text>&amp;Edit</text>
@@ -35,8 +35,8 @@
    <text>&amp;View</text>
    <Action name="presentation"/>
    <Separator/>
-   <Action name="view_zoom_in"/>
    <Action name="view_zoom_out"/>
+   <Action name="view_zoom_in"/>
    <Action name="view_actual_size"/>
    <Action name="view_fit_to_width"/>
    <Action name="view_fit_to_page"/>
@@ -90,22 +90,28 @@
    <Action name="add_digital_signature"/>
    <Separator/>
    <Action name="speak_document"/>
+   <Action name="speak_from_current_page"/>
    <Action name="speak_current_page"/>
    <Action name="speak_stop_all"/>
    <Action name="speak_pause_resume"/>
   </Menu>
   <Menu name="settings">
    <text>&amp;Settings</text>
-   <Action name="show_leftpanel" group="show_merge"/>
-   <Action name="show_bottombar" group="show_merge"/>
-   <Action name="options_configure_generators" group="configure_merge"/>
-   <Action name="options_configure" group="configure_merge"/>
+   <Action group="show_merge" name="colorscheme_menu"/>
+   <Action group="show_merge" name="show_leftpanel"/>
+   <Action group="show_merge" name="show_bottombar"/>
+   <Action group="configure_merge" name="options_configure_generators"/>
+   <Action group="configure_merge" name="options_configure"/>
   </Menu>
   <Menu name="help">
    <text>&amp;Help</text>
-   <Action name="help_about_backend" group="about_merge"/>
+   <Action group="about_merge" name="help_about_backend"/>
   </Menu>
  </MenuBar>
+ <ToolBar hidden="true" iconSize="32" iconText="icononly" name="quickAnnotationToolBar" newline="true" position="right">
+  <text>Quick Annotation Toolbar</text>
+  <Action name="quick_annotation_action_bar"/>
+ </ToolBar>
  <ToolBar name="mainToolBar">
   <text>Main Toolbar</text>
   <Action name="show_leftpanel"/>
@@ -120,7 +126,7 @@
   <Action name="zoom_to"/>
   <Action name="view_zoom_in"/>
  </ToolBar>
- <ToolBar newline="true" name="annotationToolBar" iconText="icononly" hidden="true">
+ <ToolBar hidden="true" iconText="icononly" name="annotationToolBar" newline="true">
   <text>Annotation Toolbar</text>
   <Action name="annotation_highlighter"/>
   <Action name="annotation_underline"/>
@@ -146,13 +152,15 @@
   <Action name="hide_annotation_toolbar"/>
  </ToolBar>
  <ActionProperties scheme="Default">
-  <Action priority="0" name="show_leftpanel"/>
   <Action name="first_page" shortcut="G"/>
   <Action name="go_document_back" shortcut="Shift+B"/>
   <Action name="go_next" shortcut="L"/>
   <Action name="go_previous" shortcut="H"/>
   <Action name="last_page" shortcut="Shift+G"/>
+  <Action name="show_leftpanel" priority="0"/>
   <Action name="view_scroll_page_down" shortcut="D"/>
   <Action name="view_scroll_page_up" shortcut="U"/>
+  <Action name="view_zoom_in" priority="0"/>
+  <Action name="view_zoom_out" priority="0"/>
  </ActionProperties>
 </gui>

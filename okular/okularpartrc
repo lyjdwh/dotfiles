@@ -5,6 +5,7 @@ update_info=okular.upd:annotation-toolbar,okular.upd:builtin-annotations
 ExternalEditor=Emacsclient
 
 [Main View]
+ShowLeftPanel=false
 SplitterSizes=312,727
 
 [PageView]

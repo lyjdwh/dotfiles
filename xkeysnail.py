@@ -65,7 +65,8 @@ define_keymap(None, {
     K("RC-E"): launch(cycle("emacs")),
     K("RC-Y"): launch(cycle("yesplaymusic")),
     K("RC-SEMICOLON"): launch(cycle("st-256color")),
-    K("RC-W"): launch(cycle("wine")),
+    # K("RC-W"): launch(cycle("wine")),
+    K("RC-W"): launch(cycle("weixin")),
     K("RC-S"): launch(cycle("steam")),
 
     K("F13"): K("C-space"),

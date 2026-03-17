@@ -1,0 +1,152 @@
+" IdeaVim: track action Ids
+set notimeout
+set timeoutlen=300
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+set hlsearch                    " 搜索高亮显示，缩写：set hls
+set incsearch                   " 搜索时立即高亮结果
+set ignorecase                  " 搜索时忽略大小写
+set scrolloff=5
+set history=10000
+
+let mapleader = ","
+
+" plugins
+set keep-english-in-normal-and-restore-in-insert
+set which-key
+set surround
+set multicursor
+set NERDTree
+set exchange                    " cx{范围} 再 cx{范围后} 交换 俩 ，或者 v 选中后 X 交换
+set highlightedyank             " yiw 的时候 短暂的高亮复制 的对象
+set textobj-indent              " 选择缩进的对象 vii vai
+set quickscope
+set easymotion
+let g:EasyMotion_do_mapping=0   " 禁用 Easymotion 默认映射
+
+set ideamarks " Sync IJ bookmarks and Vim marks
+
+map J 5j
+map K 5k
+map L $
+map H ^
+
+nnoremap <Leader>o :<C-u>action RecentProjectListGroup<CR>
+vnoremap <Leader>= :<C-u>action ReformatCode<CR>
+nnoremap <Leader>, :<C-u>action GotoAction<CR>
+nnoremap <Leader>s :<C-u>action ShowSettings<CR>
+vnoremap <Leader>e :<C-u>action ExtractMethod<CR>
+
+nnoremap gd :action GotoDeclaration
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap gD :<C-u>action ChooseDebugConfiguration<CR>
+nnoremap ga :<C-u>action GotoAction<CR>
+vnoremap ga :<C-u>action GotoAction<CR>
+nnoremap gb :<C-u>action JumpToLastChange<CR>
+nnoremap gc :<C-u>action GotoClass<CR>
+nnoremap gs :<C-u>action GotoSuperMethod<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gI :<C-u>action QuickImplementations<CR>
+nnoremap gf :<C-u>action GotoFile<CR>
+nnoremap gF :NERDTreeFind<CR>
+nnoremap gm :<C-u>action GotoSymbol<CR>
+nnoremap gu :<C-u>action ShowUsages<CR>
+nnoremap gU :<C-u>action FindUsages<cr>
+nnoremap gt :<C-u>action GotoTest<CR>
+nnoremap gp :<C-u>action FindInPath<CR>
+vnoremap gp :<C-u>action FindSelectionInPath<CR>
+nnoremap gP :<C-u>action RecentProjectListGroup<CR>
+nnoremap gr :<C-u>action RecentFiles<CR>
+nnoremap gR :<C-u>action RenameElement<CR>
+nnoremap gh :<C-u>action QuickJavaDoc<CR>
+nnoremap gH :<C-u>action ShowIntentionActions<CR>
+"nnoremap gH :<C-u>action ShowErrorDescription<CR> 左下角能看到
+"nnoremap gH :<C-u>action QuickImplementations<CR>
+"nnoremap gh :<C-u>action Back<CR>
+"nnoremap gl :<C-u>action Forward<CR>
+
+nnoremap tb :action ToggleLineBreakpoint<cr>
+nnoremap tB :action ViewBreakpoints<CR>
+nnoremap tm :action ToggleBookmark<cr>
+nnoremap tM :action ShowBookmarks<cr>
+nnoremap tp :action ActivateProjectToolWindow<CR>
+nnoremap tj :action FileStructurePopup<cr>
+nnoremap tz :action ToggleZenMode<cr>
+vnoremap ts :action SurroundWith<cr>
+nnoremap tg :action Git.CompareWithBranch<cr>
+nnoremap tf :action VimFindActionIdAction<cr>
+vnoremap te :action ExecuteInPyConsoleAction<cr>
+nnoremap th :action QuickEvaluateExpression<cr>
+nnoremap tw :action HideActiveWindow<cr>
+" vnoremap tk :action continue.focusContinueInput<cr>
+vnoremap tk :action continue.focusContinueInputWithoutClear<cr>
+nnoremap tk :action ActivateContinueToolWindow<cr>
+
+nnoremap cc :<C-u>action CommentByLineComment<CR>
+vnoremap cc :<C-u>action CommentByLineComment<CR>
+
+" window management
+nnoremap <space>wh gT
+nnoremap <space>wl gt
+nnoremap <space>w/ <C-W>v
+nnoremap <space>w- <C-W>s
+nnoremap <space>wh <C-W>h
+nnoremap <space>wl <C-W>l
+nnoremap <space>wj <C-W>j
+nnoremap <space>wk <C-W>k
+nnoremap <space>wJ <C-w>J
+nnoremap <space>wK <C-w>K
+nnoremap <space>wL <C-w>L
+nnoremap <space>wH <C-w>H
+nnoremap <space>wd :close<CR>
+nnoremap <space>w1 :only<CR>
+nnoremap <space><Tab> <C-w><C-w>
+nnoremap zm :action ActivateDebugToolWindow<cr>
+nnoremap zi :action PyDebugger.ViewImage<cr>
+
+" switch buffers
+nnoremap <space>bp :bp<CR>
+nnoremap <space>bn :bn<CR>
+
+nnoremap <space>fr :source ~/.ideavimrc<CR>
+nnoremap <space>fe :e ~/.ideavimrc<CR>
+nnoremap <space>fy :action CopyReferencePopupGroup<CR>
+nnoremap <space>ft :NERDTreeToggle<CR>
+
+" jump
+nmap <space>jl <Plug>(easymotion-bd-jk)
+vmap <space>jl <Plug>(easymotion-bd-jk)
+nmap <space>jj <Plug>(easymotion-s2)
+vmap <space>jj <Plug>(easymotion-s2)
+nmap s <Plug>(easymotion-s2)
+
+nnoremap <space>gh :action Vcs.ShowTabbedFileHistory<cr>
+
+nnoremap <space>q :action CloseContent<cr>
+nnoremap <space>Q :action ReopenClosedTab<cr>
+nnoremap <space><space> :action Switcher<cr>
+
+" unimpaired mappings
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [f :action MethodUp<cr>
+nnoremap ]f :action MethodDown<cr>
+
+" copy
+nnoremap zy yiw
+nnoremap zp viwp
+nnoremap zk diw
+sethandler <C-v> n-v:vim i:ide
+
+" 复制别处单词替换当前单词
+noremap gw :action emacsIDEAs.AceJumpObtainThenReplace.Word<CR>
+noremap gl :action emacsIDEAs.AceJumpObtainThenReplace.Line<CR>
+
+" 复制别处单词到当前光标
+noremap zw a<Esc>:action emacsIDEAs.AceJumpCopy.Word<CR>
+noremap zl a<Esc>:action emacsIDEAs.AceJumpCopy.Line<CR>
+noremap zL a<Esc>:action emacsIDEAs.AceJumpCopy.ToLineEnd<CR>
+
+" join
+nnoremap zj :action EditorJoinLines<CR>

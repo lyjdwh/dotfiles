@@ -26,6 +26,7 @@
     "editor.inlineSuggest.enabled": true,
     "sync.gist": "4f13a66b6a5e9c2f8fcd4660dd1447eb",
     "sync.forceUpload": true,
+    "sync.forceDownload": true,
     "search.showLineNumbers": true,
     "search.followSymlinks": false,
     "todo.embedded.provider": "ag",
@@ -1833,4 +1834,17 @@
     "hediet.vscode-drawio.codeLinkActivated": true,
     "window.zoomLevel": 1,
     "cmake.configureOnOpen": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "yaml": false
+    },
+    "highlightwords.box": {
+        "light": true,
+        "dark": false
+    },
+    // "EnglishChineseDictionary.enableHover": true,
+    // "debug.inlineValues": "on",
 }
