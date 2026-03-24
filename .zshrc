@@ -101,12 +101,12 @@ setopt noclobber
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # export EDITOR="nvim"
-export EDITOR="emacsclient -t -a lvim"
+export EDITOR="emacsclient -t"
 
 [ -f ~/.private/zshrc ] && source ~/.private/zshrc
 source ~/.zsh_aliases
-alias vim="nvim"
-alias v="nvim"
+# alias vim="nvim"
+alias v="vim"
 alias od="xdg-open ."
 alias sz="source ~/.zshrc"
 alias vz="$EDITOR ~/.zshrc"

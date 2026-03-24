@@ -243,7 +243,7 @@ Plug 'bling/vim-airline'
 Plug 'mhinz/vim-startify'
 nnoremap <LEADER>fr :Startify<CR>
 
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Making background transparent
 " let g:dracula_colorterm = 0
@@ -254,4 +254,4 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
-colorscheme dracula
+" colorscheme dracula
